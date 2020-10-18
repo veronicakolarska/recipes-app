@@ -7,9 +7,16 @@ namespace Recipes_app.Data.Models
 
     public class Category : AuditableEntity
     {
-        public Category()
-        {
-           
-        }
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        // TODO: [StringLength()]
+        public string Name { get; set; }
+
+        [Required]
+        public int CreatorId { get; set; }
+
+        public User Creator { get; set; }
     }
 }

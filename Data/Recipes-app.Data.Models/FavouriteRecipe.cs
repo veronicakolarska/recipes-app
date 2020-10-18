@@ -7,9 +7,17 @@ namespace Recipes_app.Data.Models
 
     public class FavouriteRecipe : AuditableEntity
     {
-        public FavouriteRecipe()
-        {
-           
-        }
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        public User User { get; set; }
+
+        [Required]
+        public string RecipeId { get; set; }
+
+        public Recipe Recipe { get; set; }
     }
 }
