@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Recipes.Common\Recipes.Common.csproj" />
+    <ProjectReference Include="..\Recipes.Data.Common\Recipes.Data.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Recipes.Data.Models</RootNamespace>
+  </PropertyGroup>
+
+</Project>
