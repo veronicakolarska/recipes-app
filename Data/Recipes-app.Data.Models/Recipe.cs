@@ -9,7 +9,7 @@ namespace Recipes_app.Data.Models
     {
         public Recipe()
         {
-
+              this.Ingredients = new HashSet<Ingredient>();
         }
 
         [Key]

@@ -7,7 +7,6 @@ namespace Recipes_app.Data.Models
 
     public class Ingredient : AuditableEntity
     {
-
         [Key]
         public int Id { get; set; }
 

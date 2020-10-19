@@ -6,8 +6,9 @@ namespace Recipes_app.Data.EntityConfig
 
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Cagegory> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
+            // TODO: Configure
         }
 
     }

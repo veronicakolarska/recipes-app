@@ -8,6 +8,11 @@ namespace Recipes_app.Data.EntityConfig
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            // TODO: Configure
+            // builder
+            //     .HasMany(x => x.Recipes)
+            //     .WithOne(x => x.User)
+            //     .HasForeignKey(x => x.UserId);
         }
 
     }

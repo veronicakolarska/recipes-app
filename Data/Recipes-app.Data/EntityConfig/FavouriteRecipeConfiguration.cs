@@ -8,6 +8,7 @@ namespace Recipes_app.Data.EntityConfig
     {
         public void Configure(EntityTypeBuilder<FavouriteRecipe> builder)
         {
+            // TODO: Configure
         }
 
     }
