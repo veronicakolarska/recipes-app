@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.services.Data", "Services\Recipes.Services.Data\Recipes.Services.Data.csproj", "{3EA3ED29-E065-48A2-A814-19ADE1DD3EAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Console", "Recipes.Console\Recipes.Console.csproj", "{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,18 @@ Global
 		{3EA3ED29-E065-48A2-A814-19ADE1DD3EAA}.Release|x64.Build.0 = Release|Any CPU
 		{3EA3ED29-E065-48A2-A814-19ADE1DD3EAA}.Release|x86.ActiveCfg = Release|Any CPU
 		{3EA3ED29-E065-48A2-A814-19ADE1DD3EAA}.Release|x86.Build.0 = Release|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Debug|x64.Build.0 = Debug|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Debug|x86.Build.0 = Debug|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Release|x64.ActiveCfg = Release|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Release|x64.Build.0 = Release|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F7E49AE-E201-43F0-9D18-1F15FE33EBE8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7A3457E5-4D36-4FA1-A276-ED9FCADA0834} = {BD4A9390-2101-460F-BD5F-E76033D51344}
