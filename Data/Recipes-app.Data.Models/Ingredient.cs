@@ -7,10 +7,6 @@ namespace Recipes_app.Data.Models
 
     public class Ingredient : AuditableEntity
     {
-        public Ingredient()
-        {
-            this.Ingredients = new HashSet<Ingredient>();
-        }
 
         [Key]
         public int Id { get; set; }
