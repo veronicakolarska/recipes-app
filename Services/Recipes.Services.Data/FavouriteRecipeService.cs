@@ -9,7 +9,7 @@ namespace Recipes.Services.Data
 {
     public class FavouriteRecipeService : IFavouriteRecipeService
     {
-        private readonly IRepository<FavouriteRecipe> favouriteRecipe;
+        private readonly IRepository<FavouriteRecipe> favouriteRecipeRepository;
 
         public FavouriteRecipeService(
             IRepository<FavouriteRecipe> favouriteRecipeRepository
@@ -35,22 +35,22 @@ namespace Recipes.Services.Data
             return favouriteRecipe;
         }
 
-        public Category GetById(int id)
+        public FavouriteRecipe GetById(int id)
         {
             return this.GetAll().FirstOrDefault((x) => x.Id == id);
         }
 
         public async Task Delete(int id)
         {
-            var user = this.GetById(id);
-            this.userRepository.Delete(user);
-            await this.userRepository.SaveChangesAsync();
+            var favouriteRecipe = this.GetById(id);
+            this.favouriteRecipeRepository.Delete(favouriteRecipe);
+            await this.favouriteRecipeRepository.SaveChangesAsync();
         }
 
-        public async Task Update(User user)
+        public async Task Update(FavouriteRecipe favouriteRecipe)
         {
-            this.userRepository.Update(user);
-            await this.userRepository.SaveChangesAsync();
+            this.favouriteRecipeRepository.Update(favouriteRecipe);
+            await this.favouriteRecipeRepository.SaveChangesAsync();
         }
     }
 }

@@ -4,6 +4,7 @@ namespace Recipes.Data.Models
     using Recipes.Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Recipes.Common.Constants;
 
     public class User : AuditableEntity
     {
@@ -16,15 +17,15 @@ namespace Recipes.Data.Models
         public int Id { get; set; }
 
         [Required]
-        // TODO: [StringLength()]
+        [StringLength(GlobalConstants.UserNameMaxLength, MinimumLength = GlobalConstants.UserNameMinLength)]
         public string UserName { get; set; }
 
         [Required]
-        // [StringLength()]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
-        // [StringLength()]
+        [RegularExpression(GlobalConstants.PasswordCheck)]
         public string Password { get; set; }
 
         public ICollection<Recipe> Recipes { get; set; }

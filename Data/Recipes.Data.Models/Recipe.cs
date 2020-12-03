@@ -4,22 +4,23 @@ namespace Recipes.Data.Models
     using Recipes.Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Recipes.Common.Constants;
 
     public class Recipe : AuditableEntity
     {
         public Recipe()
         {
-              this.Ingredients = new HashSet<Ingredient>();
+            this.Ingredients = new HashSet<Ingredient>();
         }
 
         [Key]
         public int Id { get; set; }
 
         [Required]
-        // TODO: [StringLength()]
+        [StringLength(GlobalConstants.RecipeNameMaxLength, MinimumLength = GlobalConstants.RecipeNameMinLength)]
         public string Name { get; set; }
 
-        // TODO: [StringLength()]
+        [StringLength(GlobalConstants.RecipeDescriptionNameMaxLength, MinimumLength = GlobalConstants.RecipeDescriptionNameMinLength)]
         public string Description { get; set; }
 
         [Required]

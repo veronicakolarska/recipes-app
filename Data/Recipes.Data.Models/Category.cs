@@ -4,6 +4,7 @@ namespace Recipes.Data.Models
     using Recipes.Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Recipes.Common.Constants;
 
     public class Category : AuditableEntity
     {
@@ -11,7 +12,7 @@ namespace Recipes.Data.Models
         public int Id { get; set; }
 
         [Required]
-        // TODO: [StringLength()]
+        [StringLength(GlobalConstants.CategoryNameMaxLength, MinimumLength = GlobalConstants.CategoryNameMinLength)]
         public string Name { get; set; }
 
         [Required]
