@@ -43,9 +43,17 @@ namespace Recipes.Services.Data
 
         public async Task Delete(int id)
         {
-            var ingredient = this.GetById(id);
-            this.ingredientRepository.Delete(ingredient);
-            await this.ingredientRepository.SaveChangesAsync();
+            var exists = this.Exists(id);
+            if (exists)
+            {
+                var ingredient = this.GetById(id);
+                this.ingredientRepository.Delete(ingredient);
+                await this.ingredientRepository.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception($"Ingredient doesn't exist! ");
+            }
         }
 
         public async Task Update(Ingredient ingredient)

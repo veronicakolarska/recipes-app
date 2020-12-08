@@ -42,9 +42,17 @@ namespace Recipes.Services.Data
 
         public async Task Delete(int id)
         {
-            var favouriteRecipe = this.GetById(id);
-            this.favouriteRecipeRepository.Delete(favouriteRecipe);
-            await this.favouriteRecipeRepository.SaveChangesAsync();
+            var exists = this.Exists(id);
+            if (exists)
+            {
+                var favouriteRecipe = this.GetById(id);
+                this.favouriteRecipeRepository.Delete(favouriteRecipe);
+                await this.favouriteRecipeRepository.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception($"Favourite recipe doesn't exist! ");
+            }
         }
 
         public async Task Update(FavouriteRecipe favouriteRecipe)

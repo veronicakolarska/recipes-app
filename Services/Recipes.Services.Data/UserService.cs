@@ -42,9 +42,17 @@ namespace Recipes.Services.Data
 
         public async Task Delete(int id)
         {
-            var user = this.GetById(id);
-            this.userRepository.Delete(user);
-            await this.userRepository.SaveChangesAsync();
+            var exists = this.Exists(id);
+            if (exists)
+            {
+                var user = this.GetById(id);
+                this.userRepository.Delete(user);
+                await this.userRepository.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception($"User doesn't exist! ");
+            }
         }
 
         public async Task Update(User user)
