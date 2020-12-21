@@ -17,7 +17,10 @@ namespace Recipes.Desktop
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging(config => config.AddConsole());
+            services.AddLogging(config => config
+                .AddConsole()
+                .AddDebug()
+                .SetMinimumLevel(LogLevel.Debug));
 
             services.AddDbContext<RecipeContext>(options => options.UseSqlServer("Server=.;Database=RecipeApp;User Id=sa;Password=123456!!XX;"));
 

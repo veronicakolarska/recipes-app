@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using Recipes.Services.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace Recipes.Desktop
 {
     public partial class Main : Form
     {
-        public Main()
+        public Main(ILogger<Main> logger, ICategoryService categoryService)
         {
-            InitializeComponent();
+            logger.LogError("Main form loaded!");
+            var allData = categoryService.GetAll().ToList();
+            this.InitializeComponent();
         }
 
     }
