@@ -48,16 +48,17 @@ namespace Recipes.Desktop
             this.recipePictureBox.Location = new System.Drawing.Point(20, 51);
             this.recipePictureBox.Name = "recipePictureBox";
             this.recipePictureBox.Size = new System.Drawing.Size(112, 81);
+            this.recipePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recipePictureBox.TabIndex = 1;
             this.recipePictureBox.TabStop = false;
             // 
-            // Recipe
+            // RecipeTile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.recipePictureBox);
             this.Controls.Add(this.recipeTitleLabel);
-            this.Name = "Recipe";
+            this.Name = "RecipeTile";
             this.Size = new System.Drawing.Size(156, 154);
             ((System.ComponentModel.ISupportInitialize)(this.recipePictureBox)).EndInit();
             this.ResumeLayout(false);
