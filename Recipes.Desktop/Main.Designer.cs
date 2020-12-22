@@ -98,6 +98,7 @@ namespace Recipes.Desktop
             // 
             this.passwordInput.Location = new System.Drawing.Point(80, 120);
             this.passwordInput.Name = "passwordInput";
+            this.passwordInput.PasswordChar = '*';
             this.passwordInput.Size = new System.Drawing.Size(190, 23);
             this.passwordInput.TabIndex = 2;
             // 
@@ -147,6 +148,7 @@ namespace Recipes.Desktop
             // 
             this.registerConfirmPasswordInput.Location = new System.Drawing.Point(83, 174);
             this.registerConfirmPasswordInput.Name = "registerConfirmPasswordInput";
+            this.registerConfirmPasswordInput.PasswordChar = '*';
             this.registerConfirmPasswordInput.Size = new System.Drawing.Size(190, 23);
             this.registerConfirmPasswordInput.TabIndex = 10;
             // 
@@ -158,6 +160,7 @@ namespace Recipes.Desktop
             this.registerButton.TabIndex = 9;
             this.registerButton.Text = "Register";
             this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // registerPasswordLabel
             // 
@@ -172,6 +175,7 @@ namespace Recipes.Desktop
             // 
             this.registerPasswordInput.Location = new System.Drawing.Point(83, 116);
             this.registerPasswordInput.Name = "registerPasswordInput";
+            this.registerPasswordInput.PasswordChar = '*';
             this.registerPasswordInput.Size = new System.Drawing.Size(190, 23);
             this.registerPasswordInput.TabIndex = 7;
             // 

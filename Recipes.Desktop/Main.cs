@@ -22,6 +22,17 @@ namespace Recipes.Desktop
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            var email = this.emailInput.Text;
+            var password = this.passwordInput.Text;
+            MessageBox.Show($"Login button, clicked! {email} {password}");
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            var email = this.registerEmailInput.Text;
+            var password = this.registerPasswordInput.Text;
+            var confirmPasswrod = this.registerConfirmPasswordInput.Text;
+            MessageBox.Show($"Login button, clicked! {email} {password} {confirmPasswrod}");
         }
     }
 }
