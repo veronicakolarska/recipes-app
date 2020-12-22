@@ -26,11 +26,22 @@ namespace Recipes.Desktop
 
             this.FormClosed += this.Main_FormClosed;
 
-            this.recipesFlowPanel.Controls.Add(new RecipeTile(new Recipe { Name = "Test recipe1!" }));
-            this.recipesFlowPanel.Controls.Add(new RecipeTile(new Recipe { Name = "Test recipe2!" }));
+            var recipeTile = new RecipeTile(new Recipe { Name = "Test recipe1!" });
+            recipeTile.Click += this.RecipeTile_Click;
+
+            var recipeTile2 = new RecipeTile(new Recipe { Name = "Test recipe2!" });
+            recipeTile2.Click += this.RecipeTile_Click;
+
+            this.recipesFlowPanel.Controls.Add(recipeTile);
+            this.recipesFlowPanel.Controls.Add(recipeTile2);
         }
 
-        private void Main_FormClosed(object sender, FormClosedEventArgs e) 
+        private void RecipeTile_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tile Clicked!");
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             var allOpenForms = Application.OpenForms.Cast<Form>();
             foreach (var form in allOpenForms)
