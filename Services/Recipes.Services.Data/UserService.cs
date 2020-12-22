@@ -60,7 +60,7 @@ namespace Recipes.Services.Data
             // 3. Compare password to existing user using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
             // If all checks are correct, return a user object for the logged in user.
 
-            throw new NotImplementedException();
+            return new User { Email = "dummy@test.bg"  };
         }
 
         public Task<User> Register(string email, string password)
@@ -70,7 +70,7 @@ namespace Recipes.Services.Data
             // 3. Hash password using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
             // If all checks are correct, return a user object for the registered user.
 
-            throw new NotImplementedException();
+            return Task.FromResult(new User { Email = "dummy@test.bg" });
         }
     }
 }

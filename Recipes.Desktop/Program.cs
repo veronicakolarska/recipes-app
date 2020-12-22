@@ -26,7 +26,7 @@ namespace Recipes.Desktop
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IUserService, UserService>();
 
-            services.AddScoped<Main>();
+            services.AddScoped<Authentication>();
         }
 
         /// <summary>
@@ -44,8 +44,8 @@ namespace Recipes.Desktop
 
             using (var serviceProvider = services.BuildServiceProvider())
             {
-                var mainForm = serviceProvider.GetRequiredService<Main>();
-                Application.Run(mainForm);
+                var authenticationForm = serviceProvider.GetRequiredService<Authentication>();
+                Application.Run(authenticationForm);
             }
         }
     }
