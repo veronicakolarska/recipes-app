@@ -12,14 +12,11 @@ namespace Recipes.Data.Models
         {
             this.Recipes = new HashSet<Recipe>();
             this.FavouriteRecipes = new HashSet<FavouriteRecipe>();
+            this.Roles = new HashSet<Role>();
         }
 
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(GlobalConstants.UserNameMaxLength, MinimumLength = GlobalConstants.UserNameMinLength)]
-        public string UserName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -32,5 +29,7 @@ namespace Recipes.Data.Models
         public ICollection<Recipe> Recipes { get; set; }
 
         public ICollection<FavouriteRecipe> FavouriteRecipes { get; set; }
+
+        public ICollection<Role> Roles { get; set; }
     }
 }
