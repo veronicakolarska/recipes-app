@@ -1,0 +1,21 @@
+{
+  "name": "recipes-app",
+  "version": "1.0.0",
+  "description": "An app for recipes",
+  "main": "index.js",
+  "scripts": {
+    "add-migration": "dotnet ef migrations add --project ./Data/Recipes.Data/ --startup-project ./Recipes.Console/ --verbose",
+    "migrate-mac": "dotnet ef database update --project ./Data/Recipes.Data/ --startup-project ./Recipes.Console/ --verbose",
+    "migrate-windows": "dotnet ef database update --project ./Data/Recipes.Data/ --startup-project ./Recipes.Desktop/ --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veronicakolarska/recipes-app.git"
+  },
+  "author": "veronica.kolarska",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veronicakolarska/recipes-app/issues"
+  },
+  "homepage": "https://github.com/veronicakolarska/recipes-app#readme"
+}
