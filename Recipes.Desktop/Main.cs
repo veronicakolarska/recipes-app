@@ -1,4 +1,5 @@
-﻿using Recipes.Services.Data;
+﻿using Recipes.Data.Models;
+using Recipes.Services.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,9 +22,21 @@ namespace Recipes.Desktop
 
             this.categoryService = categoryService;
 
-            MessageBox.Show($"{Thread.CurrentPrincipal.Identity.Name}");
-
             this.InitializeComponent();
+
+            this.FormClosed += this.Main_FormClosed;
+
+            this.recipesFlowPanel.Controls.Add(new RecipeTile(new Recipe { Name = "Test recipe1!" }));
+            this.recipesFlowPanel.Controls.Add(new RecipeTile(new Recipe { Name = "Test recipe2!" }));
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e) 
+        {
+            var allOpenForms = Application.OpenForms.Cast<Form>();
+            foreach (var form in allOpenForms)
+            {
+                form.Close();
+            }
         }
     }
 }
