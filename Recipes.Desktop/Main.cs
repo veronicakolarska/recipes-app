@@ -26,10 +26,10 @@ namespace Recipes.Desktop
 
             this.FormClosed += this.Main_FormClosed;
 
-            var recipeTile = new RecipeTile(new Recipe { Name = "Test recipe1!" });
+            var recipeTile = new RecipeTile(new Recipe { Id = 1, Name = "Test recipe1!" });
             recipeTile.Click += this.RecipeTile_Click;
 
-            var recipeTile2 = new RecipeTile(new Recipe { Name = "Test recipe2!" });
+            var recipeTile2 = new RecipeTile(new Recipe { Id = 2, Name = "Test recipe2!" });
             recipeTile2.Click += this.RecipeTile_Click;
 
             this.recipesFlowPanel.Controls.Add(recipeTile);
@@ -38,7 +38,8 @@ namespace Recipes.Desktop
 
         private void RecipeTile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tile Clicked!");
+            var tile = (RecipeTile)sender;
+            MessageBox.Show($"Tile Clicked! {tile.RecipeId}");
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)

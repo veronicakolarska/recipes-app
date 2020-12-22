@@ -12,7 +12,7 @@ namespace Recipes.Data.Models
         {
             this.Recipes = new HashSet<Recipe>();
             this.FavouriteRecipes = new HashSet<FavouriteRecipe>();
-            this.Roles = new HashSet<Role>();
+            this.Role = Role.User;
         }
 
         [Key]
@@ -30,6 +30,6 @@ namespace Recipes.Data.Models
 
         public ICollection<FavouriteRecipe> FavouriteRecipes { get; set; }
 
-        public ICollection<Role> Roles { get; set; }
+        public Role Role { get; set; }
     }
 }

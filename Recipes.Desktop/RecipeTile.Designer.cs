@@ -56,10 +56,11 @@ namespace Recipes.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.recipePictureBox);
             this.Controls.Add(this.recipeTitleLabel);
             this.Name = "RecipeTile";
-            this.Size = new System.Drawing.Size(156, 154);
+            this.Size = new System.Drawing.Size(154, 152);
             ((System.ComponentModel.ISupportInitialize)(this.recipePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
