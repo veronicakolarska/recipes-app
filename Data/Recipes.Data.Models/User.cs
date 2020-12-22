@@ -11,6 +11,7 @@ namespace Recipes.Data.Models
         public User()
         {
             this.Recipes = new HashSet<Recipe>();
+            this.FavouriteRecipes = new HashSet<FavouriteRecipe>();
         }
 
         [Key]
@@ -29,5 +30,7 @@ namespace Recipes.Data.Models
         public string Password { get; set; }
 
         public ICollection<Recipe> Recipes { get; set; }
+
+        public ICollection<FavouriteRecipe> FavouriteRecipes { get; set; }
     }
 }

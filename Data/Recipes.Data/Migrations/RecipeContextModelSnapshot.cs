@@ -189,11 +189,11 @@ namespace Recipes.Data.Migrations
             modelBuilder.Entity("Recipes.Data.Models.FavouriteRecipe", b =>
                 {
                     b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
-                        .WithMany()
+                        .WithMany("FavouriteRecipes")
                         .HasForeignKey("RecipeId1");
 
                     b.HasOne("Recipes.Data.Models.User", "User")
-                        .WithMany()
+                        .WithMany("FavouriteRecipes")
                         .HasForeignKey("UserId1");
 
                     b.Navigation("Recipe");
@@ -229,11 +229,15 @@ namespace Recipes.Data.Migrations
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
+                    b.Navigation("FavouriteRecipes");
+
                     b.Navigation("Ingredients");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
                 {
+                    b.Navigation("FavouriteRecipes");
+
                     b.Navigation("Recipes");
                 });
 #pragma warning restore 612, 618

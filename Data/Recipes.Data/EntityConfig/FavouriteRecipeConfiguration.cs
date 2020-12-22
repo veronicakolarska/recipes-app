@@ -10,6 +10,5 @@ namespace Recipes.Data.EntityConfig
         {
             builder.HasKey((x) => new { x.UserId, x.RecipeId });
         }
-
     }
 }
