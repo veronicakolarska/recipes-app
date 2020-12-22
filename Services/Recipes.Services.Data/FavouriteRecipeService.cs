@@ -24,27 +24,10 @@ namespace Recipes.Services.Data
             await this.favouriteRecipeRepository.SaveChangesAsync();
         }
 
-        public bool Exists(int id)
-        {
-            return this.favouriteRecipeRepository.All().Any((x) => x.Id == id);
-        }
-
         public IEnumerable<FavouriteRecipe> GetAll()
         {
             var favouriteRecipe = this.favouriteRecipeRepository.All();
             return favouriteRecipe;
-        }
-
-        public FavouriteRecipe GetById(int id)
-        {
-            return this.GetAll().FirstOrDefault((x) => x.Id == id);
-        }
-
-        public async Task Delete(int id)
-        {
-            var favouriteRecipe = this.GetById(id);
-            this.favouriteRecipeRepository.Delete(favouriteRecipe);
-            await this.favouriteRecipeRepository.SaveChangesAsync();
         }
 
         public async Task Update(FavouriteRecipe favouriteRecipe)

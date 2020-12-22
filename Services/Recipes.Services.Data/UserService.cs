@@ -55,11 +55,21 @@ namespace Recipes.Services.Data
 
         public User Login(string email, string password)
         {
+            // 1. Validate data. Is it empty? Has requred length? Etc.
+            // 2. Check if there is a user in the Database that has this email.
+            // 3. Compare password to existing user using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
+            // If all checks are correct, return a user object for the logged in user.
+
             throw new NotImplementedException();
         }
 
         public Task<User> Register(string email, string password)
         {
+            // 1. Validate data. Is it empty? Has requred length? Etc.
+            // 2. Check if there is NO user in the Database that has this email.
+            // 3. Hash password using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
+            // If all checks are correct, return a user object for the registered user.
+
             throw new NotImplementedException();
         }
     }

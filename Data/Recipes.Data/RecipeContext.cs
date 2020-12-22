@@ -20,6 +20,8 @@
 
         public DbSet<FavouriteRecipe> FavouriteRecipes { get; set; }
 
+        public RecipeContext() { }
+
         public RecipeContext(DbContextOptions<RecipeContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

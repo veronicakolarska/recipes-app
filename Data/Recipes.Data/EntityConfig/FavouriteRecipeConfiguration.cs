@@ -8,7 +8,7 @@ namespace Recipes.Data.EntityConfig
     {
         public void Configure(EntityTypeBuilder<FavouriteRecipe> builder)
         {
-            // TODO: Configure
+            builder.HasKey((x) => new { x.UserId, x.RecipeId });
         }
 
     }

@@ -11,12 +11,6 @@ namespace Recipes.Services.Data
 
         Task Update(FavouriteRecipe favouriteRecipe);
 
-        FavouriteRecipe GetById(int id);
-
-        bool Exists(int id);
-
-        Task Delete(int id);
-
         IEnumerable<FavouriteRecipe> GetAll();
     }
 }
