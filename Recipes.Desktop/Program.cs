@@ -17,11 +17,6 @@ namespace Recipes.Desktop
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging(config => config
-                .AddConsole()
-                .AddDebug()
-                .SetMinimumLevel(LogLevel.Debug));
-
             services.AddDbContext<RecipeContext>(options => options.UseSqlServer("Server=.;Database=RecipeApp;User Id=sa;Password=123456!!XX;"));
 
             // Data repositories
@@ -44,10 +39,9 @@ namespace Recipes.Desktop
             Application.SetCompatibleTextRenderingDefault(false);
 
             var services = new ServiceCollection();
-
             ConfigureServices(services);
 
-            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            using (var serviceProvider = services.BuildServiceProvider())
             {
                 var mainForm = serviceProvider.GetRequiredService<Main>();
                 Application.Run(mainForm);

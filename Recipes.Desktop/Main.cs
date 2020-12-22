@@ -14,12 +14,10 @@ namespace Recipes.Desktop
 {
     public partial class Main : Form
     {
-        public Main(ILogger<Main> logger, ICategoryService categoryService)
+        public Main(ICategoryService categoryService)
         {
-            logger.LogError("Main form loaded!");
             var allData = categoryService.GetAll().ToList();
             this.InitializeComponent();
         }
-
     }
 }
