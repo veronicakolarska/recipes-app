@@ -18,5 +18,9 @@ namespace Recipes.Services.Data
         Task Delete(int id);
 
         IEnumerable<User> GetAll();
+
+        User Login(string email, string password);
+
+        Task<User> Register(string email, string password);
     }
 }

@@ -52,5 +52,15 @@ namespace Recipes.Services.Data
             this.userRepository.Update(user);
             await this.userRepository.SaveChangesAsync();
         }
+
+        public User Login(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> Register(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

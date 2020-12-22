@@ -24,6 +24,7 @@ namespace Recipes.Desktop
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddScoped<Main>();
         }

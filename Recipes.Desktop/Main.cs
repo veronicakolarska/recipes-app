@@ -14,9 +14,11 @@ namespace Recipes.Desktop
 {
     public partial class Main : Form
     {
-        public Main(ICategoryService categoryService)
+        private IUserService userService;
+
+        public Main(IUserService userService)
         {
-            var allData = categoryService.GetAll().ToList();
+            this.userService = userService;
             this.InitializeComponent();
         }
 
@@ -24,7 +26,13 @@ namespace Recipes.Desktop
         {
             var email = this.emailInput.Text;
             var password = this.passwordInput.Text;
-            MessageBox.Show($"Login button, clicked! {email} {password}");
+
+            var hasLoggedIn = this.userService.Login(email, password);
+
+            // If login was ok:
+            // Set user for application.
+            // Redirect to main page.
+            // If not show an error.
         }
 
         private void registerButton_Click(object sender, EventArgs e)
@@ -32,7 +40,12 @@ namespace Recipes.Desktop
             var email = this.registerEmailInput.Text;
             var password = this.registerPasswordInput.Text;
             var confirmPasswrod = this.registerConfirmPasswordInput.Text;
-            MessageBox.Show($"Login button, clicked! {email} {password} {confirmPasswrod}");
+
+            var hasLoggedIn = this.userService.Register(email, password);
+            // If register was ok:
+            // Set user for application.
+            // Redirect to main page.
+            // If not show an error.
         }
     }
 }
