@@ -19,5 +19,9 @@ namespace Recipes.Desktop
             var allData = categoryService.GetAll().ToList();
             this.InitializeComponent();
         }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
