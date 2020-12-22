@@ -16,16 +16,33 @@ namespace Recipes.Desktop
     public partial class Main : Form
     {
         private ICategoryService categoryService;
+        private IRecipeService recipeService;
 
-        public Main(ICategoryService categoryService)
+        public Main(ICategoryService categoryService, IRecipeService recipeService)
         {
 
             this.categoryService = categoryService;
+            this.recipeService = recipeService;
 
             this.InitializeComponent();
 
             this.FormClosed += this.Main_FormClosed;
 
+            var allRecipes = this.recipeService
+                .GetAll()
+                .OrderByDescending((x) => x.CreatedOn)
+                .ToList();
+
+            var recipeTiles = allRecipes.Select((recipe) =>
+            {
+                var recipeTile = new RecipeTile(recipe);
+                recipeTile.Click += this.RecipeTile_Click;
+                return (Control)recipeTile;
+            }).ToArray();
+
+            this.recipesFlowPanel.Controls.AddRange(recipeTiles);
+
+            // TODO: Remove when testing is done!
             var recipeTile = new RecipeTile(new Recipe { Id = 1, Name = "Test recipe1!" });
             recipeTile.Click += this.RecipeTile_Click;
 

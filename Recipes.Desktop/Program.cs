@@ -25,6 +25,9 @@ namespace Recipes.Desktop
 
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRecipeService, RecipeService>();
+            services.AddTransient<IFavouriteRecipeService, FavouriteRecipeService>();
+            services.AddTransient<IIngredientService, IngredientService>();
 
             services.AddScoped<Authentication>();
         }

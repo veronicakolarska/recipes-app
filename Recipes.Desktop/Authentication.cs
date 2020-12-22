@@ -19,11 +19,23 @@ namespace Recipes.Desktop
     {
         private IUserService userService;
         private ICategoryService categoryService;
+        private IRecipeService recipeService;
+        private IFavouriteRecipeService favouriteRecipeService;
+        private IIngredientService ingredientService;
 
-        public Authentication(IUserService userService, ICategoryService categoryService)
+        public Authentication(
+            IUserService userService,
+            ICategoryService categoryService,
+            IRecipeService recipeService,
+            IFavouriteRecipeService favouriteRecipeService,
+            IIngredientService ingredientService
+            )
         {
             this.userService = userService;
             this.categoryService = categoryService;
+            this.recipeService = recipeService;
+            this.favouriteRecipeService = favouriteRecipeService;
+            this.ingredientService = ingredientService;
             this.InitializeComponent();
         }
 
@@ -41,9 +53,7 @@ namespace Recipes.Desktop
             // TODO: Role getting needs to be dynamic.
             this.SetCurrentPrincipal(loggedInUser, new[] { "User" });
 
-            this.Hide();
-            var mainForm = new Main(this.categoryService);
-            mainForm.Show();
+            this.ShowMainForm();
         }
 
         private async void registerButton_Click(object sender, EventArgs e)
@@ -62,16 +72,20 @@ namespace Recipes.Desktop
             // TODO: Role getting needs to be dynamic.
             this.SetCurrentPrincipal(registeredUser, new[] { "User" });
 
-            this.Hide();
-            var mainForm = new Main(this.categoryService);
-            mainForm.Show();
-
+            this.ShowMainForm();
         }
 
         private void SetCurrentPrincipal(User currentUser, string[] roles)
         {
             // TODO: Role getting needs to be dynamic.
             Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(currentUser.Email), roles);
+        }
+
+        private void ShowMainForm()
+        {
+            this.Hide();
+            var mainForm = new Main(this.categoryService, this.recipeService);
+            mainForm.Show();
         }
     }
 }
