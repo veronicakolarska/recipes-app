@@ -31,42 +31,34 @@ namespace Recipes.Desktop
         {
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.recipesPage = new System.Windows.Forms.TabPage();
-            this.favouritePage = new System.Windows.Forms.TabPage();
             this.recipesFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.favouritePage = new System.Windows.Forms.TabPage();
+            this.favouriteRecipesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.mainTabs.SuspendLayout();
             this.recipesPage.SuspendLayout();
+            this.favouritePage.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // mainTabs
             // 
             this.mainTabs.Controls.Add(this.recipesPage);
             this.mainTabs.Controls.Add(this.favouritePage);
             this.mainTabs.Location = new System.Drawing.Point(57, 73);
-            this.mainTabs.Name = "Main Tabs";
+            this.mainTabs.Name = "mainTabs";
             this.mainTabs.SelectedIndex = 0;
             this.mainTabs.Size = new System.Drawing.Size(1092, 532);
             this.mainTabs.TabIndex = 0;
             // 
-            // tabPage1
+            // recipesPage
             // 
             this.recipesPage.Controls.Add(this.recipesFlowPanel);
             this.recipesPage.Location = new System.Drawing.Point(4, 24);
-            this.recipesPage.Name = "recipes";
+            this.recipesPage.Name = "recipesPage";
             this.recipesPage.Padding = new System.Windows.Forms.Padding(3);
             this.recipesPage.Size = new System.Drawing.Size(1084, 504);
             this.recipesPage.TabIndex = 0;
             this.recipesPage.Text = "recipes";
             this.recipesPage.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.favouritePage.Location = new System.Drawing.Point(4, 24);
-            this.favouritePage.Name = "favourites";
-            this.favouritePage.Padding = new System.Windows.Forms.Padding(3);
-            this.favouritePage.Size = new System.Drawing.Size(1084, 504);
-            this.favouritePage.TabIndex = 1;
-            this.favouritePage.Text = "favourites";
-            this.favouritePage.UseVisualStyleBackColor = true;
             // 
             // recipesFlowPanel
             // 
@@ -74,6 +66,24 @@ namespace Recipes.Desktop
             this.recipesFlowPanel.Name = "recipesFlowPanel";
             this.recipesFlowPanel.Size = new System.Drawing.Size(933, 370);
             this.recipesFlowPanel.TabIndex = 0;
+            // 
+            // favouritePage
+            // 
+            this.favouritePage.Controls.Add(this.favouriteRecipesFlowLayoutPanel);
+            this.favouritePage.Location = new System.Drawing.Point(4, 24);
+            this.favouritePage.Name = "favouritePage";
+            this.favouritePage.Padding = new System.Windows.Forms.Padding(3);
+            this.favouritePage.Size = new System.Drawing.Size(1084, 504);
+            this.favouritePage.TabIndex = 1;
+            this.favouritePage.Text = "favourites";
+            this.favouritePage.UseVisualStyleBackColor = true;
+            // 
+            // favouriteRecipesFlowLayoutPanel
+            // 
+            this.favouriteRecipesFlowLayoutPanel.Location = new System.Drawing.Point(76, 67);
+            this.favouriteRecipesFlowLayoutPanel.Name = "favouriteRecipesFlowLayoutPanel";
+            this.favouriteRecipesFlowLayoutPanel.Size = new System.Drawing.Size(933, 370);
+            this.favouriteRecipesFlowLayoutPanel.TabIndex = 1;
             // 
             // Main
             // 
@@ -85,6 +95,7 @@ namespace Recipes.Desktop
             this.Text = "Main";
             this.mainTabs.ResumeLayout(false);
             this.recipesPage.ResumeLayout(false);
+            this.favouritePage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -95,5 +106,6 @@ namespace Recipes.Desktop
         private System.Windows.Forms.TabPage recipesPage;
         private System.Windows.Forms.TabPage favouritePage;
         private System.Windows.Forms.FlowLayoutPanel recipesFlowPanel;
+        private System.Windows.Forms.FlowLayoutPanel favouriteRecipesFlowLayoutPanel;
     }
 }

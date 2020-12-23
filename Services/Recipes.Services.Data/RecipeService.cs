@@ -4,6 +4,7 @@ using Recipes.Data.Models;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Recipes.Services.Data
 {
@@ -38,6 +39,14 @@ namespace Recipes.Services.Data
         public Recipe GetById(int id)
         {
             return this.GetAll().FirstOrDefault((x) => x.Id == id);
+        }
+
+        public Recipe GetByIdWithIngredients(int id)
+        {
+            return this.recipeRepository
+                .All()
+                .Include(x => x.Ingredients)
+                .FirstOrDefault((x) => x.Id == id);
         }
 
         public async Task Delete(int id)

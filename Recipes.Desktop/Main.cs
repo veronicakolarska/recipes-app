@@ -47,7 +47,7 @@ namespace Recipes.Desktop
         {
             var tile = (RecipeTile)sender;
 
-            var recipe = this.recipeService.GetById(tile.RecipeId);
+            var recipe = this.recipeService.GetByIdWithIngredients(tile.RecipeId);
             var recipeDetails = new RecipeDetails(recipe);
             recipeDetails.Show();
         }
