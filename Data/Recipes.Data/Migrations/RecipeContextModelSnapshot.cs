@@ -45,6 +45,50 @@ namespace Recipes.Data.Migrations
                     b.HasIndex("CreatorId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(7699),
+                            CreatorId = 4,
+                            Name = "Salads"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8071),
+                            CreatorId = 4,
+                            Name = "Soups"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8082),
+                            CreatorId = 4,
+                            Name = "Main dishes"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8084),
+                            CreatorId = 4,
+                            Name = "Vegetarian"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8087),
+                            CreatorId = 4,
+                            Name = "Desserts"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8089),
+                            CreatorId = 4,
+                            Name = "Drinks"
+                        });
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.FavouriteRecipe", b =>
@@ -101,6 +145,53 @@ namespace Recipes.Data.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4219),
+                            Name = "Potatoes",
+                            Quantity = 1.5m,
+                            RecipeId = 1,
+                            Unit = "kg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4231),
+                            Name = "Meat",
+                            Quantity = 0.7m,
+                            RecipeId = 1,
+                            Unit = "kg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4235),
+                            Name = "Milk",
+                            Quantity = 1m,
+                            RecipeId = 2,
+                            Unit = "ml"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4237),
+                            Name = "Biscuits",
+                            Quantity = 0.25m,
+                            RecipeId = 2,
+                            Unit = "kg"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4240),
+                            Name = "Chocolate",
+                            Quantity = 0.2m,
+                            RecipeId = 2,
+                            Unit = "kg"
+                        });
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
@@ -120,8 +211,8 @@ namespace Recipes.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -142,6 +233,28 @@ namespace Recipes.Data.Migrations
                     b.HasIndex("CreatorId");
 
                     b.ToTable("Recipes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 3,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(2136),
+                            CreatorId = 1,
+                            Description = "Traditional Bulgarian dish",
+                            Name = "Musaka",
+                            TitleImageUrl = "shorturl.at/zAGI3"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 5,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(2150),
+                            CreatorId = 3,
+                            Description = "Classic chocolate cake",
+                            Name = "Chocolate cake",
+                            TitleImageUrl = "shorturl.at/fzBES"
+                        });
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>
@@ -177,6 +290,48 @@ namespace Recipes.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 398, DateTimeKind.Local).AddTicks(7694),
+                            Description = "I'm 20 years old",
+                            Email = "someMail@abv.bg",
+                            ImageUrl = "shorturl.at/ltyFY",
+                            Password = "123FDGEF",
+                            Role = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7493),
+                            Description = "Hello there",
+                            Email = "other@abv.bg",
+                            ImageUrl = "shorturl.at/ltyFY",
+                            Password = "12FddFDDGEF2",
+                            Role = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7515),
+                            Description = "I'm new here",
+                            Email = "email@abv.bg",
+                            ImageUrl = "shorturl.at/ltyFY",
+                            Password = "werDGEF2",
+                            Role = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7518),
+                            Description = "Admin",
+                            Email = "email@abv.bg",
+                            ImageUrl = "shorturl.at/ltyFY",
+                            Password = "ggdsg@gmail.com",
+                            Role = 2
+                        });
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Category", b =>

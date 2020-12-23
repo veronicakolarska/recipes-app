@@ -57,11 +57,9 @@ namespace Recipes.Desktop
         {
             var tile = (RecipeTile)sender;
 
-            // 1. Get recipe.
-            // 2. Pass recipe to RecipeDetails
-            // 3. Show recipe details.
-
-            MessageBox.Show($"Tile Clicked! {tile.RecipeId}");
+            var recipe = this.recipeService.GetById(tile.RecipeId);
+            var recipeDetails = new RecipeDetails(recipe);
+            recipeDetails.Show();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)

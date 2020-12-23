@@ -36,6 +36,7 @@
             modelBuilder.ApplyConfiguration(new FavouriteRecipeConfiguration());
             modelBuilder.ApplyConfiguration(new IngredientConfiguration());
             modelBuilder.ApplyConfiguration(new RecipeConfiguration());
+            DataSeeder.Seed(modelBuilder);
 
             var entityTypes = modelBuilder.Model.GetEntityTypes().ToList();
 

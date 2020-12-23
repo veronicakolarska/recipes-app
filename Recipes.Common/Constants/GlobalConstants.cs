@@ -11,7 +11,7 @@ namespace Recipes.Common.Constants
         public const int RecipeNameMaxLength = 20;
         public const int RecipeNameMinLength = 3;
 
-        public const int RecipeDescriptionNameMaxLength = 20;
+        public const int RecipeDescriptionNameMaxLength = 10000;
         public const int RecipeDescriptionNameMinLength = 3;
 
         public const int UserNameMaxLength = 20;
