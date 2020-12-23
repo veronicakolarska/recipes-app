@@ -134,10 +134,10 @@ namespace Recipes.Data.Migrations
                 columns: new[] { "Id", "CreatedOn", "Description", "Email", "ImageUrl", "ModifiedOn", "Password", "Role" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 12, 23, 16, 41, 45, 398, DateTimeKind.Local).AddTicks(7694), "I'm 20 years old", "someMail@abv.bg", "shorturl.at/ltyFY", null, "123FDGEF", 1 },
-                    { 2, new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7493), "Hello there", "other@abv.bg", "shorturl.at/ltyFY", null, "12FddFDDGEF2", 1 },
-                    { 3, new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7515), "I'm new here", "email@abv.bg", "shorturl.at/ltyFY", null, "werDGEF2", 1 },
-                    { 4, new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7518), "Admin", "email@abv.bg", "shorturl.at/ltyFY", null, "ggdsg@gmail.com", 2 }
+                    { 1, new DateTime(2020, 12, 23, 16, 56, 8, 348, DateTimeKind.Local).AddTicks(4843), "I'm 20 years old", "someMail@abv.bg", "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", null, "123FDGEF", 1 },
+                    { 2, new DateTime(2020, 12, 23, 16, 56, 8, 350, DateTimeKind.Local).AddTicks(2913), "Hello there", "other@abv.bg", "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", null, "12FddFDDGEF2", 1 },
+                    { 3, new DateTime(2020, 12, 23, 16, 56, 8, 350, DateTimeKind.Local).AddTicks(2935), "I'm new here", "email@abv.bg", "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", null, "werDGEF2", 1 },
+                    { 4, new DateTime(2020, 12, 23, 16, 56, 8, 350, DateTimeKind.Local).AddTicks(2938), "Admin", "email@abv.bg", "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", null, "ggdsg@gmail.com", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -145,34 +145,34 @@ namespace Recipes.Data.Migrations
                 columns: new[] { "Id", "CreatedOn", "CreatorId", "ModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(7699), 4, null, "Salads" },
-                    { 2, new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8071), 4, null, "Soups" },
-                    { 3, new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8082), 4, null, "Main dishes" },
-                    { 4, new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8084), 4, null, "Vegetarian" },
-                    { 5, new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8087), 4, null, "Desserts" },
-                    { 6, new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8089), 4, null, "Drinks" }
+                    { 1, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3161), 4, null, "Salads" },
+                    { 2, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3540), 4, null, "Soups" },
+                    { 3, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3549), 4, null, "Main dishes" },
+                    { 4, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3552), 4, null, "Vegetarian" },
+                    { 5, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3554), 4, null, "Desserts" },
+                    { 6, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3556), 4, null, "Drinks" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Recipes",
                 columns: new[] { "Id", "CategoryId", "CreatedOn", "CreatorId", "Description", "ModifiedOn", "Name", "TitleImageUrl" },
-                values: new object[] { 1, 3, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(2136), 1, "Traditional Bulgarian dish", null, "Musaka", "shorturl.at/zAGI3" });
+                values: new object[] { 1, 3, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(7645), 1, "Traditional Bulgarian dish", null, "Musaka", "https://i0.wp.com/www.kashkaval-tourist.com/wp-content/uploads/2014/02/musaka.jpg" });
 
             migrationBuilder.InsertData(
                 table: "Recipes",
                 columns: new[] { "Id", "CategoryId", "CreatedOn", "CreatorId", "Description", "ModifiedOn", "Name", "TitleImageUrl" },
-                values: new object[] { 2, 5, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(2150), 3, "Classic chocolate cake", null, "Chocolate cake", "shorturl.at/fzBES" });
+                values: new object[] { 2, 5, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(7661), 3, "Classic chocolate cake", null, "Chocolate cake", "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" });
 
             migrationBuilder.InsertData(
                 table: "Ingredients",
                 columns: new[] { "Id", "CreatedOn", "ModifiedOn", "Name", "Quantity", "RecipeId", "Unit" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4219), null, "Potatoes", 1.5m, 1, "kg" },
-                    { 2, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4231), null, "Meat", 0.7m, 1, "kg" },
-                    { 3, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4235), null, "Milk", 1m, 2, "ml" },
-                    { 4, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4237), null, "Biscuits", 0.25m, 2, "kg" },
-                    { 5, new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4240), null, "Chocolate", 0.2m, 2, "kg" }
+                    { 1, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9759), null, "Potatoes", 1.5m, 1, "kg" },
+                    { 2, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9771), null, "Meat", 0.7m, 1, "kg" },
+                    { 3, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9775), null, "Milk", 1m, 2, "ml" },
+                    { 4, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9777), null, "Biscuits", 0.25m, 2, "kg" },
+                    { 5, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9779), null, "Chocolate", 0.2m, 2, "kg" }
                 });
 
             migrationBuilder.CreateIndex(

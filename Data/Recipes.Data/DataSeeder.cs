@@ -12,10 +12,10 @@ namespace Recipes.Data
         public static void Seed(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new { Id = 1, Email = "someMail@abv.bg", Password = "123FDGEF", ImageUrl = "shorturl.at/ltyFY", Description = "I'm 20 years old", Role = Role.User, CreatedOn = DateTime.Now },
-                new { Id = 2, Email = "other@abv.bg", Password = "12FddFDDGEF2", ImageUrl = "shorturl.at/ltyFY", Description = "Hello there", Role = Role.User, CreatedOn = DateTime.Now },
-                new { Id = 3, Email = "email@abv.bg", Password = "werDGEF2", ImageUrl = "shorturl.at/ltyFY", Description = "I'm new here", Role = Role.User, CreatedOn = DateTime.Now },
-                new { Id = 4, Email = "email@abv.bg", Password = "ggdsg@gmail.com", ImageUrl = "shorturl.at/ltyFY", Description = "Admin", Role = Role.Administrator, CreatedOn = DateTime.Now }
+                new { Id = 1, Email = "someMail@abv.bg", Password = "123FDGEF", ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", Description = "I'm 20 years old", Role = Role.User, CreatedOn = DateTime.Now },
+                new { Id = 2, Email = "other@abv.bg", Password = "12FddFDDGEF2", ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", Description = "Hello there", Role = Role.User, CreatedOn = DateTime.Now },
+                new { Id = 3, Email = "email@abv.bg", Password = "werDGEF2", ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", Description = "I'm new here", Role = Role.User, CreatedOn = DateTime.Now },
+                new { Id = 4, Email = "email@abv.bg", Password = "ggdsg@gmail.com", ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg", Description = "Admin", Role = Role.Administrator, CreatedOn = DateTime.Now }
                 );
 
             modelBuilder.Entity<Category>().HasData(
@@ -28,8 +28,8 @@ namespace Recipes.Data
               );
 
             modelBuilder.Entity<Recipe>().HasData(
-                new Recipe { Id = 1, Name = "Musaka", CategoryId = 3, CreatorId = 1, Description = "Traditional Bulgarian dish", TitleImageUrl = "shorturl.at/zAGI3", CreatedOn = DateTime.Now },
-                new Recipe { Id = 2, Name = "Chocolate cake", CategoryId = 5, CreatorId = 3, Description = "Classic chocolate cake", TitleImageUrl = "shorturl.at/fzBES", CreatedOn = DateTime.Now }
+                new Recipe { Id = 1, Name = "Musaka", CategoryId = 3, CreatorId = 1, Description = "Traditional Bulgarian dish", TitleImageUrl = "https://i0.wp.com/www.kashkaval-tourist.com/wp-content/uploads/2014/02/musaka.jpg", CreatedOn = DateTime.Now },
+                new Recipe { Id = 2, Name = "Chocolate cake", CategoryId = 5, CreatorId = 3, Description = "Classic chocolate cake", TitleImageUrl = "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg", CreatedOn = DateTime.Now }
                 );
 
 

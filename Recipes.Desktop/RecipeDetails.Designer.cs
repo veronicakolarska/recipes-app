@@ -48,9 +48,9 @@ namespace Recipes.Desktop
             // recipeImagePictureBox
             // 
             this.recipeImagePictureBox.Cursor = System.Windows.Forms.Cursors.No;
-            this.recipeImagePictureBox.Location = new System.Drawing.Point(34, 67);
+            this.recipeImagePictureBox.Location = new System.Drawing.Point(34, 73);
             this.recipeImagePictureBox.Name = "recipeImagePictureBox";
-            this.recipeImagePictureBox.Size = new System.Drawing.Size(481, 163);
+            this.recipeImagePictureBox.Size = new System.Drawing.Size(283, 319);
             this.recipeImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recipeImagePictureBox.TabIndex = 1;
             this.recipeImagePictureBox.TabStop = false;
@@ -61,16 +61,16 @@ namespace Recipes.Desktop
             this.recipeDescriptionTextBox.Multiline = true;
             this.recipeDescriptionTextBox.Name = "recipeDescriptionTextBox";
             this.recipeDescriptionTextBox.ReadOnly = true;
-            this.recipeDescriptionTextBox.Size = new System.Drawing.Size(481, 108);
+            this.recipeDescriptionTextBox.Size = new System.Drawing.Size(481, 181);
             this.recipeDescriptionTextBox.TabIndex = 2;
             // 
             // recipeIngredientsListBox
             // 
             this.recipeIngredientsListBox.FormattingEnabled = true;
             this.recipeIngredientsListBox.ItemHeight = 15;
-            this.recipeIngredientsListBox.Location = new System.Drawing.Point(34, 254);
+            this.recipeIngredientsListBox.Location = new System.Drawing.Point(330, 73);
             this.recipeIngredientsListBox.Name = "recipeIngredientsListBox";
-            this.recipeIngredientsListBox.Size = new System.Drawing.Size(481, 139);
+            this.recipeIngredientsListBox.Size = new System.Drawing.Size(185, 319);
             this.recipeIngredientsListBox.TabIndex = 3;
             // 
             // RecipeDetails

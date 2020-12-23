@@ -22,7 +22,7 @@ namespace Recipes.Desktop
             this.recipeDescriptionTextBox.Text = recipe.Description;
 
             var ingredientsList = recipe.Ingredients
-                .Select((ingredient) => $"{ingredient.Name} - {ingredient.Quantity} ({ingredient.Unit})");
+                .Select((ingredient) => $"{ingredient.Name} - {ingredient.Quantity} ({ingredient.Unit})").ToList();
 
             this.recipeIngredientsListBox.DataSource = ingredientsList;
         }

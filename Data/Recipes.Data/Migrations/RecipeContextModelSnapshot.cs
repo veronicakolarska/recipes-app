@@ -50,42 +50,42 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(7699),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3161),
                             CreatorId = 4,
                             Name = "Salads"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8071),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3540),
                             CreatorId = 4,
                             Name = "Soups"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8082),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3549),
                             CreatorId = 4,
                             Name = "Main dishes"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8084),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3552),
                             CreatorId = 4,
                             Name = "Vegetarian"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8087),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3554),
                             CreatorId = 4,
                             Name = "Desserts"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 401, DateTimeKind.Local).AddTicks(8089),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(3556),
                             CreatorId = 4,
                             Name = "Drinks"
                         });
@@ -150,7 +150,7 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4219),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9759),
                             Name = "Potatoes",
                             Quantity = 1.5m,
                             RecipeId = 1,
@@ -159,7 +159,7 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4231),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9771),
                             Name = "Meat",
                             Quantity = 0.7m,
                             RecipeId = 1,
@@ -168,7 +168,7 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4235),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9775),
                             Name = "Milk",
                             Quantity = 1m,
                             RecipeId = 2,
@@ -177,7 +177,7 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4237),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9777),
                             Name = "Biscuits",
                             Quantity = 0.25m,
                             RecipeId = 2,
@@ -186,7 +186,7 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(4240),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9779),
                             Name = "Chocolate",
                             Quantity = 0.2m,
                             RecipeId = 2,
@@ -239,21 +239,21 @@ namespace Recipes.Data.Migrations
                         {
                             Id = 1,
                             CategoryId = 3,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(2136),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(7645),
                             CreatorId = 1,
                             Description = "Traditional Bulgarian dish",
                             Name = "Musaka",
-                            TitleImageUrl = "shorturl.at/zAGI3"
+                            TitleImageUrl = "https://i0.wp.com/www.kashkaval-tourist.com/wp-content/uploads/2014/02/musaka.jpg"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 5,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 402, DateTimeKind.Local).AddTicks(2150),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(7661),
                             CreatorId = 3,
                             Description = "Classic chocolate cake",
                             Name = "Chocolate cake",
-                            TitleImageUrl = "shorturl.at/fzBES"
+                            TitleImageUrl = "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
                         });
                 });
 
@@ -295,40 +295,40 @@ namespace Recipes.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 398, DateTimeKind.Local).AddTicks(7694),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 348, DateTimeKind.Local).AddTicks(4843),
                             Description = "I'm 20 years old",
                             Email = "someMail@abv.bg",
-                            ImageUrl = "shorturl.at/ltyFY",
+                            ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg",
                             Password = "123FDGEF",
                             Role = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7493),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 350, DateTimeKind.Local).AddTicks(2913),
                             Description = "Hello there",
                             Email = "other@abv.bg",
-                            ImageUrl = "shorturl.at/ltyFY",
+                            ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg",
                             Password = "12FddFDDGEF2",
                             Role = 1
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7515),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 350, DateTimeKind.Local).AddTicks(2935),
                             Description = "I'm new here",
                             Email = "email@abv.bg",
-                            ImageUrl = "shorturl.at/ltyFY",
+                            ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg",
                             Password = "werDGEF2",
                             Role = 1
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 41, 45, 400, DateTimeKind.Local).AddTicks(7518),
+                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 350, DateTimeKind.Local).AddTicks(2938),
                             Description = "Admin",
                             Email = "email@abv.bg",
-                            ImageUrl = "shorturl.at/ltyFY",
+                            ImageUrl = "https://p7.hiclipart.com/preview/780/873/166/cooking-mama-world-kitchen-cooking-mama-lets-cookuff01-puzzle-cooking-mama-cooking-png-photo-thumbnail.jpg",
                             Password = "ggdsg@gmail.com",
                             Role = 2
                         });

@@ -41,16 +41,6 @@ namespace Recipes.Desktop
             }).ToArray();
 
             this.recipesFlowPanel.Controls.AddRange(recipeTiles);
-
-            // TODO: Remove when testing is done!
-            var recipeTile = new RecipeTile(new Recipe { Id = 1, Name = "Test recipe1!" });
-            recipeTile.Click += this.RecipeTile_Click;
-
-            var recipeTile2 = new RecipeTile(new Recipe { Id = 2, Name = "Test recipe2!" });
-            recipeTile2.Click += this.RecipeTile_Click;
-
-            this.recipesFlowPanel.Controls.Add(recipeTile);
-            this.recipesFlowPanel.Controls.Add(recipeTile2);
         }
 
         private void RecipeTile_Click(object sender, EventArgs e)

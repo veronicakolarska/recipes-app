@@ -13,7 +13,7 @@ namespace Recipes.Desktop
             this.InitializeComponent();
             this.RecipeId = recipe.Id;
             this.recipeTitleLabel.Text = recipe.Name;
-            this.recipePictureBox.Load("https://store-images.s-microsoft.com/image/apps.14591.9a19b1cb-7ffc-4b32-bf97-25ef75ec69a3.753de052-0f07-4e5e-a20d-e4d5688136af.e2247862-7caa-44e8-8915-ca934ab9b663.png");
+            this.recipePictureBox.Load(recipe.TitleImageUrl);
 
             this.recipePictureBox.Click += this.ControlClick;
             this.recipeTitleLabel.Click += this.ControlClick;
