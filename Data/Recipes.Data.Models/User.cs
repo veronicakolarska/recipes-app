@@ -26,6 +26,10 @@ namespace Recipes.Data.Models
         [RegularExpression(GlobalConstants.PasswordCheck)]
         public string Password { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public string Description { get; set; }
+
         public ICollection<Recipe> Recipes { get; set; }
 
         public ICollection<FavouriteRecipe> FavouriteRecipes { get; set; }

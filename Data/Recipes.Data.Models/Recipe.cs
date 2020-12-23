@@ -25,6 +25,9 @@ namespace Recipes.Data.Models
         public string Description { get; set; }
 
         [Required]
+        public string TitleImageUrl { get; set; }
+
+        [Required]
         public int CreatorId { get; set; }
 
         public User Creator { get; set; }
