@@ -17,5 +17,9 @@ namespace Recipes.Data.Models
 
         [Required]
         public decimal Quantity { get; set; }
+
+        public int RecipeId { get; set; }
+
+        public Recipe Recipe { get; set; }
     }
 }

@@ -17,6 +17,8 @@ namespace Recipes.Desktop
     {
         public static void ConfigureServices(IServiceCollection services)
         {
+
+            // TODO: Extract in configuration
             services.AddDbContext<RecipeContext>(options => options.UseSqlServer("Server=.;Database=RecipeApp;User Id=sa;Password=123456!!XX;"));
 
             // Data repositories

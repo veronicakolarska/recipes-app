@@ -77,7 +77,6 @@ namespace Recipes.Desktop
 
         private void SetCurrentPrincipal(User currentUser, string[] roles)
         {
-            // TODO: Role getting needs to be dynamic.
             Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(currentUser.Email), roles);
         }
 

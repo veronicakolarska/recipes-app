@@ -49,11 +49,11 @@ namespace Recipes.Data.Migrations
 
             modelBuilder.Entity("Recipes.Data.Models.FavouriteRecipe", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RecipeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -61,17 +61,9 @@ namespace Recipes.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("RecipeId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
                     b.HasKey("UserId", "RecipeId");
 
-                    b.HasIndex("RecipeId1");
-
-                    b.HasIndex("UserId1");
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("FavouriteRecipes");
                 });
@@ -97,7 +89,7 @@ namespace Recipes.Data.Migrations
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("RecipeId")
+                    b.Property<int>("RecipeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -188,11 +180,15 @@ namespace Recipes.Data.Migrations
                 {
                     b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
                         .WithMany("FavouriteRecipes")
-                        .HasForeignKey("RecipeId1");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Recipes.Data.Models.User", "User")
                         .WithMany("FavouriteRecipes")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Recipe");
 
@@ -201,15 +197,19 @@ namespace Recipes.Data.Migrations
 
             modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
                 {
-                    b.HasOne("Recipes.Data.Models.Recipe", null)
+                    b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
                         .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
                     b.HasOne("Recipes.Data.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Recipes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -223,6 +223,11 @@ namespace Recipes.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("Recipes.Data.Models.Category", b =>
+                {
+                    b.Navigation("Recipes");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>

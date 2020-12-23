@@ -7,11 +7,11 @@ namespace Recipes.Data.Models
 
     public class FavouriteRecipe : AuditableEntity
     {
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         public User User { get; set; }
 
-        public string RecipeId { get; set; }
+        public int RecipeId { get; set; }
 
         public Recipe Recipe { get; set; }
     }

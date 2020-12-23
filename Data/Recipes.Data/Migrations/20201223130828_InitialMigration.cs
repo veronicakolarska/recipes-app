@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Recipes.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +13,9 @@ namespace Recipes.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -80,10 +80,8 @@ namespace Recipes.Data.Migrations
                 name: "FavouriteRecipes",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RecipeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: true),
-                    RecipeId1 = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RecipeId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -91,14 +89,14 @@ namespace Recipes.Data.Migrations
                 {
                     table.PrimaryKey("PK_FavouriteRecipes", x => new { x.UserId, x.RecipeId });
                     table.ForeignKey(
-                        name: "FK_FavouriteRecipes_Recipes_RecipeId1",
-                        column: x => x.RecipeId1,
+                        name: "FK_FavouriteRecipes_Recipes_RecipeId",
+                        column: x => x.RecipeId,
                         principalTable: "Recipes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FavouriteRecipes_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_FavouriteRecipes_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -112,7 +110,7 @@ namespace Recipes.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    RecipeId = table.Column<int>(type: "int", nullable: true),
+                    RecipeId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -133,14 +131,9 @@ namespace Recipes.Data.Migrations
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FavouriteRecipes_RecipeId1",
+                name: "IX_FavouriteRecipes_RecipeId",
                 table: "FavouriteRecipes",
-                column: "RecipeId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FavouriteRecipes_UserId1",
-                table: "FavouriteRecipes",
-                column: "UserId1");
+                column: "RecipeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_RecipeId",

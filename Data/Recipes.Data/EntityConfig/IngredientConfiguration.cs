@@ -10,6 +10,5 @@ namespace Recipes.Data.EntityConfig
         {
             // TODO: Configure
         }
-
     }
 }

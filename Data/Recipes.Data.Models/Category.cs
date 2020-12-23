@@ -8,6 +8,11 @@ namespace Recipes.Data.Models
 
     public class Category : AuditableEntity
     {
+        public Category()
+        {
+            this.Recipes = new HashSet<Recipe>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -19,5 +24,7 @@ namespace Recipes.Data.Models
         public int CreatorId { get; set; }
 
         public User Creator { get; set; }
+
+        public ICollection<Recipe> Recipes { get; set; }
     }
 }
