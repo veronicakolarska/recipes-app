@@ -1,9 +1,8 @@
 using System.Threading.Tasks;
 using Recipes.Data.Common.Repositories;
 using Recipes.Data.Models;
-using System;
-using System.Linq;
 using System.Collections.Generic;
+using Recipes.Services.Data.Contracts;
 
 namespace Recipes.Services.Data
 {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Recipes.Data.Models;
 using System.Collections.Generic;
 
-namespace Recipes.Services.Data
+namespace Recipes.Services.Data.Contracts
 {
     public interface IUserService
     {
@@ -12,6 +12,8 @@ namespace Recipes.Services.Data
         Task Update(User user);
 
         User GetById(int id);
+
+        User GetByEmailWithFavouriteRecipes(string email);
 
         bool Exists(int id);
 

@@ -1,9 +1,10 @@
 using System.Threading.Tasks;
 using Recipes.Data.Common.Repositories;
 using Recipes.Data.Models;
-using System;
 using System.Linq;
 using System.Collections.Generic;
+using Recipes.Services.Data.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Recipes.Services.Data
 {
@@ -60,7 +61,7 @@ namespace Recipes.Services.Data
             // 3. Compare password to existing user using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
             // If all checks are correct, return a user object for the logged in user.
 
-            return new User { Email = "dummy@test.bg"  };
+            return new User { Email = "dummy@test.bg" };
         }
 
         public Task<User> Register(string email, string password)
@@ -71,6 +72,14 @@ namespace Recipes.Services.Data
             // If all checks are correct, return a user object for the registered user.
 
             return Task.FromResult(new User { Email = "dummy@test.bg" });
+        }
+
+        public User GetByEmailWithFavouriteRecipes(string email)
+        {
+            return this.userRepository
+                    .All()
+                    .Include(x => x.FavouriteRecipes)
+                    .FirstOrDefault(x => x.Email == email);
         }
     }
 }

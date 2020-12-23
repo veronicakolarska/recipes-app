@@ -1,16 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using Recipes.Data.Models;
-using Recipes.Services.Data;
+﻿using Recipes.Data.Models;
+using Recipes.Services.Data.Contracts;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Recipes.Desktop
@@ -83,7 +75,7 @@ namespace Recipes.Desktop
         private void ShowMainForm()
         {
             this.Hide();
-            var mainForm = new Main(this.categoryService, this.recipeService);
+            var mainForm = new Main(this.categoryService, this.recipeService, this.userService);
             mainForm.Show();
         }
     }

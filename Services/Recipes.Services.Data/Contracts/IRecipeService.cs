@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Recipes.Data.Models;
 using System.Collections.Generic;
 
-namespace Recipes.Services.Data
+namespace Recipes.Services.Data.Contracts
 {
     public interface IRecipeService
     {

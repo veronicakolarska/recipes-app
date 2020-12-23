@@ -1,14 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Recipes.Data;
 using Recipes.Data.Common.Repositories;
 using Recipes.Data.Repositories;
 using Recipes.Services.Data;
+using Recipes.Services.Data.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Recipes.Desktop
