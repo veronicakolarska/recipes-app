@@ -56,6 +56,11 @@ namespace Recipes.Desktop
         private void RecipeTile_Click(object sender, EventArgs e)
         {
             var tile = (RecipeTile)sender;
+
+            // 1. Get recipe.
+            // 2. Pass recipe to RecipeDetails
+            // 3. Show recipe details.
+
             MessageBox.Show($"Tile Clicked! {tile.RecipeId}");
         }
 
