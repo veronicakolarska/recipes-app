@@ -31,6 +31,7 @@ namespace Recipes.Desktop
         {
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.recipesPage = new System.Windows.Forms.TabPage();
+            this.addRecipeButton = new System.Windows.Forms.Button();
             this.recipesFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.favouritePage = new System.Windows.Forms.TabPage();
             this.favouriteRecipesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,6 +52,7 @@ namespace Recipes.Desktop
             // 
             // recipesPage
             // 
+            this.recipesPage.Controls.Add(this.addRecipeButton);
             this.recipesPage.Controls.Add(this.recipesFlowPanel);
             this.recipesPage.Location = new System.Drawing.Point(4, 24);
             this.recipesPage.Name = "recipesPage";
@@ -59,6 +61,16 @@ namespace Recipes.Desktop
             this.recipesPage.TabIndex = 0;
             this.recipesPage.Text = "recipes";
             this.recipesPage.UseVisualStyleBackColor = true;
+            // 
+            // addRecipeButton
+            // 
+            this.addRecipeButton.Location = new System.Drawing.Point(68, 29);
+            this.addRecipeButton.Name = "addRecipeButton";
+            this.addRecipeButton.Size = new System.Drawing.Size(75, 23);
+            this.addRecipeButton.TabIndex = 1;
+            this.addRecipeButton.Text = "Add Recipe";
+            this.addRecipeButton.UseVisualStyleBackColor = true;
+            this.addRecipeButton.Click += new System.EventHandler(this.addRecipeButton_Click);
             // 
             // recipesFlowPanel
             // 
@@ -107,5 +119,6 @@ namespace Recipes.Desktop
         private System.Windows.Forms.TabPage favouritePage;
         private System.Windows.Forms.FlowLayoutPanel recipesFlowPanel;
         private System.Windows.Forms.FlowLayoutPanel favouriteRecipesFlowLayoutPanel;
+        private System.Windows.Forms.Button addRecipeButton;
     }
 }

@@ -15,8 +15,8 @@ namespace Recipes.Desktop
         private IUserService userService;
 
         public Main(
-            ICategoryService categoryService, 
-            IRecipeService recipeService, 
+            ICategoryService categoryService,
+            IRecipeService recipeService,
             IUserService userService)
         {
 
@@ -48,6 +48,7 @@ namespace Recipes.Desktop
                 return (Control)recipeTile;
             }).ToArray();
 
+            this.recipesFlowPanel.Controls.Clear();
             this.recipesFlowPanel.Controls.AddRange(recipeTiles);
         }
 
@@ -83,6 +84,25 @@ namespace Recipes.Desktop
             {
                 form.Close();
             }
+        }
+
+        private void addRecipeButton_Click(object sender, EventArgs e)
+        {
+            var allCategories = this.categoryService.GetAll().ToList();
+
+            // TODO: This should come from Thread.CurrentPrinciapl when ready!
+            var userId = 1;
+
+            var addRecipeForm = new AddRecipe(allCategories, userId);
+            addRecipeForm.RecipeAdded += this.AddRecipeForm_RecipeAdded;
+            addRecipeForm.Show();
+        }
+
+        private async void AddRecipeForm_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
+        {
+            await this.recipeService.Create(e.Recipe);
+            this.LoadAllRecipesPanel();
+
         }
     }
 }
