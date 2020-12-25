@@ -1,4 +1,5 @@
 ﻿using Recipes.Data.Models;
+using Recipes.Desktop.Events;
 using Recipes.Desktop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,17 @@ namespace Recipes.Desktop.UserControls
             this.InitializeComponent();
 
             this.LoadAdminCategoriesDataGrid(categories);
+        }
+
+        public event EventHandler<CreateRecipeEventArgs> RecipeAdded;
+
+        protected virtual void OnRecipeAdded(CreateRecipeEventArgs e)
+        {
+            EventHandler<CreateRecipeEventArgs> handler = RecipeAdded;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
 
         private void LoadAdminCategoriesDataGrid(IList<Category> categories)
