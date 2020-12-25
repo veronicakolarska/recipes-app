@@ -41,7 +41,7 @@ namespace Recipes.Desktop
 
         public event EventHandler<CreateRecipeEventArgs> RecipeAdded;
 
-        private async void createRecipeButton_Click(object sender, EventArgs e)
+        private void createRecipeButton_Click(object sender, EventArgs e)
         {
             var name = this.nameInput.Text;
             var imageUrl = this.imageUrlInput.Text;

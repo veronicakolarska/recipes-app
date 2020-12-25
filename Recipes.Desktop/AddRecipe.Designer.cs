@@ -141,7 +141,6 @@ namespace Recipes.Desktop
         #endregion
 
         private System.Windows.Forms.Button createRecipeButton;
-        private System.Windows.Forms.Label recipeTitleLabel;
         private System.Windows.Forms.Label imageUrlLinkLabel;
         private System.Windows.Forms.Label recipeNameLabel;
         private System.Windows.Forms.TextBox imageUrlInput;
