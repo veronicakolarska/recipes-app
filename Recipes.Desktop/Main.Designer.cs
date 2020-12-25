@@ -38,12 +38,9 @@ namespace Recipes.Desktop
             this.recipeAdminTabPage = new System.Windows.Forms.TabPage();
             this.categoryAdminTabPage = new System.Windows.Forms.TabPage();
             this.userAdminTabPage = new System.Windows.Forms.TabPage();
-            this.recipeGridView = new System.Windows.Forms.DataGridView();
             this.mainTabs.SuspendLayout();
             this.recipesPage.SuspendLayout();
             this.favouritePage.SuspendLayout();
-            this.recipeAdminTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTabs
@@ -108,7 +105,6 @@ namespace Recipes.Desktop
             // 
             // recipeAdminTabPage
             // 
-            this.recipeAdminTabPage.Controls.Add(this.recipeGridView);
             this.recipeAdminTabPage.Location = new System.Drawing.Point(4, 24);
             this.recipeAdminTabPage.Name = "recipeAdminTabPage";
             this.recipeAdminTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -137,15 +133,6 @@ namespace Recipes.Desktop
             this.userAdminTabPage.Text = "User Admin";
             this.userAdminTabPage.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.recipeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.recipeGridView.Location = new System.Drawing.Point(65, 93);
-            this.recipeGridView.Name = "dataGridView1";
-            this.recipeGridView.RowTemplate.Height = 25;
-            this.recipeGridView.Size = new System.Drawing.Size(895, 349);
-            this.recipeGridView.TabIndex = 0;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -157,8 +144,6 @@ namespace Recipes.Desktop
             this.mainTabs.ResumeLayout(false);
             this.recipesPage.ResumeLayout(false);
             this.favouritePage.ResumeLayout(false);
-            this.recipeAdminTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,6 +159,5 @@ namespace Recipes.Desktop
         private System.Windows.Forms.TabPage recipeAdminTabPage;
         private System.Windows.Forms.TabPage categoryAdminTabPage;
         private System.Windows.Forms.TabPage userAdminTabPage;
-        private System.Windows.Forms.DataGridView recipeGridView;
     }
 }

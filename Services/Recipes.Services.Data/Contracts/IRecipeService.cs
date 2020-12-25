@@ -20,5 +20,7 @@ namespace Recipes.Services.Data.Contracts
         Task Delete(int id);
 
         IEnumerable<Recipe> GetAll();
+
+        IEnumerable<Recipe> GetAllWithRelatedData();
     }
 }

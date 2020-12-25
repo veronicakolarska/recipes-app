@@ -1,5 +1,7 @@
 ﻿using Recipes.Data.Models;
 using Recipes.Desktop.Extensions;
+using Recipes.Desktop.UserControls;
+using Recipes.Desktop.ViewModels;
 using Recipes.Services.Data;
 using Recipes.Services.Data.Contracts;
 using System;
@@ -58,6 +60,8 @@ namespace Recipes.Desktop
                 // this.LoadFavouriteRecipesPanel();
 
                 this.LoadAdminRecipesPanel();
+                this.LoadAdminCategoriesPanel();
+                this.LoadAdminUsersPanel();
             }
             // TODO: Refine exception handling
             catch (Exception exception)
@@ -106,8 +110,23 @@ namespace Recipes.Desktop
 
         private void LoadAdminRecipesPanel()
         {
-            var allRecipes = this.recipeService.GetAll().ToList();
-            this.recipeGridView.DataSource = new BindingSource(new BindingList<Recipe>(allRecipes), null);
+            var allRecipes = this.recipeService
+                .GetAllWithRelatedData()
+                .ToList();
+
+            this.recipeAdminTabPage.Controls.Add(new RecipesAdmin(allRecipes));
+        }
+
+        private void LoadAdminCategoriesPanel()
+        {
+            var allCategories = this.categoryService.GetAllWithRelatedData().ToList();
+            this.categoryAdminTabPage.Controls.Add(new CategoriesAdmin(allCategories));
+        }
+
+        private void LoadAdminUsersPanel()
+        {
+            var allUsers = this.userService.GetAll().ToList();
+            this.userAdminTabPage.Controls.Add(new UsersAdmin(allUsers));
         }
 
         private void RecipeTile_Click(object sender, EventArgs e)

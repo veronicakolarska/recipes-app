@@ -4,6 +4,7 @@ using Recipes.Data.Models;
 using System.Linq;
 using System.Collections.Generic;
 using Recipes.Services.Data.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Recipes.Services.Data
 {
@@ -32,6 +33,12 @@ namespace Recipes.Services.Data
         public IEnumerable<Category> GetAll()
         {
             var category = this.categoryRepository.All();
+            return category;
+        }
+
+        public IEnumerable<Category> GetAllWithRelatedData()
+        {
+            var category = this.categoryRepository.All().Include(x => x.Creator);
             return category;
         }
 

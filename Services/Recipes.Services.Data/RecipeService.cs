@@ -36,6 +36,14 @@ namespace Recipes.Services.Data
             return recipe;
         }
 
+        public IEnumerable<Recipe> GetAllWithRelatedData()
+        {
+            var recipe = this.recipeRepository.All()
+                .Include(x => x.Creator)
+                .Include(x => x.Category);
+            return recipe;
+        }
+
         public Recipe GetById(int id)
         {
             return this.GetAll().FirstOrDefault((x) => x.Id == id);
