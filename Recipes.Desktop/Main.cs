@@ -31,7 +31,7 @@ namespace Recipes.Desktop
 
             this.InitializeComponent();
 
-            // Clean up all open forms after the thie Main form is closed.
+            // Clean up all open forms after the  Main form is closed.
             this.FormClosed += this.Main_FormClosed;
             
             // TODO: Activate when login works
@@ -54,6 +54,7 @@ namespace Recipes.Desktop
         {
             try
             {
+                // loads all recipes to the tab
                 this.LoadAllRecipesPanel();
 
                 // TODO: Activate when user loggin is ready.
@@ -88,7 +89,9 @@ namespace Recipes.Desktop
                 return (Control)recipeTile;
             }).ToArray();
 
+            // removes any existing controls (if eny)
             this.recipesFlowPanel.Controls.Clear();
+            // adds all the recipe tiles
             this.recipesFlowPanel.Controls.AddRange(recipeTiles);
         }
 
@@ -96,9 +99,9 @@ namespace Recipes.Desktop
         {
             var currentUserEmail = Thread.CurrentPrincipal.Identity.Name;
             var currentUser = this.userService.GetByEmailWithFavouriteRecipes(currentUserEmail);
-            var allFavoureRecipes = currentUser.FavouriteRecipes.Select(x => x.Recipe);
+            var allFavouriteRecipes = currentUser.FavouriteRecipes.Select(x => x.Recipe);
 
-            var recipeTiles = allFavoureRecipes.Select((recipe) =>
+            var recipeTiles = allFavouriteRecipes.Select((recipe) =>
             {
                 var recipeTile = new RecipeTile(recipe);
                 recipeTile.Click += this.RecipeTile_Click;
@@ -114,6 +117,7 @@ namespace Recipes.Desktop
                 .GetAllWithRelatedData()
                 .ToList();
 
+            // add new control (grid) to the recipesAdmin to the tab
             this.recipeAdminTabPage.Controls.Add(new RecipesAdmin(allRecipes));
         }
 

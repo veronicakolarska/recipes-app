@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Recipes.Services.Data
 {
+    // implementation of interface
     public class CategoryService : ICategoryService
     {
         private readonly IRepository<Category> categoryRepository;

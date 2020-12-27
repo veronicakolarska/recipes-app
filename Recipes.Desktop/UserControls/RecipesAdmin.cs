@@ -9,6 +9,8 @@ namespace Recipes.Desktop.UserControls
 {
     public partial class RecipesAdmin : UserControl
     {
+        // view model
+        // displaying data in user-friendly way
         public RecipesAdmin(IList<Recipe> recipes)
         {
             this.InitializeComponent();
@@ -18,6 +20,7 @@ namespace Recipes.Desktop.UserControls
 
         private void LoadAdminRecipesDataGrid(IList<Recipe> recipes)
         {
+            // map all recipes to the viewModels 
             var allRecipes = recipes.Select(x => new RecipeViewModel
             {
                 Id = x.Id,
@@ -29,8 +32,10 @@ namespace Recipes.Desktop.UserControls
                 CreatedOn = x.CreatedOn,
                 ModifiedOn = x.ModifiedOn
             }).ToList();
+            // load data to dataGrid (WinForms control - table)
             this.recipeAdminDataGrid.DataSource = new BindingSource(new BindingList<RecipeViewModel>(allRecipes), null);
 
+            // TODO: add more columns 
             var button = new DataGridViewButtonColumn();
             this.recipeAdminDataGrid.Columns.Add(button);
             button.HeaderText = "Actions";

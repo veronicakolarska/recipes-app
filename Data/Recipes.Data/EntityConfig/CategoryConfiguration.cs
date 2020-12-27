@@ -6,6 +6,7 @@ namespace Recipes.Data.EntityConfig
 
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
+        // configuration of relationships between every entity (table) in the database
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder

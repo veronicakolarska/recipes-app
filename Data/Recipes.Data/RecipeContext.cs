@@ -24,11 +24,13 @@
 
         public RecipeContext(DbContextOptions<RecipeContext> options) : base(options) { }
 
+        // TODO: move configuration
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=RecipeApp;User Id=sa;Password=123456!!XX;");
         }
 
+        // configurations before the models are created
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -66,6 +68,7 @@
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
+        // automatically for CreatedOn and ModifiedOn
         private void ApplyAuditInfoRules()
         {
             var changedEntries = this.ChangeTracker

@@ -9,6 +9,8 @@ namespace Recipes.Data.Repositories
 
     using Microsoft.EntityFrameworkCore;
 
+    // TODO: maybe remove
+    // for soft delete
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {

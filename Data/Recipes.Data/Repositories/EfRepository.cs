@@ -8,6 +8,12 @@ namespace Recipes.Data.Repositories
 
     using Microsoft.EntityFrameworkCore;
 
+    // repository pattern - for abstraction 
+    // defines methods for accessing and modifying the data
+    // but we don't care that the data is exactly
+    // allows us to be decoupled from the data
+
+    // implements IRepository interface
     public class EfRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
@@ -17,12 +23,16 @@ namespace Recipes.Data.Repositories
             this.DbSet = this.Context.Set<TEntity>();
         }
 
+        // DbSet - from EF
+        // one DbSet is a collection of all the rows of the table
         protected DbSet<TEntity> DbSet { get; set; }
 
+        // a way to communicate with the database
         protected RecipeContext Context { get; set; }
 
         public virtual IQueryable<TEntity> All() => this.DbSet;
 
+        // TODO: can remove
         public virtual IQueryable<TEntity> AllAsNoTracking() => this.DbSet.AsNoTracking();
 
         public virtual Task AddAsync(TEntity entity) => this.DbSet.AddAsync(entity).AsTask();

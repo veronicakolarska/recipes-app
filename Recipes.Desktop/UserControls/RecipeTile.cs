@@ -15,10 +15,14 @@ namespace Recipes.Desktop
             this.recipeTitleLabel.Text = recipe.Name;
             this.recipePictureBox.Load(recipe.TitleImageUrl);
 
+            // triggers the event for file if we click on the picture
             this.recipePictureBox.Click += this.ControlClick;
+            // triggers the event for file if we click on the label
             this.recipeTitleLabel.Click += this.ControlClick;
         }
 
+
+        // triggers new event for tile
         private void ControlClick(object sender, EventArgs e) 
         {
             this.OnClick(e);

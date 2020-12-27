@@ -19,15 +19,18 @@ namespace Recipes.Desktop
             services.AddDbContext<RecipeContext>(options => options.UseSqlServer("Server=.;Database=RecipeApp;User Id=sa;Password=123456!!XX;"));
 
             // Data repositories
+            // typeof - no need to specify the generic and pass it from the interface to the implementation
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
+            // TODO: AddTransient, AddScoped - explanation
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IFavouriteRecipeService, FavouriteRecipeService>();
             services.AddTransient<IIngredientService, IngredientService>();
 
+            // when it sees Authentication form, resolves every dependency using the mappings above
             services.AddScoped<Authentication>();
         }
 
@@ -37,16 +40,22 @@ namespace Recipes.Desktop
         [STAThread]
         static void Main()
         {
+            // WinForms settings
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // dependency injection mappings
+            // mapping - for every interface makes an instance of something that implements that interface
             var services = new ServiceCollection();
             ConfigureServices(services);
 
+            // creates objects that have resolved dependencies 
             using (var serviceProvider = services.BuildServiceProvider())
             {
+                // resolves dependencies and creates the form
                 var authenticationForm = serviceProvider.GetRequiredService<Authentication>();
+                // starts the application with the Authentication form
                 Application.Run(authenticationForm);
             }
         }

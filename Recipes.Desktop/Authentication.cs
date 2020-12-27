@@ -31,6 +31,7 @@ namespace Recipes.Desktop
             this.InitializeComponent();
         }
 
+        // event handlers
         private void loginButton_Click(object sender, EventArgs e)
         {
             var email = this.emailInput.Text;
@@ -52,7 +53,7 @@ namespace Recipes.Desktop
         {
             var email = this.registerEmailInput.Text;
             var password = this.registerPasswordInput.Text;
-            var confirmPasswrod = this.registerConfirmPasswordInput.Text;
+            var confirmPassword = this.registerConfirmPasswordInput.Text;
 
             var registeredUser = await this.userService.Register(email, password);
 
@@ -67,8 +68,10 @@ namespace Recipes.Desktop
             this.ShowMainForm();
         }
 
+
         private void SetCurrentPrincipal(User currentUser, string[] roles)
         {
+            // from .NET - the classes for setting the user between forms
             Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(currentUser.Email), roles);
         }
 
