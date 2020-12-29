@@ -9,6 +9,7 @@ namespace Recipes.Desktop.Events
 {
     public class CreateRecipeEventArgs : EventArgs
     {
+        // wrapped packet through the pipe
         public Recipe Recipe { get; set; }
 
         public CreateRecipeEventArgs(Recipe recipe)

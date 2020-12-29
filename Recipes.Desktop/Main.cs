@@ -35,7 +35,7 @@ namespace Recipes.Desktop
             this.FormClosed += this.Main_FormClosed;
             
             // TODO: Activate when login works
-            //if (!Thread.CurrentPrincipal.IsAdmin())
+            //if (!Thread.CurrentPrincipal.IsInRole(Role.Administrator))
             //{
             //    this.HideAdminTabs();
             //}
@@ -67,7 +67,7 @@ namespace Recipes.Desktop
             // TODO: Refine exception handling
             catch (Exception exception)
             {
-                MessageBox.Show($"Fatal error! Please reolad your application and try again! {exception}", "Fatal error!");
+                MessageBox.Show($"Fatal error! Please reload your application and try again! {exception}", "Fatal error!");
                 Application.Exit();
             }
             finally
@@ -124,7 +124,10 @@ namespace Recipes.Desktop
         private void LoadAdminCategoriesPanel()
         {
             var allCategories = this.categoryService.GetAllWithRelatedData().ToList();
-            this.categoryAdminTabPage.Controls.Add(new CategoriesAdmin(allCategories));
+            var categoryAdmin = new CategoriesAdmin(allCategories);
+            categoryAdmin.CategoryAdded += (object sender, CategoryAddedEventArgs e) => {
+            };
+            this.categoryAdminTabPage.Controls.Add(categoryAdmin);
         }
 
         private void LoadAdminUsersPanel()
@@ -155,7 +158,7 @@ namespace Recipes.Desktop
         {
             var allCategories = this.categoryService.GetAll().ToList();
 
-            // TODO: This should come from Thread.CurrentPrinciapl when ready!
+            // TODO: This should come from Thread.CurrentPrincipal when ready!
             var userId = 1;
 
             var addRecipeForm = new AddRecipe(allCategories, userId);

@@ -13,6 +13,8 @@ using System.Windows.Forms;
 
 namespace Recipes.Desktop.UserControls
 {
+    // UserControl comes from EF
+    // CategoriesAdmin is a control with data - table
     public partial class CategoriesAdmin : UserControl
     {
         public CategoriesAdmin(IList<Category> categories)
@@ -20,16 +22,25 @@ namespace Recipes.Desktop.UserControls
             this.InitializeComponent();
 
             this.LoadAdminCategoriesDataGrid(categories);
+
+            // this.CategoryAdded += (object sender, CreateCategoryEventArgs e) => {
+
+            // };
         }
 
-        public event EventHandler<CreateRecipeEventArgs> RecipeAdded;
 
-        protected virtual void OnRecipeAdded(CreateRecipeEventArgs e)
+
+        // event handler - way to expect some event to happen
+        public event EventHandler<CreateCategoryEventArgs> CategoryAdded;
+
+        // a way to trigger the event when the category is added
+        protected virtual void OnCategoryAdded(CreateCategoryEventArgs e)
         {
-            EventHandler<CreateRecipeEventArgs> handler = RecipeAdded;
-            if (handler != null)
+            // checks if someone is subscribed for the event
+            if (this.CategoryAdded != null)
             {
-                handler(this, e);
+                // triggers the event with the sender (current form) and the packet with information
+                this.CategoryAdded(this, e);
             }
         }
 
@@ -48,6 +59,12 @@ namespace Recipes.Desktop.UserControls
 
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
+            // get name
+            // get description
+            // etc.
+
+            var newCategory = new Category {};
+            this.OnCategoryAdded(new CreateCategoryEventArgs(newCategory));
         }
     }
 }

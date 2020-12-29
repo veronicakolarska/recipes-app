@@ -37,6 +37,7 @@ namespace Recipes.Services.Data
             return category;
         }
 
+        // includes the navigation properties
         public IEnumerable<Category> GetAllWithRelatedData()
         {
             var category = this.categoryRepository.All().Include(x => x.Creator);
