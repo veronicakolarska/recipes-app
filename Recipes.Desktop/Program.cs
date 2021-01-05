@@ -31,7 +31,7 @@ namespace Recipes.Desktop
             services.AddTransient<IIngredientService, IngredientService>();
 
             // when it sees Authentication form, resolves every dependency using the mappings above
-            services.AddScoped<Authentication>();
+            services.AddScoped<AuthenticationForm>();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Recipes.Desktop
             using (var serviceProvider = services.BuildServiceProvider())
             {
                 // resolves dependencies and creates the form
-                var authenticationForm = serviceProvider.GetRequiredService<Authentication>();
+                var authenticationForm = serviceProvider.GetRequiredService<AuthenticationForm>();
                 // starts the application with the Authentication form
                 Application.Run(authenticationForm);
             }

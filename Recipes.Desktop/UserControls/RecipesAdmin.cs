@@ -51,7 +51,7 @@ namespace Recipes.Desktop.UserControls
             };
             var userId = 1;
 
-            var addRecipeForm = new AddRecipe(categoryCollection, userId);
+            var addRecipeForm = new AddRecipeForm(categoryCollection, userId);
             addRecipeForm.RecipeAdded += this.AddRecipeFormHandler_RecipeAdded;
             addRecipeForm.Show();
         }

@@ -39,7 +39,7 @@ namespace Recipes.Desktop.UserControls
 
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
-            var addCategoryForm = new AddCategory();
+            var addCategoryForm = new AddCategoryForm();
 
             addCategoryForm.CategoryAdded += this.AddCategoryHandler;
             addCategoryForm.Show();

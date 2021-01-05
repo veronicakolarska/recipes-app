@@ -38,7 +38,7 @@ namespace Recipes.Desktop.UserControls
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            var addUserForm = new AddUser();
+            var addUserForm = new AddUserForm();
             addUserForm.UserAdded += this.AddUserFormHandler_UserAdded;
             addUserForm.Show();
         }
