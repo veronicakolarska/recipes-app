@@ -12,10 +12,14 @@ using System.Windows.Forms;
 
 namespace Recipes.Desktop
 {
+
     public partial class AddCategoryForm : Form
     {
-        public AddCategoryForm()
+        private int userId;
+
+        public AddCategoryForm(int userId)
         {
+            this.userId = userId;
             this.InitializeComponent();
         }
 
@@ -35,8 +39,9 @@ namespace Recipes.Desktop
 
             var category = new Category()
             {
+                
                 Name = categoryName,
-                CreatorId = 1
+                CreatorId = this.userId
             };
 
             this.OnCategoryAdded(new CreateCategoryEventArgs(category));

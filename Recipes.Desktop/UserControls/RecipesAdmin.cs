@@ -1,5 +1,7 @@
 ﻿using Recipes.Data.Models;
+using Recipes.Desktop.Events;
 using Recipes.Desktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,14 +11,31 @@ namespace Recipes.Desktop.UserControls
 {
     public partial class RecipesAdmin : UserControl
     {
+        private int userId;
+
+        private IEnumerable<Category> categories;
+
         // view model
         // displaying data in user-friendly way
-        public RecipesAdmin(IList<Recipe> recipes)
+        public RecipesAdmin(IList<Recipe> recipes, int userId, IEnumerable<Category> categories)
         {
             this.InitializeComponent();
+            this.userId = userId;
+            this.categories = categories;
 
             this.LoadAdminRecipesDataGrid(recipes);
         }
+
+        protected void OnRecipeAdded(CreateRecipeEventArgs e)
+        {
+
+            if (this.RecipeAdded != null)
+            {
+                this.RecipeAdded(this, e);
+            }
+        }
+
+        public event EventHandler<CreateRecipeEventArgs> RecipeAdded;
 
         private void LoadAdminRecipesDataGrid(IList<Recipe> recipes)
         {
@@ -46,12 +65,7 @@ namespace Recipes.Desktop.UserControls
 
         private void addRecipeButton_Click(object sender, System.EventArgs e)
         {
-            var categoryCollection = new Category[] {
-            new Category(){Id =1, Name = "Cocktail"}
-            };
-            var userId = 1;
-
-            var addRecipeForm = new AddRecipeForm(categoryCollection, userId);
+            var addRecipeForm = new AddRecipeForm(this.categories, this.userId);
             addRecipeForm.RecipeAdded += this.AddRecipeFormHandler_RecipeAdded;
             addRecipeForm.Show();
         }

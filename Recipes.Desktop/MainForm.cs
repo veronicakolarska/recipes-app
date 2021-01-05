@@ -118,13 +118,18 @@ namespace Recipes.Desktop
                 .ToList();
 
             // add new control (grid) to the recipesAdmin to the tab
-            this.recipeAdminTabPage.Controls.Add(new RecipesAdmin(allRecipes));
+            // TODO: get actual id and categories
+            var userId = 1;
+            var categories = this.categoryService.GetAll();
+            this.recipeAdminTabPage.Controls.Add(new RecipesAdmin(allRecipes, userId, categories));
         }
 
         private void LoadAdminCategoriesPanel()
         {
             var allCategories = this.categoryService.GetAllWithRelatedData().ToList();
-            var categoryAdmin = new CategoriesAdmin(allCategories);
+            // TODO: get actual id when login is ready
+            var userId = 1;
+            var categoryAdmin = new CategoriesAdmin(allCategories, userId);
             this.categoryAdminTabPage.Controls.Add(categoryAdmin);
         }
 

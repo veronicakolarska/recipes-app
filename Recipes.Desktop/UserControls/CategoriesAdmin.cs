@@ -17,9 +17,12 @@ namespace Recipes.Desktop.UserControls
     // CategoriesAdmin is a control with data - table
     public partial class CategoriesAdmin : UserControl
     {
-        public CategoriesAdmin(IList<Category> categories)
+        private int userId;
+
+        public CategoriesAdmin(IList<Category> categories, int userId)
         {
             this.InitializeComponent();
+            this.userId = userId;
 
             this.LoadAdminCategoriesDataGrid(categories);
         }
@@ -39,7 +42,7 @@ namespace Recipes.Desktop.UserControls
 
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
-            var addCategoryForm = new AddCategoryForm();
+            var addCategoryForm = new AddCategoryForm(this.userId);
 
             addCategoryForm.CategoryAdded += this.AddCategoryHandler;
             addCategoryForm.Show();
