@@ -33,9 +33,9 @@ namespace Recipes.Desktop
         protected void OnRecipeAdded(CreateRecipeEventArgs e)
         {
     
-            if (RecipeAdded != null)
+            if (this.RecipeAdded != null)
             {
-                RecipeAdded(this, e);
+                this.RecipeAdded(this, e);
             }
         }
 

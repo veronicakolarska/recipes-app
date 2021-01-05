@@ -30,6 +30,7 @@ namespace Recipes.Desktop.UserControls
         private void InitializeComponent()
         {
             this.recipeAdminDataGrid = new System.Windows.Forms.DataGridView();
+            this.addRecipeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.recipeAdminDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,10 +43,21 @@ namespace Recipes.Desktop.UserControls
             this.recipeAdminDataGrid.Size = new System.Drawing.Size(942, 350);
             this.recipeAdminDataGrid.TabIndex = 0;
             // 
+            // addRecipeButton
+            // 
+            this.addRecipeButton.Location = new System.Drawing.Point(59, 24);
+            this.addRecipeButton.Name = "addRecipeButton";
+            this.addRecipeButton.Size = new System.Drawing.Size(75, 23);
+            this.addRecipeButton.TabIndex = 1;
+            this.addRecipeButton.Text = "Add recipe";
+            this.addRecipeButton.UseVisualStyleBackColor = true;
+            this.addRecipeButton.Click += new System.EventHandler(this.addRecipeButton_Click);
+            // 
             // RecipesAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.addRecipeButton);
             this.Controls.Add(this.recipeAdminDataGrid);
             this.Name = "RecipesAdmin";
             this.Size = new System.Drawing.Size(1030, 449);
@@ -57,5 +69,6 @@ namespace Recipes.Desktop.UserControls
         #endregion
 
         private System.Windows.Forms.DataGridView recipeAdminDataGrid;
+        private System.Windows.Forms.Button addRecipeButton;
     }
 }

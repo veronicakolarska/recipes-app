@@ -43,5 +43,23 @@ namespace Recipes.Desktop.UserControls
             button.Name = "Delete Button";
             button.UseColumnTextForButtonValue = true;
         }
+
+        private void addRecipeButton_Click(object sender, System.EventArgs e)
+        {
+            var categoryCollection = new Category[] {
+            new Category(){Id =1, Name = "Cocktail"}
+            };
+            var userId = 1;
+
+            var addRecipeForm = new AddRecipe(categoryCollection, userId);
+            addRecipeForm.RecipeAdded += this.AddRecipeFormHandler_RecipeAdded;
+            addRecipeForm.Show();
+        }
+
+        private void AddRecipeFormHandler_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
+        {
+            MessageBox.Show($"Add recipe {e.Recipe.Name}");
+        }
+
     }
 }
