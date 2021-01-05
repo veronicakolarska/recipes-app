@@ -35,5 +35,18 @@ namespace Recipes.Desktop.UserControls
             }).ToList();
             this.usersAdminDataGrid.DataSource = new BindingSource(new BindingList<UserViewModel>(allUsers), null);
         }
+
+        private void addUserButton_Click(object sender, EventArgs e)
+        {
+            var addUserForm = new AddUser();
+            addUserForm.UserAdded += this.AddUserFormHandler_UserAdded;
+            addUserForm.Show();
+        }
+
+        private void AddUserFormHandler_UserAdded(object sender, Events.CreateUserEventArgs e)
+        {
+            MessageBox.Show($"User email is { e.User.Email}");
+        }
     }
 }
+

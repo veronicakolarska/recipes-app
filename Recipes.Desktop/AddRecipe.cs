@@ -30,12 +30,12 @@ namespace Recipes.Desktop
             this.categoryDropDown.DataSource = allCategories;
         }
 
-        protected virtual void OnRecipeAdded(CreateRecipeEventArgs e)
+        protected void OnRecipeAdded(CreateRecipeEventArgs e)
         {
-            EventHandler<CreateRecipeEventArgs> handler = RecipeAdded;
-            if (handler != null)
+    
+            if (RecipeAdded != null)
             {
-                handler(this, e);
+                RecipeAdded(this, e);
             }
         }
 
@@ -43,6 +43,7 @@ namespace Recipes.Desktop
 
         private void createRecipeButton_Click(object sender, EventArgs e)
         {
+      
             var name = this.nameInput.Text;
             var imageUrl = this.imageUrlInput.Text;
             var description = this.descriptionInput.Text;

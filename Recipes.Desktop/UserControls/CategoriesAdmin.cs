@@ -22,26 +22,6 @@ namespace Recipes.Desktop.UserControls
             this.InitializeComponent();
 
             this.LoadAdminCategoriesDataGrid(categories);
-
-            // this.CategoryAdded += (object sender, CreateCategoryEventArgs e) => {
-
-            // };
-        }
-
-
-
-        // event handler - way to expect some event to happen
-        public event EventHandler<CreateCategoryEventArgs> CategoryAdded;
-
-        // a way to trigger the event when the category is added
-        protected virtual void OnCategoryAdded(CreateCategoryEventArgs e)
-        {
-            // checks if someone is subscribed for the event
-            if (this.CategoryAdded != null)
-            {
-                // triggers the event with the sender (current form) and the packet with information
-                this.CategoryAdded(this, e);
-            }
         }
 
         private void LoadAdminCategoriesDataGrid(IList<Category> categories)
@@ -59,12 +39,15 @@ namespace Recipes.Desktop.UserControls
 
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
-            // get name
-            // get description
-            // etc.
+            var addCategoryForm = new AddCategory();
 
-            var newCategory = new Category {};
-            this.OnCategoryAdded(new CreateCategoryEventArgs(newCategory));
+            addCategoryForm.CategoryAdded += this.AddCategoryHandler;
+            addCategoryForm.Show();
+        }
+
+        private async void AddCategoryHandler(object sender, CreateCategoryEventArgs e)
+        {
+            MessageBox.Show($"Category name is { e.Category.Name}");
         }
     }
 }

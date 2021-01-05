@@ -1,5 +1,5 @@
 ﻿using Recipes.Data.Models;
-using Recipes.Desktop.Extensions;
+using Recipes.Desktop.Events;
 using Recipes.Desktop.UserControls;
 using Recipes.Desktop.ViewModels;
 using Recipes.Services.Data;
@@ -125,8 +125,6 @@ namespace Recipes.Desktop
         {
             var allCategories = this.categoryService.GetAllWithRelatedData().ToList();
             var categoryAdmin = new CategoriesAdmin(allCategories);
-            categoryAdmin.CategoryAdded += (object sender, CategoryAddedEventArgs e) => {
-            };
             this.categoryAdminTabPage.Controls.Add(categoryAdmin);
         }
 
@@ -156,6 +154,9 @@ namespace Recipes.Desktop
 
         private void addRecipeButton_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Opening Add REcipe form!");
+
+
             var allCategories = this.categoryService.GetAll().ToList();
 
             // TODO: This should come from Thread.CurrentPrincipal when ready!
@@ -168,6 +169,9 @@ namespace Recipes.Desktop
 
         private async void AddRecipeForm_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
         {
+            MessageBox.Show("I am listing for events! And I've got something!");
+
+
             await this.recipeService.Create(e.Recipe);
             this.LoadAllRecipesPanel();
 
