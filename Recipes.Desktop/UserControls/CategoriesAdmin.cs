@@ -48,9 +48,41 @@ namespace Recipes.Desktop.UserControls
             addCategoryForm.Show();
         }
 
+        // event handler - for addCategoryForm.CategoryAdded
+        // for event bubbling
         private async void AddCategoryHandler(object sender, CreateCategoryEventArgs e)
         {
-            MessageBox.Show($"Category name is { e.Category.Name}");
+            this.OnCategoryAdded(e);
         }
+
+        protected void OnCategoryAdded(CreateCategoryEventArgs e)
+        {
+            if (this.CategoryAdded != null)
+            {
+                this.CategoryAdded(this, e);
+            }
+        }
+
+        public event EventHandler<CreateCategoryEventArgs> CategoryAdded;
+
+        protected void OnCategoryEdited(EditCategoryEventArgs e)
+        {
+            if (this.CategoryEdited != null)
+            {
+                this.CategoryEdited(this, e);
+            }
+        }
+
+        public event EventHandler<EditCategoryEventArgs> CategoryEdited;
+
+        protected void OnCategoryDeleted(DeleteCategoryEventArgs e)
+        {
+            if (this.CategoryDeleted != null)
+            {
+                this.CategoryDeleted(this, e);
+            }
+        }
+
+        public event EventHandler<DeleteCategoryEventArgs> CategoryDeleted;
     }
 }

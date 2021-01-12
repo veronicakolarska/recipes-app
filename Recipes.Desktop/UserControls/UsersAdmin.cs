@@ -1,4 +1,5 @@
 ﻿using Recipes.Data.Models;
+using Recipes.Desktop.Events;
 using Recipes.Desktop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,34 @@ namespace Recipes.Desktop.UserControls
 
             this.LoadAdminUsersDataGrid(users);
         }
+
+        protected void OnUserAdded(CreateUserEventArgs e)
+        {
+            if (this.UserAdded != null)
+            {
+                this.UserAdded(this, e);
+            }
+        }
+        public event EventHandler<CreateUserEventArgs> UserAdded;
+
+        protected void OnUserEdited(EditUserEventArgs e)
+        {
+            if (this.UserEdited != null)
+            {
+                this.UserEdited(this, e);
+            }
+        }
+        public event EventHandler<EditUserEventArgs> UserEdited;
+
+        protected void OnUserDeleted(DeleteUserEventArgs e)
+        {
+            if (this.UserDeleted != null)
+            {
+                this.UserDeleted(this, e);
+            }
+        }
+        public event EventHandler<DeleteUserEventArgs> UserDeleted;
+
 
         private void LoadAdminUsersDataGrid(IList<User> users)
         {
@@ -45,7 +74,7 @@ namespace Recipes.Desktop.UserControls
 
         private void AddUserFormHandler_UserAdded(object sender, Events.CreateUserEventArgs e)
         {
-            MessageBox.Show($"User email is { e.User.Email}");
+            this.OnUserAdded(e);
         }
     }
 }

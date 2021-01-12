@@ -33,7 +33,7 @@ namespace Recipes.Desktop
 
             // Clean up all open forms after the  Main form is closed.
             this.FormClosed += this.Main_FormClosed;
-            
+
             // TODO: Activate when login works
             //if (!Thread.CurrentPrincipal.IsInRole(Role.Administrator))
             //{
@@ -95,21 +95,6 @@ namespace Recipes.Desktop
             this.recipesFlowPanel.Controls.AddRange(recipeTiles);
         }
 
-        private void LoadFavouriteRecipesPanel()
-        {
-            var currentUserEmail = Thread.CurrentPrincipal.Identity.Name;
-            var currentUser = this.userService.GetByEmailWithFavouriteRecipes(currentUserEmail);
-            var allFavouriteRecipes = currentUser.FavouriteRecipes.Select(x => x.Recipe);
-
-            var recipeTiles = allFavouriteRecipes.Select((recipe) =>
-            {
-                var recipeTile = new RecipeTile(recipe);
-                recipeTile.Click += this.RecipeTile_Click;
-                return (Control)recipeTile;
-            }).ToArray();
-
-            this.favouriteRecipesFlowLayoutPanel.Controls.AddRange(recipeTiles);
-        }
 
         private void LoadAdminRecipesPanel()
         {
@@ -121,8 +106,30 @@ namespace Recipes.Desktop
             // TODO: get actual id and categories
             var userId = 1;
             var categories = this.categoryService.GetAll();
-            this.recipeAdminTabPage.Controls.Add(new RecipesAdmin(allRecipes, userId, categories));
+            var recipeAdmin = new RecipesAdmin(allRecipes, userId, categories);
+            this.recipeAdminTabPage.Controls.Add(recipeAdmin);
+            recipeAdmin.RecipeAdded += this.RecipeAdmin_RecipeAdded;
+            recipeAdmin.RecipeEdited += this.RecipeAdmin_RecipeEdited;
+            recipeAdmin.RecipeDeleted += this.RecipeAdmin_RecipeDeleted;
         }
+
+        private async void RecipeAdmin_RecipeAdded(object sender, CreateRecipeEventArgs e)
+        {
+            await this.recipeService.Create(e.Recipe);
+        }
+
+
+        private void RecipeAdmin_RecipeEdited(object sender, EditRecipeEventArgs e)
+        {
+            MessageBox.Show("Recipe edited");
+        }
+
+
+        private void RecipeAdmin_RecipeDeleted(object sender, DeleteRecipeEventArgs e)
+        {
+            MessageBox.Show("Recipe deleted");
+        }
+
 
         private void LoadAdminCategoriesPanel()
         {
@@ -131,13 +138,54 @@ namespace Recipes.Desktop
             var userId = 1;
             var categoryAdmin = new CategoriesAdmin(allCategories, userId);
             this.categoryAdminTabPage.Controls.Add(categoryAdmin);
+            categoryAdmin.CategoryAdded += this.CategoryAdmin_CategoryAdded;
+            categoryAdmin.CategoryEdited += this.CategoryAdmin_CategoryEdited;
+            categoryAdmin.CategoryDeleted += this.CategoryAdmin_CategoryDeleted;
+        }
+
+        private async void CategoryAdmin_CategoryAdded(object sender, CreateCategoryEventArgs e)
+        {
+            await this.categoryService.Create(e.Category);
+            // TODO: fix reload
+            // this.LoadAdminCategoriesPanel();
+        }
+
+        private void CategoryAdmin_CategoryEdited(object sender, EditCategoryEventArgs e)
+        {
+            MessageBox.Show("Category edited");
+        }
+
+        private void CategoryAdmin_CategoryDeleted(object sender, DeleteCategoryEventArgs e)
+        {
+            MessageBox.Show("Category deleted");
         }
 
         private void LoadAdminUsersPanel()
         {
             var allUsers = this.userService.GetAll().ToList();
-            this.userAdminTabPage.Controls.Add(new UsersAdmin(allUsers));
+            var userAdmin = new UsersAdmin(allUsers);
+            this.userAdminTabPage.Controls.Add(userAdmin);
+            userAdmin.UserAdded += this.UserAdmin_UserAdded;
+            userAdmin.UserEdited += this.UserAdmin_UserEdited;
+            userAdmin.UserDeleted += this.UserAdmin_UserDeleted;
         }
+        private void UserAdmin_UserAdded(object sender, CreateUserEventArgs e)
+        {
+            MessageBox.Show("User created");
+        }
+
+        private void UserAdmin_UserEdited(object sender, EditUserEventArgs e)
+        {
+            MessageBox.Show("User edited");
+        }
+
+        private void UserAdmin_UserDeleted(object sender, DeleteUserEventArgs e)
+        {
+            MessageBox.Show("User deleted");
+        }
+
+
+  
 
         private void RecipeTile_Click(object sender, EventArgs e)
         {
@@ -159,9 +207,6 @@ namespace Recipes.Desktop
 
         private void addRecipeButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Opening Add REcipe form!");
-
-
             var allCategories = this.categoryService.GetAll().ToList();
 
             // TODO: This should come from Thread.CurrentPrincipal when ready!
@@ -174,12 +219,8 @@ namespace Recipes.Desktop
 
         private async void AddRecipeForm_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
         {
-            MessageBox.Show("I am listing for events! And I've got something!");
-
-
             await this.recipeService.Create(e.Recipe);
             this.LoadAllRecipesPanel();
-
         }
     }
 }

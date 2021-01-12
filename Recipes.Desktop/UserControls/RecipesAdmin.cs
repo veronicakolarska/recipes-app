@@ -37,6 +37,28 @@ namespace Recipes.Desktop.UserControls
 
         public event EventHandler<CreateRecipeEventArgs> RecipeAdded;
 
+        protected void OnRecipeEdited(EditRecipeEventArgs e)
+        {
+
+            if (this.RecipeEdited != null)
+            {
+                this.RecipeEdited(this, e);
+            }
+        }
+
+        public event EventHandler<EditRecipeEventArgs> RecipeEdited;
+
+        protected void OnRecipeDeleted(DeleteRecipeEventArgs e)
+        {
+
+            if (this.RecipeDeleted != null)
+            {
+                this.RecipeDeleted(this, e);
+            }
+        }
+
+        public event EventHandler<DeleteRecipeEventArgs> RecipeDeleted;
+
         private void LoadAdminRecipesDataGrid(IList<Recipe> recipes)
         {
             // map all recipes to the viewModels 
@@ -72,7 +94,7 @@ namespace Recipes.Desktop.UserControls
 
         private void AddRecipeFormHandler_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
         {
-            MessageBox.Show($"Add recipe {e.Recipe.Name}");
+            this.OnRecipeAdded(e);
         }
 
     }
