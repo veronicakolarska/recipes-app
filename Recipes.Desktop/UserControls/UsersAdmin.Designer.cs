@@ -37,19 +37,19 @@ namespace Recipes.Desktop.UserControls
             // usersAdminDataGrid
             // 
             this.usersAdminDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersAdminDataGrid.Location = new System.Drawing.Point(34, 104);
+            this.usersAdminDataGrid.Location = new System.Drawing.Point(0, 29);
             this.usersAdminDataGrid.Name = "usersAdminDataGrid";
             this.usersAdminDataGrid.RowTemplate.Height = 25;
-            this.usersAdminDataGrid.Size = new System.Drawing.Size(942, 350);
+            this.usersAdminDataGrid.Size = new System.Drawing.Size(1010, 418);
             this.usersAdminDataGrid.TabIndex = 1;
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(69, 38);
+            this.addUserButton.Location = new System.Drawing.Point(0, 0);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(75, 23);
             this.addUserButton.TabIndex = 2;
-            this.addUserButton.Text = "add user";
+            this.addUserButton.Text = "Add User";
             this.addUserButton.UseVisualStyleBackColor = true;
             this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
@@ -60,7 +60,7 @@ namespace Recipes.Desktop.UserControls
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.usersAdminDataGrid);
             this.Name = "UsersAdmin";
-            this.Size = new System.Drawing.Size(1010, 494);
+            this.Size = new System.Drawing.Size(1010, 450);
             ((System.ComponentModel.ISupportInitialize)(this.usersAdminDataGrid)).EndInit();
             this.ResumeLayout(false);
 

@@ -107,6 +107,7 @@ namespace Recipes.Desktop
             var userId = 1;
             var categories = this.categoryService.GetAll();
             var recipeAdmin = new RecipesAdmin(allRecipes, userId, categories);
+            this.recipeAdminTabPage.Controls.Clear();
             this.recipeAdminTabPage.Controls.Add(recipeAdmin);
             recipeAdmin.RecipeAdded += this.RecipeAdmin_RecipeAdded;
             recipeAdmin.RecipeEdited += this.RecipeAdmin_RecipeEdited;
@@ -137,6 +138,7 @@ namespace Recipes.Desktop
             // TODO: get actual id when login is ready
             var userId = 1;
             var categoryAdmin = new CategoriesAdmin(allCategories, userId);
+            this.categoryAdminTabPage.Controls.Clear();
             this.categoryAdminTabPage.Controls.Add(categoryAdmin);
             categoryAdmin.CategoryAdded += this.CategoryAdmin_CategoryAdded;
             categoryAdmin.CategoryEdited += this.CategoryAdmin_CategoryEdited;
@@ -146,8 +148,7 @@ namespace Recipes.Desktop
         private async void CategoryAdmin_CategoryAdded(object sender, CreateCategoryEventArgs e)
         {
             await this.categoryService.Create(e.Category);
-            // TODO: fix reload
-            // this.LoadAdminCategoriesPanel();
+            this.LoadAdminCategoriesPanel();
         }
 
         private void CategoryAdmin_CategoryEdited(object sender, EditCategoryEventArgs e)
@@ -164,6 +165,7 @@ namespace Recipes.Desktop
         {
             var allUsers = this.userService.GetAll().ToList();
             var userAdmin = new UsersAdmin(allUsers);
+            this.userAdminTabPage.Controls.Clear();
             this.userAdminTabPage.Controls.Add(userAdmin);
             userAdmin.UserAdded += this.UserAdmin_UserAdded;
             userAdmin.UserEdited += this.UserAdmin_UserEdited;

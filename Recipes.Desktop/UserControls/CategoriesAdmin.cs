@@ -50,7 +50,7 @@ namespace Recipes.Desktop.UserControls
 
         // event handler - for addCategoryForm.CategoryAdded
         // for event bubbling
-        private async void AddCategoryHandler(object sender, CreateCategoryEventArgs e)
+        private void AddCategoryHandler(object sender, CreateCategoryEventArgs e)
         {
             this.OnCategoryAdded(e);
         }

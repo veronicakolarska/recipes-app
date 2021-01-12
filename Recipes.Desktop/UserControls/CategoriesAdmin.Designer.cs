@@ -37,15 +37,15 @@ namespace Recipes.Desktop.UserControls
             // categoriesAdminDataGrid
             // 
             this.categoriesAdminDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.categoriesAdminDataGrid.Location = new System.Drawing.Point(0, 45);
+            this.categoriesAdminDataGrid.Location = new System.Drawing.Point(0, 29);
             this.categoriesAdminDataGrid.Name = "categoriesAdminDataGrid";
             this.categoriesAdminDataGrid.RowTemplate.Height = 25;
-            this.categoriesAdminDataGrid.Size = new System.Drawing.Size(942, 350);
+            this.categoriesAdminDataGrid.Size = new System.Drawing.Size(949, 378);
             this.categoriesAdminDataGrid.TabIndex = 2;
             // 
             // addCategoryButton
             // 
-            this.addCategoryButton.Location = new System.Drawing.Point(0, 12);
+            this.addCategoryButton.Location = new System.Drawing.Point(0, 0);
             this.addCategoryButton.Name = "addCategoryButton";
             this.addCategoryButton.Size = new System.Drawing.Size(161, 23);
             this.addCategoryButton.TabIndex = 3;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Recipes.Data.Models;
+using System;
 
 namespace Recipes.Desktop.ViewModels
 {
