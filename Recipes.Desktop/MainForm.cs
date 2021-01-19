@@ -175,9 +175,10 @@ namespace Recipes.Desktop
             userAdmin.UserEdited += this.UserAdmin_UserEdited;
             userAdmin.UserDeleted += this.UserAdmin_UserDeleted;
         }
-        private void UserAdmin_UserAdded(object sender, CreateUserEventArgs e)
+        private async void UserAdmin_UserAdded(object sender, CreateUserEventArgs e)
         {
-            MessageBox.Show("User created");
+            await this.userService.Create(e.User);
+            this.LoadAdminUsersPanel();
         }
 
         private void UserAdmin_UserEdited(object sender, EditUserEventArgs e)
@@ -185,13 +186,12 @@ namespace Recipes.Desktop
             MessageBox.Show("User edited");
         }
 
-        private void UserAdmin_UserDeleted(object sender, DeleteUserEventArgs e)
+        private async void UserAdmin_UserDeleted(object sender, DeleteUserEventArgs e)
         {
-            MessageBox.Show("User deleted");
+            await this.userService.Delete(e.Id);
+            this.LoadAdminUsersPanel();
         }
 
-
-  
 
         private void RecipeTile_Click(object sender, EventArgs e)
         {

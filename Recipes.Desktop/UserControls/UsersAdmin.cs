@@ -15,10 +15,14 @@ namespace Recipes.Desktop.UserControls
 {
     public partial class UsersAdmin : UserControl
     {
+        private IEnumerable<User> users;
+
+        // view model
+        // displaying data in user-friendly way
         public UsersAdmin(IList<User> users)
         {
             this.InitializeComponent();
-
+            this.users = users;
             this.LoadAdminUsersDataGrid(users);
         }
 
@@ -62,7 +66,55 @@ namespace Recipes.Desktop.UserControls
                 ModifiedOn = x.ModifiedOn,
                 Role = x.Role.ToString(),
             }).ToList();
+            // load data to dataGrid (WinForms control - table)
             this.usersAdminDataGrid.DataSource = new BindingSource(new BindingList<UserViewModel>(allUsers), null);
+
+            // Adding edit button to each grid row
+            var editButton = new DataGridViewButtonColumn();
+            this.usersAdminDataGrid.Columns.Add(editButton);
+            editButton.HeaderText = "Edit?";
+            editButton.Text = "Edit";
+            editButton.Name = "Edit";
+            editButton.UseColumnTextForButtonValue = true;
+
+            // Adding Delete button to each grid row
+            var deleteButton = new DataGridViewButtonColumn();
+            this.usersAdminDataGrid.Columns.Add(deleteButton);
+            deleteButton.HeaderText = "Delete?";
+            deleteButton.Text = "Delete";
+            deleteButton.Name = "Delete";
+            deleteButton.UseColumnTextForButtonValue = true;
+
+            this.usersAdminDataGrid.CellContentClick += this.UsersAdminDataGrid_CellContentClick;
+        }
+
+        private void UsersAdminDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (e.RowIndex < 0)
+            {
+                //They clicked the header column, do nothing
+                return;
+            }
+            // Check if it's a grid action button
+            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            {
+                var columnName = grid.Columns[e.ColumnIndex].Name;
+                // Get the view model for the row, which had it's action button clicked
+                var userViewModel = (UserViewModel)grid.Rows[e.RowIndex].DataBoundItem;
+
+                if (columnName == "Edit")
+                {
+                    var userToEdit = this.users.FirstOrDefault(x => x.Id == userViewModel.Id);
+                    // TODO: Open an edit form.
+                }
+
+                if (columnName == "Delete")
+                {
+                    this.OnUserDeleted(new DeleteUserEventArgs(userViewModel.Id));
+                }
+            }
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
