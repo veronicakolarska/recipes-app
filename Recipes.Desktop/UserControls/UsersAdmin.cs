@@ -5,14 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Recipes.Desktop.UserControls
 {
+    // UserControl comes from EF
+    // UserAdmin is a control with data - table
     public partial class UsersAdmin : UserControl
     {
         private IEnumerable<User> users;
@@ -33,6 +32,8 @@ namespace Recipes.Desktop.UserControls
                 this.UserAdded(this, e);
             }
         }
+
+
         public event EventHandler<CreateUserEventArgs> UserAdded;
 
         protected void OnUserEdited(EditUserEventArgs e)
@@ -66,6 +67,7 @@ namespace Recipes.Desktop.UserControls
                 ModifiedOn = x.ModifiedOn,
                 Role = x.Role.ToString(),
             }).ToList();
+
             // load data to dataGrid (WinForms control - table)
             this.usersAdminDataGrid.DataSource = new BindingSource(new BindingList<UserViewModel>(allUsers), null);
 
@@ -107,7 +109,10 @@ namespace Recipes.Desktop.UserControls
                 if (columnName == "Edit")
                 {
                     var userToEdit = this.users.FirstOrDefault(x => x.Id == userViewModel.Id);
-                    // TODO: Open an edit form.
+                    var userAddForm = new AddUserForm(userToEdit);
+                    userAddForm.Show();
+                    userAddForm.UserAdded += this.UserAddForm_UserAdded;
+                    
                 }
 
                 if (columnName == "Delete")
@@ -117,6 +122,13 @@ namespace Recipes.Desktop.UserControls
             }
         }
 
+        // The UserAdded event is call both when we Add a new User and we Editr a new category. 
+        // In this case we want to transform the event to an Edit event.
+        private void UserAddForm_UserAdded(object sender, CreateUserEventArgs e)
+        {
+            this.OnUserEdited(new EditUserEventArgs(e.User));
+        }
+
         private void addUserButton_Click(object sender, EventArgs e)
         {
             var addUserForm = new AddUserForm();
@@ -124,7 +136,9 @@ namespace Recipes.Desktop.UserControls
             addUserForm.Show();
         }
 
-        private void AddUserFormHandler_UserAdded(object sender, Events.CreateUserEventArgs e)
+        // event handler - for addUserForm_UserAdded
+        // for event bubbling
+        private void AddUserFormHandler_UserAdded(object sender, CreateUserEventArgs e)
         {
             this.OnUserAdded(e);
         }
