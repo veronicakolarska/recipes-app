@@ -79,7 +79,11 @@ namespace Recipes.Desktop.UserControls
 
                 if (columnName == "Edit")
                 {
-                    var cateogryToEdit = this.categories.FirstOrDefault(x => x.Id == categoryViewModel.Id);
+                    var categoryToEdit = this.categories.FirstOrDefault(x => x.Id == categoryViewModel.Id);
+                    var categoryAddForm = new AddCategoryForm(this.userId, categoryToEdit);
+                    categoryAddForm.Show();
+                    categoryAddForm.CategoryAdded += this.CategoryAddForm_CategoryAdded;
+
                     // TODO: Open an edit form.
                 }
 
@@ -88,6 +92,13 @@ namespace Recipes.Desktop.UserControls
                     this.OnCategoryDeleted(new DeleteCategoryEventArgs(categoryViewModel.Id));
                 }
             }
+        }
+
+        private void CategoryAddForm_CategoryAdded(object sender, CreateCategoryEventArgs e) 
+        {
+            // The CateogryAdded event is call both when we Add a new Category and we Editr a new category. 
+            //In this case we want to transform the event to an Edit event.
+            this.OnCategoryEdited(new EditCategoryEventArgs(e.Category));
         }
 
         private void addCategoryButton_Click(object sender, EventArgs e)

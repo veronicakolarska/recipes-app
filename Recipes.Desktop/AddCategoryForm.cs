@@ -15,12 +15,21 @@ namespace Recipes.Desktop
 
     public partial class AddCategoryForm : Form
     {
+        private Category model;
         private int userId;
 
-        public AddCategoryForm(int userId)
+        // If we pass a category, It will be populated in the form for editing
+        public AddCategoryForm(int userId, Category category = null)
         {
             this.userId = userId;
+            this.model = category;
+
             this.InitializeComponent();
+
+            if (category != null)
+            {
+                this.categoryNameInput.Text = category.Name;
+            }
         }
 
         protected void OnCategoryAdded(CreateCategoryEventArgs e)
@@ -37,15 +46,24 @@ namespace Recipes.Desktop
         {
             var categoryName = this.categoryNameInput.Text;
 
-            var category = new Category()
+            // This updates the existing model if we are using the form for editing
+            if (this.model != null)
             {
-                
-                Name = categoryName,
-                CreatorId = this.userId
-            };
+                this.model.Name = categoryName;
+                this.OnCategoryAdded(new CreateCategoryEventArgs(this.model));
+                this.Close();
+            }
+            else
+            {
+                var category = new Category()
+                {
+                    Name = categoryName,
+                    CreatorId = this.userId
+                };
 
-            this.OnCategoryAdded(new CreateCategoryEventArgs(category));
-            this.Close();
+                this.OnCategoryAdded(new CreateCategoryEventArgs(category));
+                this.Close();
+            }
         }
     }
 }

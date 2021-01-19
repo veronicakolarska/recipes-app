@@ -154,9 +154,10 @@ namespace Recipes.Desktop
             this.LoadAdminCategoriesPanel();
         }
 
-        private void CategoryAdmin_CategoryEdited(object sender, EditCategoryEventArgs e)
+        private async void CategoryAdmin_CategoryEdited(object sender, EditCategoryEventArgs e)
         {
-            MessageBox.Show("Category edited");
+            await this.categoryService.Update(e.Category);
+            this.LoadAdminCategoriesPanel();
         }
 
         private async void CategoryAdmin_CategoryDeleted(object sender, DeleteCategoryEventArgs e)
