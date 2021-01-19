@@ -5,10 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Recipes.Desktop.UserControls
@@ -20,6 +17,8 @@ namespace Recipes.Desktop.UserControls
         private int userId;
         private IEnumerable<Category> categories;
 
+        // view model
+        // displaying data in user-friendly way
         public CategoriesAdmin(IList<Category> categories, int userId)
         {
             this.InitializeComponent();
@@ -31,6 +30,7 @@ namespace Recipes.Desktop.UserControls
 
         private void LoadAdminCategoriesDataGrid(IList<Category> categories)
         {
+            // map all recipes to the viewModels 
             var allCategories = categories.Select(x => new CategoryViewModel
             {
                 Id = x.Id,
@@ -39,6 +39,7 @@ namespace Recipes.Desktop.UserControls
                 ModifiedOn = x.ModifiedOn,
                 Name = x.Name,
             }).ToList();
+
             // load data to dataGrid (WinForms control - table)
             this.categoriesAdminDataGrid.DataSource = new BindingSource(new BindingList<CategoryViewModel>(allCategories), null);
 
@@ -83,8 +84,6 @@ namespace Recipes.Desktop.UserControls
                     var categoryAddForm = new AddCategoryForm(this.userId, categoryToEdit);
                     categoryAddForm.Show();
                     categoryAddForm.CategoryAdded += this.CategoryAddForm_CategoryAdded;
-
-                    // TODO: Open an edit form.
                 }
 
                 if (columnName == "Delete")
@@ -94,20 +93,22 @@ namespace Recipes.Desktop.UserControls
             }
         }
 
-        private void CategoryAddForm_CategoryAdded(object sender, CreateCategoryEventArgs e) 
+
+        // The CateogryAdded event is call both when we Add a new Category and we Editr a new category. 
+        // In this case we want to transform the event to an Edit event.
+        private void CategoryAddForm_CategoryAdded(object sender, CreateCategoryEventArgs e)
         {
-            // The CateogryAdded event is call both when we Add a new Category and we Editr a new category. 
-            //In this case we want to transform the event to an Edit event.
             this.OnCategoryEdited(new EditCategoryEventArgs(e.Category));
         }
+
 
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
             var addCategoryForm = new AddCategoryForm(this.userId);
-
             addCategoryForm.CategoryAdded += this.AddCategoryHandler;
             addCategoryForm.Show();
         }
+
 
         // event handler - for addCategoryForm.CategoryAdded
         // for event bubbling
@@ -116,6 +117,7 @@ namespace Recipes.Desktop.UserControls
             this.OnCategoryAdded(e);
         }
 
+
         protected void OnCategoryAdded(CreateCategoryEventArgs e)
         {
             if (this.CategoryAdded != null)
@@ -123,6 +125,7 @@ namespace Recipes.Desktop.UserControls
                 this.CategoryAdded(this, e);
             }
         }
+
 
         public event EventHandler<CreateCategoryEventArgs> CategoryAdded;
 

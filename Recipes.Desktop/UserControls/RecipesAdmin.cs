@@ -9,10 +9,11 @@ using System.Windows.Forms;
 
 namespace Recipes.Desktop.UserControls
 {
+    // UserControl comes from EF
+    // RecipesAdmin is a control with data - table
     public partial class RecipesAdmin : UserControl
     {
         private int userId;
-
         private IEnumerable<Category> categories;
         private IEnumerable<Recipe> recipes;
 
@@ -42,6 +43,7 @@ namespace Recipes.Desktop.UserControls
                 CreatedOn = x.CreatedOn,
                 ModifiedOn = x.ModifiedOn
             }).ToList();
+
             // load data to dataGrid (WinForms control - table)
             this.recipeAdminDataGrid.DataSource = new BindingSource(new BindingList<RecipeViewModel>(allRecipes), null);
 
@@ -84,7 +86,9 @@ namespace Recipes.Desktop.UserControls
                 if (columnName == "Edit")
                 {
                     var recipeToEdit = this.recipes.FirstOrDefault(x => x.Id == recipeViewModel.Id);
-                    // TODO: Open an edit form.
+                    var recipeAddForm = new AddRecipeForm(this.categories, this.userId, recipeToEdit);
+                    recipeAddForm.Show();
+                    recipeAddForm.RecipeAdded += this.RecipeAddForm_RecipeAdded;
                 }
 
                 if (columnName == "Delete")
@@ -94,6 +98,15 @@ namespace Recipes.Desktop.UserControls
             }
         }
 
+
+        // The RecipeAdded event is call both when we Add a new Recipe and we Edit a new category. 
+        // In this case we want to transform the event to an Edit event.
+        private void RecipeAddForm_RecipeAdded(object sender, CreateRecipeEventArgs e)
+        {
+            this.OnRecipeEdited(new EditRecipeEventArgs(e.Recipe));
+        }
+
+
         private void addRecipeButton_Click(object sender, EventArgs e)
         {
             var addRecipeForm = new AddRecipeForm(this.categories, this.userId);
@@ -101,10 +114,13 @@ namespace Recipes.Desktop.UserControls
             addRecipeForm.Show();
         }
 
-        private void AddRecipeFormHandler_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
+        // event handler - for addRecipeForm_RecipeAdded
+        // for event bubbling
+        private void AddRecipeFormHandler_RecipeAdded(object sender, CreateRecipeEventArgs e)
         {
             this.OnRecipeAdded(e);
         }
+
 
         protected void OnRecipeAdded(CreateRecipeEventArgs e)
         {
@@ -114,6 +130,7 @@ namespace Recipes.Desktop.UserControls
                 this.RecipeAdded(this, e);
             }
         }
+
 
         public event EventHandler<CreateRecipeEventArgs> RecipeAdded;
 

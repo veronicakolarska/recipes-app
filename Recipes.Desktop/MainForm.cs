@@ -122,9 +122,10 @@ namespace Recipes.Desktop
         }
 
 
-        private void RecipeAdmin_RecipeEdited(object sender, EditRecipeEventArgs e)
+        private async void RecipeAdmin_RecipeEdited(object sender, EditRecipeEventArgs e)
         {
-            MessageBox.Show("Recipe edited");
+            await this.recipeService.Update(e.Recipe);
+            this.LoadAdminRecipesPanel();
         }
 
 
@@ -182,9 +183,10 @@ namespace Recipes.Desktop
             this.LoadAdminUsersPanel();
         }
 
-        private void UserAdmin_UserEdited(object sender, EditUserEventArgs e)
+        private async void UserAdmin_UserEdited(object sender, EditUserEventArgs e)
         {
-            MessageBox.Show("User edited");
+            await this.userService.Update(e.User);
+            this.LoadAdminUsersPanel();
         }
 
         private async void UserAdmin_UserDeleted(object sender, DeleteUserEventArgs e)
