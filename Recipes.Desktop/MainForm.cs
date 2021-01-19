@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Recipes.Desktop
@@ -103,7 +104,7 @@ namespace Recipes.Desktop
                 .ToList();
 
             // add new control (grid) to the recipesAdmin to the tab
-            // TODO: get actual id and categories
+            // TODO: get actual id
             var userId = 1;
             var categories = this.categoryService.GetAll();
             var recipeAdmin = new RecipesAdmin(allRecipes, userId, categories);
@@ -117,6 +118,7 @@ namespace Recipes.Desktop
         private async void RecipeAdmin_RecipeAdded(object sender, CreateRecipeEventArgs e)
         {
             await this.recipeService.Create(e.Recipe);
+            this.LoadAdminRecipesPanel();
         }
 
 
@@ -126,9 +128,10 @@ namespace Recipes.Desktop
         }
 
 
-        private void RecipeAdmin_RecipeDeleted(object sender, DeleteRecipeEventArgs e)
+        private async void RecipeAdmin_RecipeDeleted(object sender, DeleteRecipeEventArgs e)
         {
-            MessageBox.Show("Recipe deleted");
+            await this.recipeService.Delete(e.Id);
+            this.LoadAdminRecipesPanel();
         }
 
 
@@ -156,9 +159,10 @@ namespace Recipes.Desktop
             MessageBox.Show("Category edited");
         }
 
-        private void CategoryAdmin_CategoryDeleted(object sender, DeleteCategoryEventArgs e)
+        private async void CategoryAdmin_CategoryDeleted(object sender, DeleteCategoryEventArgs e)
         {
-            MessageBox.Show("Category deleted");
+            await this.categoryService.Delete(e.Id);
+            this.LoadAdminCategoriesPanel();
         }
 
         private void LoadAdminUsersPanel()

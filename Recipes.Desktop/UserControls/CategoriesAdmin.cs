@@ -18,11 +18,13 @@ namespace Recipes.Desktop.UserControls
     public partial class CategoriesAdmin : UserControl
     {
         private int userId;
+        private IEnumerable<Category> categories;
 
         public CategoriesAdmin(IList<Category> categories, int userId)
         {
             this.InitializeComponent();
             this.userId = userId;
+            this.categories = categories;
 
             this.LoadAdminCategoriesDataGrid(categories);
         }
@@ -37,7 +39,55 @@ namespace Recipes.Desktop.UserControls
                 ModifiedOn = x.ModifiedOn,
                 Name = x.Name,
             }).ToList();
+            // load data to dataGrid (WinForms control - table)
             this.categoriesAdminDataGrid.DataSource = new BindingSource(new BindingList<CategoryViewModel>(allCategories), null);
+
+            // add edit button to each grid row
+            var editButton = new DataGridViewButtonColumn();
+            this.categoriesAdminDataGrid.Columns.Add(editButton);
+            editButton.HeaderText = "Edit?";
+            editButton.Text = "Edit";
+            editButton.Name = "Edit";
+            editButton.UseColumnTextForButtonValue = true;
+
+            // Adding Delete button to each grid row
+            var deleteButton = new DataGridViewButtonColumn();
+            this.categoriesAdminDataGrid.Columns.Add(deleteButton);
+            deleteButton.HeaderText = "Delete?";
+            deleteButton.Text = "Delete";
+            deleteButton.Name = "Delete";
+            deleteButton.UseColumnTextForButtonValue = true;
+
+            this.categoriesAdminDataGrid.CellContentClick += this.CategoriesAdminDataGrid_CellContentClick;
+        }
+
+        private void CategoriesAdminDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (e.RowIndex < 0)
+            {
+                //They clicked the header column, do nothing
+                return;
+            }
+            // Check if it's a grid action button
+            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            {
+                var columnName = grid.Columns[e.ColumnIndex].Name;
+                // Get the view model for the row, which had it's action button clicked
+                var categoryViewModel = (CategoryViewModel)grid.Rows[e.RowIndex].DataBoundItem;
+
+                if (columnName == "Edit")
+                {
+                    var cateogryToEdit = this.categories.FirstOrDefault(x => x.Id == categoryViewModel.Id);
+                    // TODO: Open an edit form.
+                }
+
+                if (columnName == "Delete")
+                {
+                    this.OnCategoryDeleted(new DeleteCategoryEventArgs(categoryViewModel.Id));
+                }
+            }
         }
 
         private void addCategoryButton_Click(object sender, EventArgs e)

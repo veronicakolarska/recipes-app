@@ -45,13 +45,15 @@ namespace Recipes.Desktop.UserControls
             // load data to dataGrid (WinForms control - table)
             this.recipeAdminDataGrid.DataSource = new BindingSource(new BindingList<RecipeViewModel>(allRecipes), null);
 
-            // TODO: add more columns
+            // Adding edit button to each grid row
             var editButton = new DataGridViewButtonColumn();
             this.recipeAdminDataGrid.Columns.Add(editButton);
             editButton.HeaderText = "Edit?";
             editButton.Text = "Edit";
             editButton.Name = "Edit";
             editButton.UseColumnTextForButtonValue = true;
+
+            // Adding Delete button to each grid row
             var deleteButton = new DataGridViewButtonColumn();
             this.recipeAdminDataGrid.Columns.Add(deleteButton);
             deleteButton.HeaderText = "Delete?";
@@ -72,9 +74,11 @@ namespace Recipes.Desktop.UserControls
                 return;
             }
 
+            // Check if it's a grid action button
             if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
             {
                 var columnName = grid.Columns[e.ColumnIndex].Name;
+                // Get the view model for the row, which had it's action button clicked
                 var recipeViewModel = (RecipeViewModel)grid.Rows[e.RowIndex].DataBoundItem;
 
                 if (columnName == "Edit")
