@@ -25,16 +25,16 @@ namespace Recipes.Desktop
 
             this.InitializeComponent();
 
+            var allCategories = categories
+                .Select(category => new { category.Id, category.Name })
+                .ToList();
+
+            this.categoryDropDown.ValueMember = "Id";
+            this.categoryDropDown.DisplayMember = "Name";
+            this.categoryDropDown.DataSource = allCategories;
+
             if (recipe != null)
             {
-                var allCategories = categories
-                   .Select(category => new { category.Id, category.Name })
-                   .ToList();
-
-                this.categoryDropDown.ValueMember = "Id";
-                this.categoryDropDown.DisplayMember = "Name";
-                this.categoryDropDown.DataSource = allCategories;
-
                 this.nameInput.Text = recipe.Name;
                 this.imageUrlInput.Text = recipe.TitleImageUrl;
                 this.descriptionInput.Text = recipe.Description;
@@ -59,7 +59,7 @@ namespace Recipes.Desktop
             var description = this.descriptionInput.Text;
             var categoryId = (int)this.categoryDropDown.SelectedValue;
 
-            if(this.model != null)
+            if (this.model != null)
             {
                 this.model.Name = name;
                 this.model.TitleImageUrl = imageUrl;
@@ -67,7 +67,8 @@ namespace Recipes.Desktop
                 this.model.CategoryId = categoryId;
                 this.OnRecipeAdded(new CreateRecipeEventArgs(this.model));
                 this.Close();
-            } else
+            }
+            else
             {
                 var recipeToAdd = new Recipe()
                 {

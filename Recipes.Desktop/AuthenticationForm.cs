@@ -40,11 +40,11 @@ namespace Recipes.Desktop
             var loggedInUser = this.userService.Login(email, password);
             if (loggedInUser == null)
             {
-                // TODO: Show error.
+                MessageBox.Show("Invalid user!");
+                return;
             }
 
-            // TODO: Role getting needs to be dynamic.
-            this.SetCurrentPrincipal(loggedInUser, new[] { "User" });
+            this.SetCurrentPrincipal(loggedInUser);
 
             this.ShowMainForm();
         }
@@ -59,20 +59,19 @@ namespace Recipes.Desktop
 
             if (registeredUser == null)
             {
-                // TODO: Show error
+                MessageBox.Show("Can not register a new user!");
+                return;
             }
-
-            // TODO: Role getting needs to be dynamic.
-            this.SetCurrentPrincipal(registeredUser, new[] { "User" });
+            this.SetCurrentPrincipal(registeredUser);
 
             this.ShowMainForm();
         }
 
 
-        private void SetCurrentPrincipal(User currentUser, string[] roles)
+        private void SetCurrentPrincipal(User currentUser)
         {
             // from .NET - the classes for setting the user between forms
-            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(currentUser.Email), roles);
+            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(currentUser.Email), new string[] { currentUser.Role.ToString() });
         }
 
         private void ShowMainForm()

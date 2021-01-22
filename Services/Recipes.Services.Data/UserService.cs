@@ -56,22 +56,62 @@ namespace Recipes.Services.Data
 
         public User Login(string email, string password)
         {
-            // 1. Validate data. Is it empty? Has requred length? Etc.
+            // 1. Validate data. Is it empty? Etc.
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                return null;
+            }
             // 2. Check if there is a user in the Database that has this email.
-            // 3. Compare password to existing user using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
-            // If all checks are correct, return a user object for the logged in user.
 
-            return new User { Email = "dummy@test.bg" };
+            var userExists = this.GetAll().Any((user) => user.Email == email);
+            if (!userExists)
+            {
+                return null;
+            }
+            // 3. Compare password to existing user using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
+            var userToCompare = this.GetAll().FirstOrDefault((user) => user.Email == email);
+            var isPasswordCorrect = BCrypt.Net.BCrypt.Verify(password, userToCompare.Password);
+            // If all checks are correct, return a user object for the logged in user.
+            if (!isPasswordCorrect)
+            {
+                return null;
+            }
+
+            return userToCompare;
         }
 
-        public Task<User> Register(string email, string password)
+        public async Task<User> Register(string email, string password)
         {
-            // 1. Validate data. Is it empty? Has requred length? Etc.
-            // 2. Check if there is NO user in the Database that has this email.
-            // 3. Hash password using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
-            // If all checks are correct, return a user object for the registered user.
+            // 1. Validate data. Is it empty? Etc.
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                return null;
+            }
 
-            return Task.FromResult(new User { Email = "dummy@test.bg" });
+            // 2. Check if there is NO user in the Database that has this email.
+
+            var userAlreadyExists = this.GetAll().Any((user) => user.Email == email);
+
+            if (userAlreadyExists)
+            {
+                return null;
+            }
+
+            // 3. Hash password using a bcrypt package (https://github.com/BcryptNet/bcrypt.net).
+
+            string passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+
+            var newUser = new User()
+            {
+                Email = email,
+                Password = passwordHash,
+                Role = Role.User,
+            };
+
+            await this.Create(newUser);
+
+            // If all checks are correct, return a user object for the registered user.
+            return newUser;
         }
 
         public User GetByEmailWithFavouriteRecipes(string email)

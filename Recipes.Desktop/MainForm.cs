@@ -19,6 +19,7 @@ namespace Recipes.Desktop
         private ICategoryService categoryService;
         private IRecipeService recipeService;
         private IUserService userService;
+        private User currentUser;
 
         public MainForm(
             ICategoryService categoryService,
@@ -30,16 +31,19 @@ namespace Recipes.Desktop
             this.recipeService = recipeService;
             this.userService = userService;
 
+            var currentUser = this.userService.GetAll().FirstOrDefault((user) => user.Email == Thread.CurrentPrincipal.Identity.Name);
+            this.currentUser = currentUser;
+
             this.InitializeComponent();
 
             // Clean up all open forms after the  Main form is closed.
             this.FormClosed += this.Main_FormClosed;
 
-            // TODO: Activate when login works
-            //if (!Thread.CurrentPrincipal.IsInRole(Role.Administrator))
-            //{
-            //    this.HideAdminTabs();
-            //}
+            // if not admin - hide the panels
+            if (!Thread.CurrentPrincipal.IsInRole(Role.Administrator.ToString()))
+            {
+                this.HideAdminTabs();
+            }
 
             this.LoadDataToComponents();
         }
@@ -104,8 +108,7 @@ namespace Recipes.Desktop
                 .ToList();
 
             // add new control (grid) to the recipesAdmin to the tab
-            // TODO: get actual id
-            var userId = 1;
+            var userId = this.currentUser.Id;
             var categories = this.categoryService.GetAll();
             var recipeAdmin = new RecipesAdmin(allRecipes, userId, categories);
             this.recipeAdminTabPage.Controls.Clear();
@@ -140,7 +143,7 @@ namespace Recipes.Desktop
         {
             var allCategories = this.categoryService.GetAllWithRelatedData().ToList();
             // TODO: get actual id when login is ready
-            var userId = 1;
+            var userId = this.currentUser.Id;
             var categoryAdmin = new CategoriesAdmin(allCategories, userId);
             this.categoryAdminTabPage.Controls.Clear();
             this.categoryAdminTabPage.Controls.Add(categoryAdmin);
@@ -218,9 +221,7 @@ namespace Recipes.Desktop
         {
             var allCategories = this.categoryService.GetAll().ToList();
 
-            // TODO: This should come from Thread.CurrentPrincipal when ready!
-            var userId = 1;
-
+            var userId = this.currentUser.Id;
             var addRecipeForm = new AddRecipeForm(allCategories, userId);
             addRecipeForm.RecipeAdded += this.AddRecipeForm_RecipeAdded;
             addRecipeForm.Show();
