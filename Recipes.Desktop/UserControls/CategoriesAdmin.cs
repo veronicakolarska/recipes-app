@@ -88,7 +88,11 @@ namespace Recipes.Desktop.UserControls
 
                 if (columnName == "Delete")
                 {
-                    this.OnCategoryDeleted(new DeleteCategoryEventArgs(categoryViewModel.Id));
+                    var areYouSure = MessageBox.Show("Are you sure you want to delete this?", "Delete item", MessageBoxButtons.YesNo);
+                    if (areYouSure == DialogResult.Yes)
+                    {
+                        this.OnCategoryDeleted(new DeleteCategoryEventArgs(categoryViewModel.Id));
+                    }
                 }
             }
         }

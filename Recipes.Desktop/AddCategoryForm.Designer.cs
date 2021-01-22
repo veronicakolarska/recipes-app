@@ -36,18 +36,18 @@ namespace Recipes.Desktop
             // 
             // addCategoryButton
             // 
-            this.addCategoryButton.Location = new System.Drawing.Point(31, 386);
+            this.addCategoryButton.Location = new System.Drawing.Point(87, 262);
             this.addCategoryButton.Name = "addCategoryButton";
-            this.addCategoryButton.Size = new System.Drawing.Size(363, 23);
+            this.addCategoryButton.Size = new System.Drawing.Size(126, 23);
             this.addCategoryButton.TabIndex = 0;
-            this.addCategoryButton.Text = "Add Category";
+            this.addCategoryButton.Text = "Save";
             this.addCategoryButton.UseVisualStyleBackColor = true;
             this.addCategoryButton.Click += new System.EventHandler(this.addCategoryButton_Click);
             // 
             // categoryNameLabel
             // 
             this.categoryNameLabel.AutoSize = true;
-            this.categoryNameLabel.Location = new System.Drawing.Point(160, 102);
+            this.categoryNameLabel.Location = new System.Drawing.Point(99, 77);
             this.categoryNameLabel.Name = "categoryNameLabel";
             this.categoryNameLabel.Size = new System.Drawing.Size(88, 15);
             this.categoryNameLabel.TabIndex = 1;
@@ -55,20 +55,20 @@ namespace Recipes.Desktop
             // 
             // categoryNameInput
             // 
-            this.categoryNameInput.Location = new System.Drawing.Point(31, 223);
+            this.categoryNameInput.Location = new System.Drawing.Point(43, 162);
             this.categoryNameInput.Name = "categoryNameInput";
-            this.categoryNameInput.Size = new System.Drawing.Size(363, 23);
+            this.categoryNameInput.Size = new System.Drawing.Size(217, 23);
             this.categoryNameInput.TabIndex = 2;
             // 
-            // AddCategory
+            // AddCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 450);
+            this.ClientSize = new System.Drawing.Size(327, 390);
             this.Controls.Add(this.categoryNameInput);
             this.Controls.Add(this.categoryNameLabel);
             this.Controls.Add(this.addCategoryButton);
-            this.Name = "AddCategory";
+            this.Name = "AddCategoryForm";
             this.Text = "AddCategory";
             this.ResumeLayout(false);
             this.PerformLayout();

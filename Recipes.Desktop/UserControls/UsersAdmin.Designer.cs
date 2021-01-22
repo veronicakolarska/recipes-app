@@ -37,15 +37,15 @@ namespace Recipes.Desktop.UserControls
             // usersAdminDataGrid
             // 
             this.usersAdminDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersAdminDataGrid.Location = new System.Drawing.Point(0, 29);
+            this.usersAdminDataGrid.Location = new System.Drawing.Point(0, 40);
             this.usersAdminDataGrid.Name = "usersAdminDataGrid";
             this.usersAdminDataGrid.RowTemplate.Height = 25;
-            this.usersAdminDataGrid.Size = new System.Drawing.Size(1010, 418);
+            this.usersAdminDataGrid.Size = new System.Drawing.Size(1010, 407);
             this.usersAdminDataGrid.TabIndex = 1;
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(0, 0);
+            this.addUserButton.Location = new System.Drawing.Point(12, 7);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(75, 23);
             this.addUserButton.TabIndex = 2;

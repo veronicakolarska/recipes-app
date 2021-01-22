@@ -77,7 +77,7 @@ namespace Recipes.Desktop
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(80, 166);
+            this.loginButton.Location = new System.Drawing.Point(80, 215);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(190, 23);
             this.loginButton.TabIndex = 4;
@@ -88,7 +88,7 @@ namespace Recipes.Desktop
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(80, 102);
+            this.passwordLabel.Location = new System.Drawing.Point(80, 122);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(57, 15);
             this.passwordLabel.TabIndex = 3;
@@ -96,7 +96,7 @@ namespace Recipes.Desktop
             // 
             // passwordInput
             // 
-            this.passwordInput.Location = new System.Drawing.Point(80, 120);
+            this.passwordInput.Location = new System.Drawing.Point(80, 140);
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.PasswordChar = '*';
             this.passwordInput.Size = new System.Drawing.Size(190, 23);
@@ -154,7 +154,7 @@ namespace Recipes.Desktop
             // 
             // registerButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(83, 212);
+            this.registerButton.Location = new System.Drawing.Point(83, 219);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(190, 23);
             this.registerButton.TabIndex = 9;
@@ -195,13 +195,13 @@ namespace Recipes.Desktop
             this.registerEmailInput.Size = new System.Drawing.Size(190, 23);
             this.registerEmailInput.TabIndex = 5;
             // 
-            // Main
+            // AuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.authenticationTabs);
-            this.Name = "Main";
+            this.Name = "AuthenticationForm";
             this.Text = "Form1";
             this.authenticationTabs.ResumeLayout(false);
             this.loginPage.ResumeLayout(false);

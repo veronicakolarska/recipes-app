@@ -112,12 +112,16 @@ namespace Recipes.Desktop.UserControls
                     var userAddForm = new AddUserForm(userToEdit);
                     userAddForm.Show();
                     userAddForm.UserAdded += this.UserAddForm_UserAdded;
-                    
+
                 }
 
                 if (columnName == "Delete")
                 {
-                    this.OnUserDeleted(new DeleteUserEventArgs(userViewModel.Id));
+                    var areYouSure = MessageBox.Show("Are you sure you want to delete this?", "Delete item", MessageBoxButtons.YesNo);
+                    if (areYouSure == DialogResult.Yes)
+                    {
+                        this.OnUserDeleted(new DeleteUserEventArgs(userViewModel.Id));
+                    }
                 }
             }
         }

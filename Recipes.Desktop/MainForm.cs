@@ -1,15 +1,11 @@
 ﻿using Recipes.Data.Models;
 using Recipes.Desktop.Events;
 using Recipes.Desktop.UserControls;
-using Recipes.Desktop.ViewModels;
-using Recipes.Services.Data;
 using Recipes.Services.Data.Contracts;
 using System;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Recipes.Desktop
@@ -35,6 +31,8 @@ namespace Recipes.Desktop
             this.currentUser = currentUser;
 
             this.InitializeComponent();
+
+            this.userProfilePanel.Controls.Add(new Profile(this.currentUser));
 
             // Clean up all open forms after the  Main form is closed.
             this.FormClosed += this.Main_FormClosed;
@@ -227,10 +225,26 @@ namespace Recipes.Desktop
             addRecipeForm.Show();
         }
 
-        private async void AddRecipeForm_RecipeAdded(object sender, Events.CreateRecipeEventArgs e)
+        private async void AddRecipeForm_RecipeAdded(object sender, CreateRecipeEventArgs e)
         {
             await this.recipeService.Create(e.Recipe);
             this.LoadAllRecipesPanel();
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            var dialogResult = MessageBox.Show("Are you sure?", "Loging out...", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes) {
+                // TODO: Figure out how to show the Authentication form
+                //Thread.CurrentPrincipal = null;
+                //var authenticationForm = Application.OpenForms
+                //    .OfType<AuthenticationForm>()
+                //    .FirstOrDefault();
+                //this.Close();
+                //authenticationForm.Show();
+                Application.Exit();
+            }
         }
     }
 }

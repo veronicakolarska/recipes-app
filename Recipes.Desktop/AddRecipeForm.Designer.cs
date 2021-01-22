@@ -46,7 +46,7 @@ namespace Recipes.Desktop
             this.createRecipeButton.Name = "createRecipeButton";
             this.createRecipeButton.Size = new System.Drawing.Size(75, 23);
             this.createRecipeButton.TabIndex = 0;
-            this.createRecipeButton.Text = "Create";
+            this.createRecipeButton.Text = "Save";
             this.createRecipeButton.UseVisualStyleBackColor = true;
             this.createRecipeButton.Click += new System.EventHandler(this.createRecipeButton_Click);
             // 
@@ -117,7 +117,7 @@ namespace Recipes.Desktop
             this.categoryLabel.TabIndex = 8;
             this.categoryLabel.Text = "Category";
             // 
-            // AddRecipe
+            // AddRecipeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +131,7 @@ namespace Recipes.Desktop
             this.Controls.Add(this.recipeNameLabel);
             this.Controls.Add(this.nameInput);
             this.Controls.Add(this.createRecipeButton);
-            this.Name = "AddRecipe";
+            this.Name = "AddRecipeForm";
             this.Text = "AddRecipe";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -29,6 +29,7 @@ namespace Recipes.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.recipesPage = new System.Windows.Forms.TabPage();
             this.addRecipeButton = new System.Windows.Forms.Button();
@@ -36,6 +37,10 @@ namespace Recipes.Desktop
             this.recipeAdminTabPage = new System.Windows.Forms.TabPage();
             this.categoryAdminTabPage = new System.Windows.Forms.TabPage();
             this.userAdminTabPage = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.logoutButton = new System.Windows.Forms.Button();
+            this.userProfilePanel = new System.Windows.Forms.Panel();
             this.mainTabs.SuspendLayout();
             this.recipesPage.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +54,7 @@ namespace Recipes.Desktop
             this.mainTabs.Location = new System.Drawing.Point(57, 73);
             this.mainTabs.Name = "mainTabs";
             this.mainTabs.SelectedIndex = 0;
-            this.mainTabs.Size = new System.Drawing.Size(1092, 532);
+            this.mainTabs.Size = new System.Drawing.Size(1020, 532);
             this.mainTabs.TabIndex = 0;
             // 
             // recipesPage
@@ -59,7 +64,7 @@ namespace Recipes.Desktop
             this.recipesPage.Location = new System.Drawing.Point(4, 24);
             this.recipesPage.Name = "recipesPage";
             this.recipesPage.Padding = new System.Windows.Forms.Padding(3);
-            this.recipesPage.Size = new System.Drawing.Size(1084, 504);
+            this.recipesPage.Size = new System.Drawing.Size(1012, 504);
             this.recipesPage.TabIndex = 0;
             this.recipesPage.Text = "All Recipes";
             this.recipesPage.UseVisualStyleBackColor = true;
@@ -86,7 +91,7 @@ namespace Recipes.Desktop
             this.recipeAdminTabPage.Location = new System.Drawing.Point(4, 24);
             this.recipeAdminTabPage.Name = "recipeAdminTabPage";
             this.recipeAdminTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.recipeAdminTabPage.Size = new System.Drawing.Size(1084, 504);
+            this.recipeAdminTabPage.Size = new System.Drawing.Size(1012, 504);
             this.recipeAdminTabPage.TabIndex = 2;
             this.recipeAdminTabPage.Text = "Recipe Admin";
             this.recipeAdminTabPage.UseVisualStyleBackColor = true;
@@ -96,7 +101,7 @@ namespace Recipes.Desktop
             this.categoryAdminTabPage.Location = new System.Drawing.Point(4, 24);
             this.categoryAdminTabPage.Name = "categoryAdminTabPage";
             this.categoryAdminTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.categoryAdminTabPage.Size = new System.Drawing.Size(1084, 504);
+            this.categoryAdminTabPage.Size = new System.Drawing.Size(1012, 504);
             this.categoryAdminTabPage.TabIndex = 3;
             this.categoryAdminTabPage.Text = "Category Admin";
             this.categoryAdminTabPage.UseVisualStyleBackColor = true;
@@ -106,16 +111,45 @@ namespace Recipes.Desktop
             this.userAdminTabPage.Location = new System.Drawing.Point(4, 24);
             this.userAdminTabPage.Name = "userAdminTabPage";
             this.userAdminTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.userAdminTabPage.Size = new System.Drawing.Size(1084, 504);
+            this.userAdminTabPage.Size = new System.Drawing.Size(1012, 504);
             this.userAdminTabPage.TabIndex = 4;
             this.userAdminTabPage.Text = "User Admin";
             this.userAdminTabPage.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // logoutButton
+            // 
+            this.logoutButton.Location = new System.Drawing.Point(1336, 28);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(75, 23);
+            this.logoutButton.TabIndex = 2;
+            this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            // 
+            // userProfilePanel
+            // 
+            this.userProfilePanel.Location = new System.Drawing.Point(1117, 97);
+            this.userProfilePanel.Name = "userProfilePanel";
+            this.userProfilePanel.Size = new System.Drawing.Size(294, 508);
+            this.userProfilePanel.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 703);
+            this.ClientSize = new System.Drawing.Size(1458, 628);
+            this.Controls.Add(this.userProfilePanel);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.mainTabs);
             this.Name = "MainForm";
             this.Text = "Main";
@@ -134,5 +168,9 @@ namespace Recipes.Desktop
         private System.Windows.Forms.TabPage recipeAdminTabPage;
         private System.Windows.Forms.TabPage categoryAdminTabPage;
         private System.Windows.Forms.TabPage userAdminTabPage;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.Button logoutButton;
+        private System.Windows.Forms.Panel userProfilePanel;
     }
 }
