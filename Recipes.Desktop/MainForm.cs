@@ -32,7 +32,9 @@ namespace Recipes.Desktop
 
             this.InitializeComponent();
 
-            this.userProfilePanel.Controls.Add(new Profile(this.currentUser));
+            var userProfileControl = new Profile(this.currentUser);
+            this.userProfilePanel.Controls.Add(userProfileControl);
+            userProfileControl.UserEdited += this.UserProfileControl_UserEdited;
 
             // Clean up all open forms after the  Main form is closed.
             this.FormClosed += this.Main_FormClosed;
@@ -44,6 +46,11 @@ namespace Recipes.Desktop
             }
 
             this.LoadDataToComponents();
+        }
+
+        private async void UserProfileControl_UserEdited(object sender, EditUserEventArgs e)
+        {
+            await this.userService.Update(e.User);
         }
 
         private void HideAdminTabs()
@@ -235,7 +242,8 @@ namespace Recipes.Desktop
         {
             var dialogResult = MessageBox.Show("Are you sure?", "Loging out...", MessageBoxButtons.YesNo);
 
-            if (dialogResult == DialogResult.Yes) {
+            if (dialogResult == DialogResult.Yes)
+            {
                 // TODO: Figure out how to show the Authentication form
                 //Thread.CurrentPrincipal = null;
                 //var authenticationForm = Application.OpenForms

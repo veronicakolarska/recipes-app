@@ -33,7 +33,6 @@ namespace Recipes.Desktop.UserControls
             }
         }
 
-
         public event EventHandler<CreateUserEventArgs> UserAdded;
 
         protected void OnUserEdited(EditUserEventArgs e)
