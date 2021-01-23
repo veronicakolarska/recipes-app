@@ -59,8 +59,10 @@ namespace Recipes.Desktop.UserControls
             // 
             // emailTextbox
             // 
+            this.emailTextbox.Enabled = false;
             this.emailTextbox.Location = new System.Drawing.Point(35, 120);
             this.emailTextbox.Name = "emailTextbox";
+            this.emailTextbox.ReadOnly = true;
             this.emailTextbox.Size = new System.Drawing.Size(182, 23);
             this.emailTextbox.TabIndex = 2;
             // 
@@ -83,9 +85,11 @@ namespace Recipes.Desktop.UserControls
             // 
             // descriptionTextbox
             // 
+            this.descriptionTextbox.Enabled = false;
             this.descriptionTextbox.Location = new System.Drawing.Point(35, 198);
             this.descriptionTextbox.Multiline = true;
             this.descriptionTextbox.Name = "descriptionTextbox";
+            this.descriptionTextbox.ReadOnly = true;
             this.descriptionTextbox.Size = new System.Drawing.Size(182, 73);
             this.descriptionTextbox.TabIndex = 5;
             // 
