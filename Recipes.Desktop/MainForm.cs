@@ -32,10 +32,6 @@ namespace Recipes.Desktop
 
             this.InitializeComponent();
 
-            var userProfileControl = new Profile(this.currentUser);
-            this.userProfilePanel.Controls.Add(userProfileControl);
-            userProfileControl.UserEdited += this.UserProfileControl_UserEdited;
-
             // Clean up all open forms after the  Main form is closed.
             this.FormClosed += this.Main_FormClosed;
 
@@ -51,6 +47,9 @@ namespace Recipes.Desktop
         private async void UserProfileControl_UserEdited(object sender, EditUserEventArgs e)
         {
             await this.userService.Update(e.User);
+            // update the property after the user is edited
+            this.currentUser = e.User;
+            this.LoadUserProfilePanel();
         }
 
         private void HideAdminTabs()
@@ -73,6 +72,7 @@ namespace Recipes.Desktop
                 this.LoadAdminRecipesPanel();
                 this.LoadAdminCategoriesPanel();
                 this.LoadAdminUsersPanel();
+                this.LoadUserProfilePanel();
             }
             // TODO: Refine exception handling
             catch (Exception exception)
@@ -83,6 +83,15 @@ namespace Recipes.Desktop
             finally
             {
             }
+        }
+
+        // load side panel Profile
+        private void LoadUserProfilePanel()
+        {
+            var userProfileControl = new Profile(this.currentUser);
+            this.userProfilePanel.Controls.Clear();
+            this.userProfilePanel.Controls.Add(userProfileControl);
+            userProfileControl.UserEdited += this.UserProfileControl_UserEdited;
         }
 
         private void LoadAllRecipesPanel()
@@ -127,6 +136,8 @@ namespace Recipes.Desktop
         {
             await this.recipeService.Create(e.Recipe);
             this.LoadAdminRecipesPanel();
+            // refresh all recipies tab after a new recipe is added
+            this.LoadAllRecipesPanel();
         }
 
 

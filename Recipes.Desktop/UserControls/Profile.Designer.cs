@@ -80,6 +80,7 @@ namespace Recipes.Desktop.UserControls
             this.profilePictureBox.Location = new System.Drawing.Point(35, 313);
             this.profilePictureBox.Name = "profilePictureBox";
             this.profilePictureBox.Size = new System.Drawing.Size(182, 140);
+            this.profilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox.TabIndex = 4;
             this.profilePictureBox.TabStop = false;
             // 

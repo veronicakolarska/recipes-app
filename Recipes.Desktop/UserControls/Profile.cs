@@ -22,7 +22,7 @@ namespace Recipes.Desktop.UserControls
             this.user = user;
             this.emailTextbox.Text = user.Email;
             this.descriptionTextbox.Text = user.Description;
-            if (!string.IsNullOrEmpty(user.Description))
+            if (!string.IsNullOrEmpty(user.ImageUrl))
             {
                 this.profilePictureBox.Load(user.ImageUrl);
             }
