@@ -44,7 +44,7 @@ namespace Recipes.Desktop
             // 
             this.createRecipeButton.Location = new System.Drawing.Point(37, 393);
             this.createRecipeButton.Name = "createRecipeButton";
-            this.createRecipeButton.Size = new System.Drawing.Size(75, 23);
+            this.createRecipeButton.Size = new System.Drawing.Size(97, 23);
             this.createRecipeButton.TabIndex = 0;
             this.createRecipeButton.Text = "Save";
             this.createRecipeButton.UseVisualStyleBackColor = true;

@@ -111,11 +111,11 @@ namespace Recipes.Desktop
             this.userAddedButton.Name = "userAddedButton";
             this.userAddedButton.Size = new System.Drawing.Size(193, 23);
             this.userAddedButton.TabIndex = 8;
-            this.userAddedButton.Text = "Add user";
+            this.userAddedButton.Text = "Save";
             this.userAddedButton.UseVisualStyleBackColor = true;
             this.userAddedButton.Click += new System.EventHandler(this.userAddedButton_Click);
             // 
-            // AddUser
+            // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +129,7 @@ namespace Recipes.Desktop
             this.Controls.Add(this.userImageUrlLabel);
             this.Controls.Add(this.userPasswordLabel);
             this.Controls.Add(this.userEmailLabel);
-            this.Name = "AddUser";
+            this.Name = "AddUserForm";
             this.Text = "AddUser";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -35,6 +35,7 @@ namespace Recipes.Desktop.UserControls
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
             this.descriptionTextbox = new System.Windows.Forms.TextBox();
+            this.editProfileButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,10 +89,21 @@ namespace Recipes.Desktop.UserControls
             this.descriptionTextbox.Size = new System.Drawing.Size(182, 73);
             this.descriptionTextbox.TabIndex = 5;
             // 
+            // editProfileButton
+            // 
+            this.editProfileButton.Location = new System.Drawing.Point(164, 36);
+            this.editProfileButton.Name = "editProfileButton";
+            this.editProfileButton.Size = new System.Drawing.Size(53, 23);
+            this.editProfileButton.TabIndex = 6;
+            this.editProfileButton.Text = "edit";
+            this.editProfileButton.UseVisualStyleBackColor = true;
+            this.editProfileButton.Click += new System.EventHandler(this.editProfileButton_Click);
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.editProfileButton);
             this.Controls.Add(this.descriptionTextbox);
             this.Controls.Add(this.profilePictureBox);
             this.Controls.Add(this.descriptionLabel);
@@ -114,5 +126,6 @@ namespace Recipes.Desktop.UserControls
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.PictureBox profilePictureBox;
         private System.Windows.Forms.TextBox descriptionTextbox;
+        private System.Windows.Forms.Button editProfileButton;
     }
 }

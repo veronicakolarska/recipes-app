@@ -17,6 +17,8 @@ namespace Recipes.Desktop
 
             if (user != null)
             {
+                // TODO: this needs to be hashed
+                // TODO: edit panel
                 this.userPasswordInput.Text = user.Password;
                 this.userDescriptionInput.Text = user.Description;
                 this.userEmailInput.Text = user.Email;

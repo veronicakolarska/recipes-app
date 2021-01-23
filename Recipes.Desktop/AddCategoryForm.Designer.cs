@@ -36,9 +36,9 @@ namespace Recipes.Desktop
             // 
             // addCategoryButton
             // 
-            this.addCategoryButton.Location = new System.Drawing.Point(87, 262);
+            this.addCategoryButton.Location = new System.Drawing.Point(43, 258);
             this.addCategoryButton.Name = "addCategoryButton";
-            this.addCategoryButton.Size = new System.Drawing.Size(126, 23);
+            this.addCategoryButton.Size = new System.Drawing.Size(88, 23);
             this.addCategoryButton.TabIndex = 0;
             this.addCategoryButton.Text = "Save";
             this.addCategoryButton.UseVisualStyleBackColor = true;
@@ -47,7 +47,7 @@ namespace Recipes.Desktop
             // categoryNameLabel
             // 
             this.categoryNameLabel.AutoSize = true;
-            this.categoryNameLabel.Location = new System.Drawing.Point(99, 77);
+            this.categoryNameLabel.Location = new System.Drawing.Point(43, 73);
             this.categoryNameLabel.Name = "categoryNameLabel";
             this.categoryNameLabel.Size = new System.Drawing.Size(88, 15);
             this.categoryNameLabel.TabIndex = 1;
