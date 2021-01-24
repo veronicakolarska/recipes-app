@@ -32,6 +32,7 @@ namespace Recipes.Desktop
             this.components = new System.ComponentModel.Container();
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.recipesPage = new System.Windows.Forms.TabPage();
+            this.recipeTypeComboBox = new System.Windows.Forms.ComboBox();
             this.addRecipeButton = new System.Windows.Forms.Button();
             this.recipesFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.recipeAdminTabPage = new System.Windows.Forms.TabPage();
@@ -59,6 +60,7 @@ namespace Recipes.Desktop
             // 
             // recipesPage
             // 
+            this.recipesPage.Controls.Add(this.recipeTypeComboBox);
             this.recipesPage.Controls.Add(this.addRecipeButton);
             this.recipesPage.Controls.Add(this.recipesFlowPanel);
             this.recipesPage.Location = new System.Drawing.Point(4, 24);
@@ -68,6 +70,20 @@ namespace Recipes.Desktop
             this.recipesPage.TabIndex = 0;
             this.recipesPage.Text = "All Recipes";
             this.recipesPage.UseVisualStyleBackColor = true;
+            // 
+            // recipeTypeComboBox
+            // 
+            this.recipeTypeComboBox.AllowDrop = true;
+            this.recipeTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.recipeTypeComboBox.FormattingEnabled = true;
+            this.recipeTypeComboBox.Items.AddRange(new object[] {
+            "All Recipes",
+            "My Recipes",
+            "Favourite Recipes"});
+            this.recipeTypeComboBox.Location = new System.Drawing.Point(178, 29);
+            this.recipeTypeComboBox.Name = "recipeTypeComboBox";
+            this.recipeTypeComboBox.Size = new System.Drawing.Size(121, 23);
+            this.recipeTypeComboBox.TabIndex = 2;
             // 
             // addRecipeButton
             // 
@@ -172,5 +188,6 @@ namespace Recipes.Desktop
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Panel userProfilePanel;
+        private System.Windows.Forms.ComboBox recipeTypeComboBox;
     }
 }

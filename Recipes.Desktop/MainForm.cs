@@ -3,6 +3,7 @@ using Recipes.Desktop.Events;
 using Recipes.Desktop.UserControls;
 using Recipes.Services.Data.Contracts;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
@@ -27,7 +28,7 @@ namespace Recipes.Desktop
             this.recipeService = recipeService;
             this.userService = userService;
 
-            var currentUser = this.userService.GetAll().FirstOrDefault((user) => user.Email == Thread.CurrentPrincipal.Identity.Name);
+            var currentUser = this.userService.GetByEmailWithFavouriteRecipes(Thread.CurrentPrincipal.Identity.Name);
             this.currentUser = currentUser;
 
             this.InitializeComponent();
@@ -66,13 +67,12 @@ namespace Recipes.Desktop
                 // loads all recipes to the tab
                 this.LoadAllRecipesPanel();
 
-                // TODO: Activate when user loggin is ready.
-                // this.LoadFavouriteRecipesPanel();
-
                 this.LoadAdminRecipesPanel();
                 this.LoadAdminCategoriesPanel();
                 this.LoadAdminUsersPanel();
                 this.LoadUserProfilePanel();
+                // Loads data and attaches events to the recipe filter dropdown/combobox
+                this.LoadRecipeTypeFilterComboBox();
             }
             // TODO: Refine exception handling
             catch (Exception exception)
@@ -85,6 +85,40 @@ namespace Recipes.Desktop
             }
         }
 
+        private void LoadRecipeTypeFilterComboBox()
+        {
+            this.recipeTypeComboBox.SelectedIndex = 0;
+            this.recipeTypeComboBox.SelectedIndexChanged += this.RecipeTypeComboBox_SelectedIndexChanged;
+        }
+
+        private void RecipeTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var currentSelectedFilterType = this.recipeTypeComboBox.SelectedItem.ToString();
+            switch (currentSelectedFilterType)
+            {
+                case "All Recipes":
+                    this.LoadAllRecipesPanel();
+                    break;
+                case "My Recipes":
+                    {
+                        var myRecipes = this.recipeService
+                            .GetAll()
+                            .Where((recipe) => recipe.CreatorId == this.currentUser.Id)
+                            .ToList();
+                        this.LoadAllRecipesPanel(myRecipes);
+                    }
+                    break;
+                case "Favourite Recipes":
+                    {
+                        var allFavouriteRecipes = this.currentUser.FavouriteRecipes.Select(x => x.Recipe);
+                        this.LoadAllRecipesPanel(allFavouriteRecipes);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
         // load side panel Profile
         private void LoadUserProfilePanel()
         {
@@ -94,12 +128,16 @@ namespace Recipes.Desktop
             userProfileControl.UserEdited += this.UserProfileControl_UserEdited;
         }
 
-        private void LoadAllRecipesPanel()
+        private void LoadAllRecipesPanel(IEnumerable<Recipe> recipes = null)
         {
-            var allRecipes = this.recipeService
-                        .GetAll()
-                        .OrderByDescending((x) => x.CreatedOn)
-                        .ToList();
+            IEnumerable<Recipe> allRecipes = recipes;
+            if (recipes == null)
+            {
+                allRecipes = this.recipeService
+                    .GetAll()
+                    .OrderByDescending((x) => x.CreatedOn)
+                    .ToList();
+            }
 
             var recipeTiles = allRecipes.Select((recipe) =>
             {

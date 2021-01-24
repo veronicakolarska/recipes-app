@@ -41,6 +41,7 @@ namespace Recipes.Services.Data
             var recipe = this.recipeRepository.All()
                 .Include(x => x.Creator)
                 .Include(x => x.Category);
+
             return recipe;
         }
 
