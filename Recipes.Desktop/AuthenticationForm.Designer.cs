@@ -29,6 +29,7 @@ namespace Recipes.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.authenticationTabs = new System.Windows.Forms.TabControl();
             this.loginPage = new System.Windows.Forms.TabPage();
             this.loginButton = new System.Windows.Forms.Button();
@@ -44,9 +45,19 @@ namespace Recipes.Desktop
             this.registerPasswordInput = new System.Windows.Forms.TextBox();
             this.registerEmailLabel = new System.Windows.Forms.Label();
             this.registerEmailInput = new System.Windows.Forms.TextBox();
+            this.emailErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.passwordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.registerEmailErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.registerPasswordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.confirmPasswordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.authenticationTabs.SuspendLayout();
             this.loginPage.SuspendLayout();
             this.registerPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emailErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registerEmailErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registerPasswordErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.confirmPasswordErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // authenticationTabs
@@ -101,6 +112,7 @@ namespace Recipes.Desktop
             this.passwordInput.PasswordChar = '*';
             this.passwordInput.Size = new System.Drawing.Size(190, 23);
             this.passwordInput.TabIndex = 2;
+            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // emailLabel
             // 
@@ -117,6 +129,7 @@ namespace Recipes.Desktop
             this.emailInput.Name = "emailInput";
             this.emailInput.Size = new System.Drawing.Size(190, 23);
             this.emailInput.TabIndex = 0;
+            this.emailInput.TextChanged += new System.EventHandler(this.emailInput_TextChanged);
             // 
             // registerPage
             // 
@@ -151,6 +164,7 @@ namespace Recipes.Desktop
             this.registerConfirmPasswordInput.PasswordChar = '*';
             this.registerConfirmPasswordInput.Size = new System.Drawing.Size(190, 23);
             this.registerConfirmPasswordInput.TabIndex = 10;
+            this.registerConfirmPasswordInput.TextChanged += new System.EventHandler(this.registerConfirmPasswordInput_TextChanged);
             // 
             // registerButton
             // 
@@ -178,6 +192,7 @@ namespace Recipes.Desktop
             this.registerPasswordInput.PasswordChar = '*';
             this.registerPasswordInput.Size = new System.Drawing.Size(190, 23);
             this.registerPasswordInput.TabIndex = 7;
+            this.registerPasswordInput.TextChanged += new System.EventHandler(this.registerPasswordInput_TextChanged);
             // 
             // registerEmailLabel
             // 
@@ -194,6 +209,27 @@ namespace Recipes.Desktop
             this.registerEmailInput.Name = "registerEmailInput";
             this.registerEmailInput.Size = new System.Drawing.Size(190, 23);
             this.registerEmailInput.TabIndex = 5;
+            this.registerEmailInput.TextChanged += new System.EventHandler(this.registerEmailInput_TextChanged);
+            // 
+            // emailErrorProvider
+            // 
+            this.emailErrorProvider.ContainerControl = this;
+            // 
+            // passwordErrorProvider
+            // 
+            this.passwordErrorProvider.ContainerControl = this;
+            // 
+            // registerEmailErrorProvider
+            // 
+            this.registerEmailErrorProvider.ContainerControl = this;
+            // 
+            // registerPasswordErrorProvider
+            // 
+            this.registerPasswordErrorProvider.ContainerControl = this;
+            // 
+            // confirmPasswordErrorProvider
+            // 
+            this.confirmPasswordErrorProvider.ContainerControl = this;
             // 
             // AuthenticationForm
             // 
@@ -208,6 +244,11 @@ namespace Recipes.Desktop
             this.loginPage.PerformLayout();
             this.registerPage.ResumeLayout(false);
             this.registerPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emailErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registerEmailErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registerPasswordErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.confirmPasswordErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,6 +270,11 @@ namespace Recipes.Desktop
         private System.Windows.Forms.Label registerConfirmPasswordLabel;
         private System.Windows.Forms.TextBox registerConfirmPasswordInput;
         private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.ErrorProvider emailErrorProvider;
+        private System.Windows.Forms.ErrorProvider passwordErrorProvider;
+        private System.Windows.Forms.ErrorProvider registerEmailErrorProvider;
+        private System.Windows.Forms.ErrorProvider registerPasswordErrorProvider;
+        private System.Windows.Forms.ErrorProvider confirmPasswordErrorProvider;
     }
 }
 

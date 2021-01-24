@@ -14,6 +14,8 @@ namespace Recipes.Common.Constants
         public const int RecipeDescriptionNameMaxLength = 10000;
         public const int RecipeDescriptionNameMinLength = 3;
 
+        public const string EmailValidation = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+
         public const int UserNameMaxLength = 20;
         public const int UserNameMinLength = 3;
 
