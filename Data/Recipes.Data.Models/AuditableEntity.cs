@@ -1,8 +1,7 @@
 namespace Recipes.Data.Models
 {
+    using Recipes.Data.Models.Contracts;
     using System;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using Recipes.Data.Common;
 
     public class AuditableEntity : IAuditInfo
     {

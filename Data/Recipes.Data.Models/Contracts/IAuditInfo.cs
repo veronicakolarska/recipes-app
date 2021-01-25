@@ -1,4 +1,4 @@
-namespace Recipes.Data.Common
+namespace Recipes.Data.Models.Contracts
 {
     using System;
 

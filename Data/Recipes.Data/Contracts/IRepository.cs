@@ -1,4 +1,4 @@
-namespace Recipes.Data.Common.Repositories
+namespace Recipes.Data.Contracts
 {
     using System;
     using System.Linq;

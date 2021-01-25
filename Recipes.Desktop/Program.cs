@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Recipes.Data;
-using Recipes.Data.Common.Repositories;
+using Recipes.Data.Contracts;
 using Recipes.Data.Repositories;
 using Recipes.Services.Data;
 using Recipes.Services.Data.Contracts;
@@ -20,7 +20,6 @@ namespace Recipes.Desktop
 
             // Data repositories
             // typeof - no need to specify the generic and pass it from the interface to the implementation
-            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
             // TODO: AddTransient, AddScoped - explanation

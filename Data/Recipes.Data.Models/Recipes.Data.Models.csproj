@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Recipes.Common\Recipes.Common.csproj" />
-    <ProjectReference Include="..\Recipes.Data.Common\Recipes.Data.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

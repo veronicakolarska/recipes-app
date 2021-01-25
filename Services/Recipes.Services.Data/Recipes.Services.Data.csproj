@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Recipes.Data.Models\Recipes.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\Recipes.Data\Recipes.Data.csproj" />
-    <ProjectReference Include="..\..\Data\Recipes.Data.Common\Recipes.Data.Common.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

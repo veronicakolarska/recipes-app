@@ -4,9 +4,8 @@ namespace Recipes.Data.Repositories
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Recipes.Data.Common.Repositories;
-
     using Microsoft.EntityFrameworkCore;
+    using Recipes.Data.Contracts;
 
     // repository pattern - for abstraction 
     // defines methods for accessing and modifying the data
