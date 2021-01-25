@@ -79,7 +79,7 @@ namespace Recipes.Desktop
         private void ShowMainForm()
         {
             this.Hide();
-            var mainForm = new MainForm(this.categoryService, this.recipeService, this.userService);
+            var mainForm = new MainForm(this.categoryService, this.recipeService, this.userService, this.favouriteRecipeService);
             mainForm.Show();
         }
 

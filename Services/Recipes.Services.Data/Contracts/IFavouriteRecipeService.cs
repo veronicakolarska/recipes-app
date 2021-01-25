@@ -12,5 +12,7 @@ namespace Recipes.Services.Data.Contracts
         Task Update(FavouriteRecipe favouriteRecipe);
 
         IEnumerable<FavouriteRecipe> GetAll();
+
+        Task Delete(int userId, int recipeId);
     }
 }

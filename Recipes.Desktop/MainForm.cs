@@ -17,16 +17,19 @@ namespace Recipes.Desktop
         private IRecipeService recipeService;
         private IUserService userService;
         private User currentUser;
+        private IFavouriteRecipeService favouriteRecipeService;
 
         public MainForm(
             ICategoryService categoryService,
             IRecipeService recipeService,
-            IUserService userService)
+            IUserService userService,
+            IFavouriteRecipeService favouriteRecipeService)
         {
 
             this.categoryService = categoryService;
             this.recipeService = recipeService;
             this.userService = userService;
+            this.favouriteRecipeService = favouriteRecipeService;
 
             var currentUser = this.userService.GetByEmailWithFavouriteRecipes(Thread.CurrentPrincipal.Identity.Name);
             this.currentUser = currentUser;
@@ -134,15 +137,17 @@ namespace Recipes.Desktop
             if (recipes == null)
             {
                 allRecipes = this.recipeService
-                    .GetAll()
+                    .GetAllWithRelatedData()
                     .OrderByDescending((x) => x.CreatedOn)
                     .ToList();
             }
 
             var recipeTiles = allRecipes.Select((recipe) =>
             {
-                var recipeTile = new RecipeTile(recipe);
+                var recipeTile = new RecipeTile(recipe, this.currentUser.Id);
                 recipeTile.Click += this.RecipeTile_Click;
+                recipeTile.MadeFavouriteRecipe += this.RecipeTile_MadeFavouriteRecipe;
+                recipeTile.UnMadeFavouriteRecipe += this.RecipeTile_UnMadeFavouriteRecipe;
                 return (Control)recipeTile;
             }).ToArray();
 
@@ -152,6 +157,20 @@ namespace Recipes.Desktop
             this.recipesFlowPanel.Controls.AddRange(recipeTiles);
         }
 
+        private async void RecipeTile_UnMadeFavouriteRecipe(object sender, MadeFavouriteRecipeEventArgs e)
+        {
+            await this.favouriteRecipeService.Delete(this.currentUser.Id, e.Id);
+        }
+
+        private async void RecipeTile_MadeFavouriteRecipe(object sender, MadeFavouriteRecipeEventArgs e)
+        {
+            var favouriteRecipe = new FavouriteRecipe()
+            {
+                RecipeId = e.Id,
+                UserId = this.currentUser.Id
+            };
+            await this.favouriteRecipeService.Create(favouriteRecipe);
+        }
 
         private void LoadAdminRecipesPanel()
         {
