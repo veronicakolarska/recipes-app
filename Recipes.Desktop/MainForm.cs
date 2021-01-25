@@ -200,7 +200,6 @@ namespace Recipes.Desktop
             this.LoadAllRecipesPanel();
         }
 
-
         private async void RecipeAdmin_RecipeEdited(object sender, EditRecipeEventArgs e)
         {
             await this.recipeService.Update(e.Recipe);
@@ -208,14 +207,12 @@ namespace Recipes.Desktop
             this.LoadAllRecipesPanel();
         }
 
-
         private async void RecipeAdmin_RecipeDeleted(object sender, DeleteRecipeEventArgs e)
         {
             await this.recipeService.Delete(e.Id);
             this.LoadAdminRecipesPanel();
             this.LoadAllRecipesPanel();
         }
-
 
         private void LoadAdminCategoriesPanel()
         {
@@ -258,6 +255,7 @@ namespace Recipes.Desktop
             userAdmin.UserEdited += this.UserAdmin_UserEdited;
             userAdmin.UserDeleted += this.UserAdmin_UserDeleted;
         }
+
         private async void UserAdmin_UserAdded(object sender, CreateUserEventArgs e)
         {
             await this.userService.Create(e.User);
@@ -275,7 +273,6 @@ namespace Recipes.Desktop
             await this.userService.Delete(e.Id);
             this.LoadAdminUsersPanel();
         }
-
 
         private void RecipeTile_Click(object sender, EventArgs e)
         {
@@ -317,13 +314,6 @@ namespace Recipes.Desktop
 
             if (dialogResult == DialogResult.Yes)
             {
-                // TODO: Figure out how to show the Authentication form
-                //Thread.CurrentPrincipal = null;
-                //var authenticationForm = Application.OpenForms
-                //    .OfType<AuthenticationForm>()
-                //    .FirstOrDefault();
-                //this.Close();
-                //authenticationForm.Show();
                 Application.Exit();
             }
         }

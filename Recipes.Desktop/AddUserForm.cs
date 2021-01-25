@@ -57,7 +57,7 @@ namespace Recipes.Desktop
             if (this.model != null)
             {
                 this.model.Email = userEmail;
-                if (!string.IsNullOrEmpty(passwordHash))
+                if (!string.IsNullOrEmpty(userPassword))
                 {
                     this.model.Password = passwordHash;
                 }
