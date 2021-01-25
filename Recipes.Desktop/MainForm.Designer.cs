@@ -97,6 +97,7 @@ namespace Recipes.Desktop
             // 
             // recipesFlowPanel
             // 
+            this.recipesFlowPanel.AutoScroll = true;
             this.recipesFlowPanel.Location = new System.Drawing.Point(68, 70);
             this.recipesFlowPanel.Name = "recipesFlowPanel";
             this.recipesFlowPanel.Size = new System.Drawing.Size(933, 370);

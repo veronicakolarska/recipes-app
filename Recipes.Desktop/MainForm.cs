@@ -142,12 +142,15 @@ namespace Recipes.Desktop
                     .ToList();
             }
 
+            var allCategories = this.categoryService.GetAll();
+
             var recipeTiles = allRecipes.Select((recipe) =>
             {
-                var recipeTile = new RecipeTile(recipe, this.currentUser.Id);
+                var recipeTile = new RecipeTile(allCategories, recipe, this.currentUser.Id);
                 recipeTile.Click += this.RecipeTile_Click;
                 recipeTile.MadeFavouriteRecipe += this.RecipeTile_MadeFavouriteRecipe;
                 recipeTile.UnMadeFavouriteRecipe += this.RecipeTile_UnMadeFavouriteRecipe;
+                recipeTile.RecipeEdited += this.RecipeAdmin_RecipeEdited;
                 return (Control)recipeTile;
             }).ToArray();
 
@@ -202,6 +205,7 @@ namespace Recipes.Desktop
         {
             await this.recipeService.Update(e.Recipe);
             this.LoadAdminRecipesPanel();
+            this.LoadAllRecipesPanel();
         }
 
 
@@ -209,6 +213,7 @@ namespace Recipes.Desktop
         {
             await this.recipeService.Delete(e.Id);
             this.LoadAdminRecipesPanel();
+            this.LoadAllRecipesPanel();
         }
 
 
@@ -276,7 +281,7 @@ namespace Recipes.Desktop
         {
             var tile = (RecipeTile)sender;
 
-            var recipe = this.recipeService.GetByIdWithIngredients(tile.RecipeId);
+            var recipe = this.recipeService.GetByIdWithIngredients(tile.Recipe.Id);
             var recipeDetails = new RecipeDetailsForm(recipe);
             recipeDetails.Show();
         }

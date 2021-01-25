@@ -1,6 +1,7 @@
 ﻿using Recipes.Data.Models;
 using Recipes.Desktop.Events;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,16 +9,30 @@ namespace Recipes.Desktop
 {
     public partial class RecipeTile : UserControl
     {
-        public int RecipeId { get; private set; }
+        public Recipe Recipe { get; private set; }
 
-        public RecipeTile(Recipe recipe, int currentUserId)
+        private int CurrentUserId { get; set; }
+
+        private IEnumerable<Category> Categories { get; set; }
+
+        public RecipeTile(
+            IEnumerable<Category> categories,
+            Recipe recipe,
+            int currentUserId)
         {
             this.InitializeComponent();
-            this.RecipeId = recipe.Id;
+            this.Recipe = recipe;
+            this.CurrentUserId = currentUserId;
+            this.Categories = categories;
             this.recipeTitleLabel.Text = recipe.Name;
             this.recipePictureBox.Load(recipe.TitleImageUrl);
             var isFavouriteRecipeForCurrentUser = recipe.FavouriteRecipes.Any(x => x.UserId == currentUserId);
             this.favouriteCheckBox.Checked = isFavouriteRecipeForCurrentUser;
+            var isNotMyRecipe = recipe.CreatorId != currentUserId;
+            if (isNotMyRecipe)
+            {
+                this.editRecipeButton.Hide();
+            }
 
             // triggers the event for file if we click on the picture
             this.recipePictureBox.Click += this.ControlClick;
@@ -36,11 +51,11 @@ namespace Recipes.Desktop
         {
             if (this.favouriteCheckBox.Checked)
             {
-                this.OnMadeFavouriteRecipe(new MadeFavouriteRecipeEventArgs(this.RecipeId));
+                this.OnMadeFavouriteRecipe(new MadeFavouriteRecipeEventArgs(this.Recipe.Id));
             }
             else
             {
-                this.OnUnMadeFavouriteRecipe(new MadeFavouriteRecipeEventArgs(this.RecipeId));
+                this.OnUnMadeFavouriteRecipe(new MadeFavouriteRecipeEventArgs(this.Recipe.Id));
             }
 
         }
@@ -64,5 +79,28 @@ namespace Recipes.Desktop
         }
 
         public event EventHandler<MadeFavouriteRecipeEventArgs> UnMadeFavouriteRecipe;
+
+        protected void OnRecipeEdited(EditRecipeEventArgs e)
+        {
+
+            if (this.RecipeEdited != null)
+            {
+                this.RecipeEdited(this, e);
+            }
+        }
+
+        public event EventHandler<EditRecipeEventArgs> RecipeEdited;
+
+        private void editRecipeButton_Click(object sender, EventArgs e)
+        {
+            var editRecipeForm = new AddRecipeForm(this.Categories, this.CurrentUserId, this.Recipe);
+            editRecipeForm.RecipeAdded += this.EditRecipeForm_RecipeAdded;
+            editRecipeForm.Show();
+        }
+
+        private void EditRecipeForm_RecipeAdded(object sender, CreateRecipeEventArgs e)
+        {
+            this.OnRecipeEdited(new EditRecipeEventArgs(e.Recipe));
+        }
     }
 }
