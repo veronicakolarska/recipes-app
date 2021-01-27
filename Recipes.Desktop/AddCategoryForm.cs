@@ -38,7 +38,7 @@ namespace Recipes.Desktop
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
             var categoryName = this.categoryNameInput.Text;
-
+            
             // This updates the existing model if we are using the form for editing
             if (this.model != null)
             {

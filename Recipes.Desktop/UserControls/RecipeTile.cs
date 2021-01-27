@@ -29,7 +29,9 @@ namespace Recipes.Desktop
             var isFavouriteRecipeForCurrentUser = recipe.FavouriteRecipes.Any(x => x.UserId == currentUserId);
             this.favouriteCheckBox.Checked = isFavouriteRecipeForCurrentUser;
             var isNotMyRecipe = recipe.CreatorId != currentUserId;
-            if (isNotMyRecipe)
+            var isNotAdmin = recipe.Creator.Role == Role.User;
+
+            if (isNotAdmin && isNotMyRecipe)
             {
                 this.editRecipeButton.Hide();
             }
