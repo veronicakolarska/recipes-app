@@ -1,6 +1,6 @@
 # Recipes desktop app - University Project
 
-This is a unviersity application for recipe managment.
+This is a university application for recipe management.
 
 ## Main project requirements
 
@@ -14,4 +14,7 @@ This is a unviersity application for recipe managment.
 The following projects serve the following roles:
 
 - Recipes.Data - stores EFCore implementation of the repository pattern. Connection to the DB and operations on the DB are defined here.
-- Recipes.Data.Common - interfaces for data and the repository pattern.
+- Recipes.Data.Models - stores database models used in the whole application.
+- Recipes.Common - common code for the other projects - constants.
+- Recipes.Services.Data - services for the business logic. Defines functionality for every entity.
+- Recipes.Desktop - 
