@@ -17,4 +17,4 @@ The following projects serve the following roles:
 - Recipes.Data.Models - stores database models used in the whole application.
 - Recipes.Common - common code for the other projects - constants.
 - Recipes.Services.Data - services for the business logic. Defines functionality for every entity.
-- Recipes.Desktop - 
+- Recipes.Desktop - WinForms project.

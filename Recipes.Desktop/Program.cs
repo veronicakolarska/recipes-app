@@ -27,7 +27,6 @@ namespace Recipes.Desktop
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IFavouriteRecipeService, FavouriteRecipeService>();
-            services.AddTransient<IIngredientService, IngredientService>();
 
             // when it sees Authentication form, resolves every dependency using the mappings above
             services.AddScoped<AuthenticationForm>();

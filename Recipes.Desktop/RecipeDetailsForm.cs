@@ -20,11 +20,6 @@ namespace Recipes.Desktop
             this.recipeTitleLabel.Text = recipe.Name;
             this.recipeImagePictureBox.Load(recipe.TitleImageUrl);
             this.recipeDescriptionTextBox.Text = recipe.Description;
-
-            var ingredientsList = recipe.Ingredients
-                .Select((ingredient) => $"{ingredient.Name} - {ingredient.Quantity} ({ingredient.Unit})").ToList();
-
-            this.recipeIngredientsListBox.DataSource = ingredientsList;
         }
     }
 }

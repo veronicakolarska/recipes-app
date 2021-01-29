@@ -13,8 +13,6 @@ namespace Recipes.Services.Data.Contracts
 
         Recipe GetById(int id);
 
-        Recipe GetByIdWithIngredients(int id);
-
         bool Exists(int id);
 
         Task Delete(int id);

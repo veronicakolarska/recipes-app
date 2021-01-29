@@ -51,14 +51,6 @@ namespace Recipes.Services.Data
             return this.GetAll().FirstOrDefault((x) => x.Id == id);
         }
 
-        public Recipe GetByIdWithIngredients(int id)
-        {
-            return this.recipeRepository
-                .All()
-                .Include(x => x.Ingredients)
-                .FirstOrDefault((x) => x.Id == id);
-        }
-
         public async Task Delete(int id)
         {
             var recipe = this.GetById(id);

@@ -10,7 +10,6 @@ namespace Recipes.Data.Models
     {
         public Recipe()
         {
-            this.Ingredients = new HashSet<Ingredient>();
             this.FavouriteRecipes = new HashSet<FavouriteRecipe>();
         }
 
@@ -36,8 +35,6 @@ namespace Recipes.Data.Models
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
-
-        public ICollection<Ingredient> Ingredients { get; set; }
 
         public ICollection<FavouriteRecipe> FavouriteRecipes { get; set; }
     }

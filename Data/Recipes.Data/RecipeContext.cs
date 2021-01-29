@@ -16,8 +16,6 @@
 
         public DbSet<Recipe> Recipes { get; set; }
 
-        public DbSet<Ingredient> Ingredients { get; set; }
-
         public DbSet<FavouriteRecipe> FavouriteRecipes { get; set; }
 
         public RecipeContext() { }
@@ -36,19 +34,9 @@
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new FavouriteRecipeConfiguration());
-            modelBuilder.ApplyConfiguration(new IngredientConfiguration());
             modelBuilder.ApplyConfiguration(new RecipeConfiguration());
             DataSeeder.Seed(modelBuilder);
 
-            var entityTypes = modelBuilder.Model.GetEntityTypes().ToList();
-
-            // Disable cascade delete
-            var foreignKeys = entityTypes
-                .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Cascade));
-            foreach (var foreignKey in foreignKeys)
-            {
-                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
-            }
         }
 
         public override int SaveChanges() => this.SaveChanges(true);

@@ -32,7 +32,6 @@ namespace Recipes.Desktop
             this.recipeTitleLabel = new System.Windows.Forms.Label();
             this.recipeImagePictureBox = new System.Windows.Forms.PictureBox();
             this.recipeDescriptionTextBox = new System.Windows.Forms.TextBox();
-            this.recipeIngredientsListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.recipeImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,21 +63,11 @@ namespace Recipes.Desktop
             this.recipeDescriptionTextBox.Size = new System.Drawing.Size(481, 181);
             this.recipeDescriptionTextBox.TabIndex = 2;
             // 
-            // recipeIngredientsListBox
-            // 
-            this.recipeIngredientsListBox.FormattingEnabled = true;
-            this.recipeIngredientsListBox.ItemHeight = 15;
-            this.recipeIngredientsListBox.Location = new System.Drawing.Point(330, 73);
-            this.recipeIngredientsListBox.Name = "recipeIngredientsListBox";
-            this.recipeIngredientsListBox.Size = new System.Drawing.Size(185, 319);
-            this.recipeIngredientsListBox.TabIndex = 3;
-            // 
             // RecipeDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 636);
-            this.Controls.Add(this.recipeIngredientsListBox);
             this.Controls.Add(this.recipeDescriptionTextBox);
             this.Controls.Add(this.recipeImagePictureBox);
             this.Controls.Add(this.recipeTitleLabel);
@@ -95,6 +84,5 @@ namespace Recipes.Desktop
         private System.Windows.Forms.Label recipeTitleLabel;
         private System.Windows.Forms.TextBox recipeDescriptionTextBox;
         private System.Windows.Forms.PictureBox recipeImagePictureBox;
-        private System.Windows.Forms.ListBox recipeIngredientsListBox;
     }
 }

@@ -105,29 +105,6 @@ namespace Recipes.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Ingredients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Unit = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RecipeId = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ingredients", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Ingredients_Recipes_RecipeId",
-                        column: x => x.RecipeId,
-                        principalTable: "Recipes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
 
             migrationBuilder.InsertData(
                 table: "Users",
@@ -163,18 +140,6 @@ namespace Recipes.Data.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedOn", "CreatorId", "Description", "ModifiedOn", "Name", "TitleImageUrl" },
                 values: new object[] { 2, 5, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(7661), 3, "Classic chocolate cake", null, "Chocolate cake", "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" });
 
-            migrationBuilder.InsertData(
-                table: "Ingredients",
-                columns: new[] { "Id", "CreatedOn", "ModifiedOn", "Name", "Quantity", "RecipeId", "Unit" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9759), null, "Potatoes", 1.5m, 1, "kg" },
-                    { 2, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9771), null, "Meat", 0.7m, 1, "kg" },
-                    { 3, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9775), null, "Milk", 1m, 2, "ml" },
-                    { 4, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9777), null, "Biscuits", 0.25m, 2, "kg" },
-                    { 5, new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9779), null, "Chocolate", 0.2m, 2, "kg" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_CreatorId",
                 table: "Categories",
@@ -185,10 +150,6 @@ namespace Recipes.Data.Migrations
                 table: "FavouriteRecipes",
                 column: "RecipeId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Ingredients_RecipeId",
-                table: "Ingredients",
-                column: "RecipeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recipes_CategoryId",
@@ -205,9 +166,6 @@ namespace Recipes.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "FavouriteRecipes");
-
-            migrationBuilder.DropTable(
-                name: "Ingredients");
 
             migrationBuilder.DropTable(
                 name: "Recipes");

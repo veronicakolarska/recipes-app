@@ -32,15 +32,6 @@ namespace Recipes.Data
                 new Recipe { Id = 2, Name = "Chocolate cake", CategoryId = 5, CreatorId = 3, Description = "Classic chocolate cake", TitleImageUrl = "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg", CreatedOn = DateTime.Now }
                 );
 
-
-            modelBuilder.Entity<Ingredient>().HasData(
-                new Ingredient { Id = 1, Name = "Potatoes", Unit = "kg", Quantity = 1.5m, RecipeId = 1, CreatedOn = DateTime.Now },
-                new Ingredient { Id = 2, Name = "Meat", Unit = "kg", Quantity = 0.7m, RecipeId = 1, CreatedOn = DateTime.Now },
-                new Ingredient { Id = 3, Name = "Milk", Unit = "ml", Quantity = 1m, RecipeId = 2, CreatedOn = DateTime.Now },
-                new Ingredient { Id = 4, Name = "Biscuits", Unit = "kg", Quantity = 0.25m, RecipeId = 2, CreatedOn = DateTime.Now },
-                new Ingredient { Id = 5, Name = "Chocolate", Unit = "kg", Quantity = 0.2m, RecipeId = 2, CreatedOn = DateTime.Now }
-                );
-
         }
     }
 }

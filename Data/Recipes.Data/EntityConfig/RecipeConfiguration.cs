@@ -9,11 +9,6 @@ namespace Recipes.Data.EntityConfig
         public void Configure(EntityTypeBuilder<Recipe> builder)
         {
             builder
-               .HasMany(x => x.Ingredients)
-               .WithOne(x => x.Recipe)
-               .HasForeignKey(x => x.RecipeId);
-
-            builder
                 .HasMany(x => x.FavouriteRecipes)
                 .WithOne(x => x.Recipe)
                 .HasForeignKey(x => x.RecipeId);

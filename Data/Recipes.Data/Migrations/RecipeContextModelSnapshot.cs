@@ -112,88 +112,7 @@ namespace Recipes.Data.Migrations
                     b.ToTable("FavouriteRecipes");
                 });
 
-            modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Unit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("Ingredients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9759),
-                            Name = "Potatoes",
-                            Quantity = 1.5m,
-                            RecipeId = 1,
-                            Unit = "kg"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9771),
-                            Name = "Meat",
-                            Quantity = 0.7m,
-                            RecipeId = 1,
-                            Unit = "kg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9775),
-                            Name = "Milk",
-                            Quantity = 1m,
-                            RecipeId = 2,
-                            Unit = "ml"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9777),
-                            Name = "Biscuits",
-                            Quantity = 0.25m,
-                            RecipeId = 2,
-                            Unit = "kg"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedOn = new DateTime(2020, 12, 23, 16, 56, 8, 351, DateTimeKind.Local).AddTicks(9779),
-                            Name = "Chocolate",
-                            Quantity = 0.2m,
-                            RecipeId = 2,
-                            Unit = "kg"
-                        });
-                });
-
+            
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
                     b.Property<int>("Id")
@@ -364,17 +283,6 @@ namespace Recipes.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Recipes.Data.Models.Ingredient", b =>
-                {
-                    b.HasOne("Recipes.Data.Models.Recipe", "Recipe")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Recipe");
-                });
-
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
                     b.HasOne("Recipes.Data.Models.Category", "Category")
@@ -402,8 +310,6 @@ namespace Recipes.Data.Migrations
             modelBuilder.Entity("Recipes.Data.Models.Recipe", b =>
                 {
                     b.Navigation("FavouriteRecipes");
-
-                    b.Navigation("Ingredients");
                 });
 
             modelBuilder.Entity("Recipes.Data.Models.User", b =>

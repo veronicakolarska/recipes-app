@@ -15,21 +15,18 @@ namespace Recipes.Desktop
         private ICategoryService categoryService;
         private IRecipeService recipeService;
         private IFavouriteRecipeService favouriteRecipeService;
-        private IIngredientService ingredientService;
 
         public AuthenticationForm(
             IUserService userService,
             ICategoryService categoryService,
             IRecipeService recipeService,
-            IFavouriteRecipeService favouriteRecipeService,
-            IIngredientService ingredientService
+            IFavouriteRecipeService favouriteRecipeService
             )
         {
             this.userService = userService;
             this.categoryService = categoryService;
             this.recipeService = recipeService;
             this.favouriteRecipeService = favouriteRecipeService;
-            this.ingredientService = ingredientService;
             this.InitializeComponent();
         }
 
